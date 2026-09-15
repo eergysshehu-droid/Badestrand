@@ -1,9 +1,13 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
+import ConcernCard from '../../components/ConcernCard.astro';
+import { concerns } from '../../data/concerns';
 ---
 <SiteLayout title="Problemlösungen | Badestrand Kosmetik" current="problemloesungen">
 <section class="page-hero"><div class="container"><div class="eyebrow">Direkt zur passenden Pflege</div><h1>Problemlösungen</h1><p class="lead">Der schnellste Weg durch das Sortiment: Hautbedürfnis wählen, Empfehlung verstehen, Produkt öffnen.</p></div></section>
-<section class="section"><div class="container"><div class="concern-grid">
-{['Hornhaut & Risse','Pigmentflecken','Feuchtigkeitsarme Haut','Hautrötungen','Reife Haut','Narben & Tattoos','Trockene Hände','Körpergeruch','Empfindliche Reinigung'].map((x,i)=><a class="concern" href={i===0?'/produkte/hornhaut-balsam/':'/produkte/'}><span class="num">{String(i+1).padStart(2,'0')}</span><h3>{x}</h3><span>Produkte entdecken →</span></a>)}
-</div></div></section>
+<section class="section"><div class="container">
+  <div class="concern-directory-grid">
+    {concerns.map((concern, i) => <ConcernCard concern={concern} index={i} />)}
+  </div>
+</div></section>
 </SiteLayout>

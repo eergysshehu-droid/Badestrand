@@ -2,7 +2,9 @@
 import SiteLayout from '../layouts/SiteLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
 import ProductCard from '../components/ProductCard.astro';
+import ConcernCard from '../components/ConcernCard.astro';
 import { products } from '../data/products';
+import { concerns } from '../data/concerns';
 ---
 <SiteLayout title="Badestrand Kosmetik — Wirksame Pflege. Natürlich gedacht." ogImage="/images/hero-main.jpg">
 <section class="hero">
@@ -34,16 +36,16 @@ import { products } from '../data/products';
 </div></section>
 
 <section class="section"><div class="container">
-  <div class="section-head"><div><div class="eyebrow">Schneller finden</div><h2>Was braucht Ihre Haut?</h2></div><a class="btn outline" href="/problemloesungen/">Alle Problemlösungen →</a></div>
-  <div class="concern-photo-grid">
-    <a class="concern-photo" href="/problemloesungen/"><img src="/images/concern-hornhaut.jpg" alt="" loading="lazy" /><div class="content"><div class="eyebrow">01 · Hände & Füße</div><h3>Hornhaut & raue Haut</h3><span>Passende Pflege →</span></div></a>
-    <a class="concern-photo" href="/problemloesungen/"><img src="/images/concern-pigment.jpg" alt="" loading="lazy" /><div class="content"><div class="eyebrow">02 · Gesicht</div><h3>Pigmentflecken</h3><span>Passende Pflege →</span></div></a>
-    <a class="concern-photo" href="/problemloesungen/"><img src="/images/concern-feuchtigkeit.jpg" alt="" loading="lazy" /><div class="content"><div class="eyebrow">03 · Gesicht & Körper</div><h3>Feuchtigkeitsarme Haut</h3><span>Passende Pflege →</span></div></a>
-    <a class="concern-photo" href="/problemloesungen/"><img src="/images/concern-reife-haut.jpg" alt="" loading="lazy" /><div class="content"><div class="eyebrow">04 · Gesicht</div><h3>Reife Haut</h3><span>Passende Pflege →</span></div></a>
+  <div class="section-head"><div><div class="eyebrow">Hautbedürfnisse</div><h2>Was braucht Ihre Haut?</h2></div><a class="btn outline" href="/problemloesungen/">Alle Problemlösungen →</a></div>
+  <div class="concern-editorial-grid">
+    <ConcernCard concern={concerns[0]} size="large" index={0} />
+    <ConcernCard concern={concerns[1]} size="large" index={1} />
   </div>
-  <div class="concern-secondary-grid">
-    <a class="concern" href="/problemloesungen/"><span class="num">05</span><h3>Rötungen & Couperose</h3><span>Passende Pflege →</span></a>
-    <a class="concern" href="/problemloesungen/"><span class="num">06</span><h3>Hände & Füße</h3><span>Passende Pflege →</span></a>
+  <div class="concern-standard-grid">
+    <ConcernCard concern={concerns[2]} index={2} />
+    <ConcernCard concern={concerns[3]} index={3} />
+    <ConcernCard concern={concerns[4]} index={4} />
+    <ConcernCard concern={concerns[5]} index={5} />
   </div>
 </div></section>
 
