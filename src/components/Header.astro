@@ -1,0 +1,30 @@
+---
+const { current = '' } = Astro.props;
+const nav = [
+  ['Produkte','/produkte/','produkte'],
+  ['Problemlösungen','/problemloesungen/','problemloesungen'],
+  ['Inhaltsstoffe','/inhaltsstoffe/','inhaltsstoffe'],
+  ['Über uns','/ueber-uns/','ueber-uns'],
+  ['Magazin','/magazin/','magazin'],
+  ['Kontakt','/kontakt/','kontakt']
+];
+---
+<div class="announcement">Luxus-Naturkosmetik · In Deutschland hergestellt · Persönliche Beratung</div>
+<header class="header">
+  <div class="container header-inner">
+    <button class="icon mobile-menu" aria-label="Menü" data-menu>☰</button>
+    <a class="logo" href="/"><img src="/images/logo.png" alt="Badestrand Kosmetik" /></a>
+    <nav class="nav" data-nav>
+      {nav.map(([label, href, key]) => <a class={current===key ? 'active':''} href={href}>{label}</a>)}
+    </nav>
+    <div class="header-actions">
+      <button class="icon optional" aria-label="Suche">⌕</button>
+      <button class="icon optional" aria-label="Konto">○</button>
+      <a class="icon" href="/warenkorb/" aria-label="Warenkorb">◫</a>
+    </div>
+  </div>
+</header>
+<script>
+  const b=document.querySelector('[data-menu]'); const n=document.querySelector('[data-nav]');
+  b?.addEventListener('click',()=>n?.classList.toggle('open'));
+</script>

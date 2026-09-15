@@ -1,0 +1,12 @@
+---
+const { product } = Astro.props;
+---
+<a class="product-card" href={product.slug==='hornhaut-balsam' ? '/produkte/hornhaut-balsam/' : '/produkte/'}>
+  <div class="product-visual"><img src={product.image} alt={product.name} loading="lazy" /></div>
+  <div class="product-copy">
+    <div class="micro">{product.eyebrow}</div>
+    <h3>{product.name}</h3>
+    <p>{product.description}</p>
+    <div class="product-price">{product.price}</div>
+  </div>
+</a>

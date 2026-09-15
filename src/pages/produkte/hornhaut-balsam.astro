@@ -1,0 +1,14 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import { products } from '../../data/products';
+---
+<SiteLayout title="Hornhaut Balsam | Badestrand Kosmetik" current="produkte">
+<section class="section"><div class="container product-detail">
+  <div><div class="gallery-main"><img src="/images/hornhaut.png" alt="Hornhaut Balsam 30 ml"></div><div class="gallery-thumbs"><div><img src="/images/hornhaut.png" alt=""></div><div><img src="/images/cream-texture.webp" alt=""></div><div><img src="/images/products-wide.png" alt=""></div><div><img src="/images/hornhaut.png" alt=""></div></div></div>
+  <div class="product-summary"><div class="eyebrow">Hände & Füße · 30 ml</div><h1>Hornhaut Balsam</h1><p class="lead">Gezielte Pflege für verhornte Hautpartien an Füßen, Händen, Ellenbogen und Knien.</p><div class="big-price">7,25 €</div><div class="note">Preisangabe aus dem bestehenden Shop; vor Livegang erneut prüfen.</div><div class="btns" style="margin-top:20px"><button class="btn">In den Warenkorb →</button><button class="btn outline">♡</button></div><div class="result"><b>−75%</b><div>Hornhaut nach 28 Tagen bei 2× täglicher Anwendung.</div></div><div class="accordions"><details class="acc" open><summary>Beschreibung</summary><p>Zur Pflege verhornter Hautpartien. Die finalen Texte und rechtlichen Formulierungen werden beim Import aus dem bestehenden Produktkatalog nochmals geprüft.</p></details><details class="acc"><summary>Anwendung</summary><p>Morgens und abends dünn und sparsam auftragen.</p></details><details class="acc"><summary>Inhaltsstoffe</summary><p>INCI wird im Produktionssystem vollständig aus Sanity ausgegeben.</p></details><details class="acc"><summary>Wirkung & Ergebnisse</summary><p>Produktbezogene Testergebnisse werden direkt mit Quellenhinweis beim jeweiligen Produkt gezeigt.</p></details></div></div>
+</div></section>
+<TrustBar/>
+<section class="section soft"><div class="container"><div class="section-head"><div><div class="eyebrow">Dazu passt</div><h2>Pflege ergänzen.</h2></div></div><div class="product-grid">{products.map(p=><ProductCard product={p}/>)}</div></div></section>
+</SiteLayout>

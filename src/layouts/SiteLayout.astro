@@ -1,0 +1,21 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+const { title='Badestrand Kosmetik', description='Luxus-Naturkosmetik für anspruchsvolle Haut.', current='' } = Astro.props;
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#13201a" />
+  <title>{title}</title>
+</head>
+<body>
+  <Header current={current} />
+  <main><slot /></main>
+  <Footer />
+</body>
+</html>

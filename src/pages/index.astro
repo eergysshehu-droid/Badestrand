@@ -1,0 +1,48 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ProductCard from '../components/ProductCard.astro';
+import { products } from '../data/products';
+---
+<SiteLayout title="Badestrand Kosmetik — Luxus-Naturkosmetik">
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow">Luxus-Naturkosmetik · Made in Germany</div>
+    <h1>Schönheit<br>mit Haltung.</h1>
+    <p>Wirksame Pflege für anspruchsvolle Haut – verbunden mit einem modernen, europäischen Luxusgefühl.</p>
+    <div class="btns"><a class="btn" href="/produkte/">Jetzt entdecken →</a><a class="btn outline" href="/problemloesungen/">Nach Hautbedürfnis</a></div>
+  </div>
+  <div class="hero-image"><img src="/images/campaign-car.webp" alt="Badestrand Kampagnenwelt mit klassischem Automobil" /><div class="script-note">Mehr als Pflege. Ein Gefühl.</div></div>
+</section>
+<TrustBar/>
+
+<section class="section"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Unsere Auswahl</div><h2>Pflege mit klarer Aufgabe.</h2></div><p>Produkte, Wirkung und Anwendung werden im neuen Shop bewusst einfach erklärt – ohne die luxuriöse Markenwelt zu verlieren.</p></div>
+  <div class="product-grid">{products.map(p => <ProductCard product={p}/>)}</div>
+</div></section>
+
+<section class="section soft"><div class="container">
+  <div class="editorial-grid">
+    <article class="editorial-card"><img src="/images/ingredient-editorial.webp" alt=""><div class="content"><div class="eyebrow">Inhaltsstoffe</div><h3>Die Kraft natürlicher Wirkstoffe.</h3><p>Reine Formen. Klare Information.</p><a href="/inhaltsstoffe/">Mehr erfahren →</a></div></article>
+    <article class="editorial-card"><img src="/images/cream-texture.webp" alt=""><div class="content"><div class="eyebrow">Wissenschaft</div><h3>Wirkung, die sichtbar wird.</h3><a href="/magazin/">Zum Magazin →</a></div></article>
+    <article class="editorial-card"><img src="/images/products-wide.png" alt=""><div class="content"><div class="eyebrow">Pflege</div><h3>Für heute. Für morgen.</h3><a href="/produkte/">Produkte →</a></div></article>
+  </div>
+</div></section>
+
+<section class="section"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Schneller finden</div><h2>Was braucht Ihre Haut?</h2></div><a class="btn outline" href="/problemloesungen/">Alle Problemlösungen →</a></div>
+  <div class="concern-grid">
+    {['Hornhaut & raue Haut','Pigmentflecken','Feuchtigkeitsarme Haut','Rötungen & Couperose','Reife Haut','Hände & Füße'].map((x,i)=><a class="concern" href="/problemloesungen/"><span class="num">{String(i+1).padStart(2,'0')}</span><h3>{x}</h3><span>Passende Pflege →</span></a>)}
+  </div>
+</div></section>
+
+<section class="section dark"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Produktbezogene Tests</div><h2>Ergebnisse, die Vertrauen schaffen.</h2></div><p>Testergebnisse werden immer beim konkreten Produkt erläutert und nicht pauschal auf das gesamte Sortiment übertragen.</p></div>
+  <div class="proofs"><div class="proof"><strong>75%</strong><span>Hornhautreduzierung</span><small>Hornhaut Balsam · 28 Tage</small></div><div class="proof"><strong>30 ml</strong><span>gezielte Spezialpflege</span><small>für verhornte Hautpartien</small></div><div class="proof"><strong>DE</strong><span>hergestellt in Deutschland</span><small>Markenversprechen der bestehenden Website</small></div></div>
+</div></section>
+
+<section class="section"><div class="container split">
+  <div><div class="eyebrow">Collector’s Edit</div><h2>Eine Markenwelt, die man wiedererkennt.</h2><p class="lead">Klassische Automobile, Schmuck, besondere Materialien und Editorial-Fotografie geben Badestrand Charakter. Die Inszenierung bleibt selten genug, um hochwertig zu wirken.</p><a class="btn outline" href="/ueber-uns/">Unsere Philosophie →</a></div>
+  <div class="split-media"><img src="/images/campaign-magazine.webp" alt="Luxuriöse Badestrand Editorial-Fotografie"></div>
+</div></section>
+</SiteLayout>
