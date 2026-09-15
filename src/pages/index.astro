@@ -3,6 +3,7 @@ import SiteLayout from '../layouts/SiteLayout.astro';
 import TrustBar from '../components/TrustBar.astro';
 import ProductCard from '../components/ProductCard.astro';
 import ConcernCard from '../components/ConcernCard.astro';
+import Icon from '../components/Icon.astro';
 import { products } from '../data/products';
 import { concerns } from '../data/concerns';
 ---
@@ -20,14 +21,14 @@ import { concerns } from '../data/concerns';
 </section>
 <TrustBar/>
 
-<section class="section"><div class="container">
+<section class="section section--standard"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Unsere Auswahl</div><h2>Pflege mit klarer Aufgabe.</h2></div><a class="btn outline" href="/produkte/">Alle Produkte →</a></div>
-  <p class="lead" style="font-size:17px;margin:-18px 0 34px;max-width:640px;color:var(--muted)">Produkte, Wirkung und Anwendung werden bewusst einfach erklärt – vier Kernprodukte als Einstieg in die Marke.</p>
+  <p class="lead" style="margin:-18px 0 34px;max-width:640px;color:var(--muted)">Produkte, Wirkung und Anwendung werden bewusst einfach erklärt – vier Kernprodukte als Einstieg in die Marke.</p>
   <div class="product-grid">{products.map(p => <ProductCard product={p}/>)}</div>
 </div></section>
 
-<section class="section soft"><div class="container">
-  <div class="section-head"><div><div class="eyebrow">Wissenschaft & Wirkstoffe</div><h2>Von der Formel zum Ergebnis.</h2></div><a class="btn outline" href="/inhaltsstoffe/">Alle Inhaltsstoffe →</a></div>
+<section class="section section--standard soft"><div class="container-wide">
+  <div class="section-head"><div><div class="eyebrow">Wissenschaft & Wirkstoffe</div><h2>Von der Formel zum Ergebnis.</h2></div><a class="btn outline" href="/inhaltsstoffe/">Alle Wirkstoffe →</a></div>
   <div class="editorial-grid">
     <article class="editorial-card"><img src="/images/ingredient-aloe-story.jpg" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluron</div><h3>Spürbare Feuchtigkeit.</h3><p>Zwei Wirkstoffe, eine Aufgabe – zu finden im Aloe Hyaluron Booster.</p><a href="/inhaltsstoffe/">Mehr erfahren →</a></div></article>
     <article class="editorial-card"><img src="/images/cream-texture.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Urea</div><h3>Löst, was raue Haut braucht.</h3><a href="/produkte/hornhaut-balsam/">Zum Hornhaut Balsam →</a></div></article>
@@ -35,7 +36,7 @@ import { concerns } from '../data/concerns';
   </div>
 </div></section>
 
-<section class="section"><div class="container">
+<section class="section section--standard"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Hautbedürfnisse</div><h2>Was braucht Ihre Haut?</h2></div><a class="btn outline" href="/hautbeduerfnisse/">Alle Hautbedürfnisse →</a></div>
   <div class="concern-editorial-grid">
     <ConcernCard concern={concerns[0]} size="large" index={0} />
@@ -49,50 +50,54 @@ import { concerns } from '../data/concerns';
   </div>
 </div></section>
 
-<section class="section dark"><div class="container">
-  <div class="section-head"><div><div class="eyebrow">Nachgewiesene Wirkung</div><h2>Ein Ergebnis, dem man vertrauen kann.</h2></div><p>Testergebnisse werden immer beim konkreten Produkt erläutert und nicht pauschal auf das gesamte Sortiment übertragen.</p></div>
-  <div class="proofs">
-    <div class="proof-efficacy"><strong>75%</strong><span>Hornhautreduzierung</span><small>Hornhaut Balsam · nach 28 Tagen bei 2× täglicher Anwendung</small></div>
-    <div class="proof-trust-row">
-      <div class="proof-trust"><strong>DE</strong><span>Hergestellt in Deutschland</span><small>Entwicklung und Produktion am Standort Deutschland</small></div>
-      <div class="proof-trust"><strong>0%</strong><span>Parabene*</span><small>*wo im jeweiligen Produkt bestätigt</small></div>
-    </div>
+<section class="section section--spacious dark"><div class="container proof-split">
+  <div class="proof-split-copy">
+    <div class="eyebrow">Wirkung & Transparenz</div>
+    <h2>Wirkung gehört zum Produkt.</h2>
+    <p>Testergebnisse werden immer dem konkreten Produkt zugeordnet, auf das sie sich beziehen – nicht pauschal auf das gesamte Sortiment übertragen.</p>
+    <a class="text-link" href="/wirkung-studien/">Alle Testergebnisse →</a>
   </div>
-</div></section>
+  <div class="proof-split-metric">
+    <strong>75%</strong>
+    <span>Hornhautreduktion</span>
+    <small>nach 28 Tagen bei 2× täglicher Anwendung · Hornhaut Balsam</small>
+  </div>
+</div>
+<div class="container trust-strip">
+  <div class="trust-strip-item"><Icon name="germany" size={22} /><span>Made in Germany</span></div>
+  <div class="trust-strip-item"><Icon name="flask" size={22} /><span>Dermatologisch geprüft*</span></div>
+  <div class="trust-strip-item"><Icon name="consultation" size={22} /><span>Persönliche Beratung</span></div>
+</div>
+</section>
 
-<section class="brand-moment"><img src="/images/hero-family.jpg" alt="Badestrand Kosmetik Pflegeserie" loading="lazy" /><div class="content"><div class="eyebrow">Pflege mit Substanz</div><h2>Schönheit mit Haltung.</h2><p>Zeitlose Pflege für jede Lebensphase.</p><a class="btn outline" href="/ueber-uns/">Mehr erfahren →</a></div></section>
+<section class="brand-moment"><img src="/images/hero-family.jpg" alt="Badestrand Kosmetik Pflegeserie" loading="lazy" /><div class="content"><div class="eyebrow">Pflege mit Substanz</div><h2>Schönheit mit Haltung.</h2><p>Zeitlose Pflege für jede Lebensphase.</p><a class="text-link" href="/ueber-uns/">Mehr erfahren →</a></div></section>
 
-<section class="section"><div class="container split">
+<section class="section section--standard"><div class="container-wide split split--media-lead">
   <div class="split-media"><img src="/images/manufaktur.jpg" alt="Badestrand Kosmetik Herstellung (Konzeptdarstellung)" loading="lazy"></div>
   <div><div class="eyebrow">Herstellung</div><h2>Von der Formulierung bis zur fertigen Pflege.</h2><p class="lead">Sorgfältige Rezepturen, geprüfte Qualität und Herstellung in Deutschland – für Pflege, der man vertrauen kann.</p><a class="btn outline" href="/ueber-uns/">Mehr über Badestrand →</a></div>
 </div></section>
 
-<section class="section soft"><div class="container split">
-  <div><div class="eyebrow">Persönliche Beratung</div><h2>Welche Pflege passt zu Ihrer Haut?</h2><p class="lead">Jede Haut ist unterschiedlich. Unser Team berät Sie persönlich zu Ihren individuellen Hautbedürfnissen.</p><div class="btns"><a class="btn" href="/kontakt/">Beratung kontaktieren →</a><a class="btn outline" href="/hautbeduerfnisse/">Pflegefinder starten</a></div></div>
+<section class="section section--standard soft"><div class="container split">
+  <div><div class="eyebrow">Persönliche Beratung</div><h2>Welche Pflege passt zu Ihrer Haut?</h2><p class="lead" style="max-width:480px">Jede Haut ist unterschiedlich. Unser Team berät Sie persönlich zu Ihren individuellen Hautbedürfnissen.</p><div class="btns"><a class="btn" href="/beratung/">Beratung kontaktieren →</a><a class="text-link" href="/hautbeduerfnisse/">Nach Hautbedürfnis suchen →</a></div></div>
   <div class="split-media"><img src="/images/consultation.jpg" alt="Persönliche Hautpflegeberatung" loading="lazy"></div>
 </div></section>
 
-<section class="brand-moment align-right"><img src="/images/editorial-riviera.jpg" alt="Badestrand Kosmetik Editorial-Fotografie" loading="lazy" /><div class="content"><div class="eyebrow">Collector's Edit</div><h2>Mehr als Pflege.<br>Ein Lebensgefühl.</h2><a class="btn outline" href="/produkte/">Zum Shop →</a></div></section>
+<section class="brand-moment align-right brand-moment--compact"><img src="/images/editorial-riviera.jpg" alt="Badestrand Kosmetik Editorial-Fotografie" loading="lazy" /><div class="content"><div class="eyebrow">Collector's Edit</div><h2>Mehr als Pflege.<br>Ein Lebensgefühl.</h2><a class="text-link" href="/produkte/">Zum Shop →</a></div></section>
 
-<section class="section soft"><div class="container">
+<section class="section section--standard soft"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Magazin</div><h2>Hautwissen, das weiterhilft.</h2></div><a class="btn outline" href="/magazin/">Alle Artikel →</a></div>
-  <div class="mag-teaser-grid">
-    <a class="mag-card" href="/magazin/"><div class="content"><div class="eyebrow">Hautpflege</div><h3>Warum die Hautbarriere so wichtig ist.</h3><span>Artikel lesen →</span></div></a>
-    <a class="mag-card" href="/magazin/"><div class="content"><div class="eyebrow">Inhaltsstoffe</div><h3>Hyaluron: mehr als nur Feuchtigkeit.</h3><span>Artikel lesen →</span></div></a>
-    <a class="mag-card" href="/magazin/"><div class="content"><div class="eyebrow">Problemlösungen</div><h3>Hornhaut sinnvoll pflegen.</h3><span>Artikel lesen →</span></div></a>
+  <div class="mag-grid">
+    <a class="mag-card featured" href="/magazin/"><img src="/images/campaign-magazine.webp" alt="" loading="lazy" /><div class="content"><div class="eyebrow">Hautpflege</div><h3>Warum die Hautbarriere so wichtig ist.</h3><span>Artikel lesen →</span></div></a>
+    <a class="mag-card" href="/magazin/"><div class="content"><div class="eyebrow">Wirkstoffe</div><h3>Hyaluron: mehr als nur Feuchtigkeit.</h3><span>Artikel lesen →</span></div></a>
+    <a class="mag-card" href="/magazin/"><div class="content"><div class="eyebrow">Hautbedürfnisse</div><h3>Hornhaut sinnvoll pflegen.</h3><span>Artikel lesen →</span></div></a>
   </div>
 </div></section>
 
 <section class="newsletter"><div class="container newsletter-inner">
   <div><div class="eyebrow">Newsletter</div><h2>Bleiben Sie informiert.</h2><p>Pflegetipps, neue Produkte und Neuigkeiten von Badestrand Kosmetik – direkt in Ihr Postfach.</p></div>
-  <div>
-    <!-- TODO: an E-Mail-Anbieter / Sanity-Formularverarbeitung anbinden -->
-    <form class="newsletter-form" onsubmit="return false;">
-      <label for="newsletter-email" class="visually-hidden">E-Mail-Adresse</label>
-      <input id="newsletter-email" type="email" name="email" placeholder="Ihre E-Mail-Adresse" disabled />
-      <button class="btn" type="submit" disabled>Anmelden →</button>
-    </form>
-    <p class="newsletter-note">Prototyp – Anmeldung noch nicht mit einem E-Mail-Anbieter verbunden.</p>
+  <div class="newsletter-cta">
+    <p>Der Newsletter startet in Kürze. Für Fragen erreichen Sie unser Team schon jetzt persönlich.</p>
+    <a class="btn" href="/beratung/">Beratung kontaktieren →</a>
   </div>
 </div></section>
 </SiteLayout>

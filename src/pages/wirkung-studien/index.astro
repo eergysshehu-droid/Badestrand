@@ -1,0 +1,46 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { products } from '../../data/products';
+import { company } from '../../data/company';
+
+const verifiedResults = products.filter((p) => p.efficacy);
+---
+<SiteLayout title="Wirkung & Studien | Badestrand Kosmetik" current="wirkung-studien" description="Wie Badestrand Kosmetik Testergebnisse dokumentiert und welchem konkreten Produkt sie zugeordnet sind.">
+<section class="page-hero"><div class="container-narrow"><div class="eyebrow">Wirkung & Transparenz</div><h1>Wirkung gehört zum Produkt.</h1><p class="lead">Testergebnisse werden bei Badestrand Kosmetik immer dem konkreten Produkt zugeordnet, für das sie ermittelt wurden – nicht pauschal auf das gesamte Sortiment übertragen.</p></div></section>
+
+<section class="section section--standard"><div class="container-narrow">
+  <h2>Wie wir mit Testergebnissen umgehen</h2>
+  <p class="lead" style="font-size:16px;color:var(--muted)">Jede hier veröffentlichte Zahl ist an ein bestimmtes Produkt, einen Anwendungszeitraum und eine Anwendungshäufigkeit gebunden. Ergebnisse zu einem Produkt sagen nichts über die Wirkung anderer Produkte im Sortiment aus. Ergebnisse, die noch nicht abschließend bestätigt sind, werden hier nicht veröffentlicht.</p>
+</div></section>
+
+<section class="section section--standard soft"><div class="container-wide">
+  <div class="section-head"><div><div class="eyebrow">Bestätigte Ergebnisse</div><h2>Getestet. Dokumentiert. Zugeordnet.</h2></div></div>
+  <div class="study-grid">
+    {verifiedResults.map((p) => (
+      <div class="study-card">
+        <div class="study-metric">{p.efficacy!.value}</div>
+        <h3>{p.efficacy!.statement}</h3>
+        <p>{p.efficacy!.context}</p>
+        <a class="text-link" href={`/produkte/${p.slug}/`}>Zum {p.name} →</a>
+      </div>
+    ))}
+  </div>
+  <p class="study-note">Weitere Ergebnisse werden veröffentlicht, sobald sie für das jeweilige Produkt final bestätigt sind.</p>
+</div></section>
+
+<section class="section section--standard"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Grundsätze</div><h2>Was ein Ergebnis bei uns bedeutet.</h2></div></div>
+  <div class="grid-3">
+    <div class="ingredient"><div class="dot"><Icon name="flask" size={22} /></div><h3>Produktbezogen</h3><p>Ein Ergebnis gilt ausschließlich für das genannte Produkt und die genannte Anwendung.</p></div>
+    <div class="ingredient"><div class="dot"><Icon name="clock" size={22} /></div><h3>Zeitraum & Häufigkeit</h3><p>Zu jedem Ergebnis gehören Anwendungsdauer und Anwendungshäufigkeit.</p></div>
+    <div class="ingredient"><div class="dot"><Icon name="shieldCheck" size={22} /></div><h3>Erst bestätigt, dann veröffentlicht</h3><p>Zahlen ohne abschließende Bestätigung erscheinen hier nicht.</p></div>
+  </div>
+</div></section>
+
+<section class="section section--standard soft"><div class="container consultation-cta">
+  <h2>Fragen zu einem bestimmten Produkt?</h2>
+  <p>Unser Team berät Sie persönlich – {company.serviceHours.days} {company.serviceHours.time}.</p>
+  <div class="btns"><a class="btn" href="/beratung/">Beratung kontaktieren →</a><a class="btn outline" href={`tel:${company.phone}`}>{company.phoneDisplay}</a></div>
+</div></section>
+</SiteLayout>

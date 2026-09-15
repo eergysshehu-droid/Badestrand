@@ -1,0 +1,32 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import Icon from '../../components/Icon.astro';
+import { company } from '../../data/company';
+---
+<SiteLayout title="Beratung | Badestrand Kosmetik" current="beratung" description="Persönliche Hautpflegeberatung von Badestrand Kosmetik – telefonisch oder per E-Mail.">
+<section class="page-hero"><div class="container"><div class="eyebrow">Persönliche Beratung</div><h1>Welche Pflege passt zu Ihrer Haut?</h1><p class="lead">Jede Haut ist unterschiedlich. Unser Team berät Sie persönlich zu Ihren individuellen Hautbedürfnissen – bevor Sie sich für ein Produkt entscheiden.</p></div></section>
+
+<section class="section section--standard"><div class="container split">
+  <div>
+    <div class="eyebrow">So erreichen Sie uns</div>
+    <h2>Direkt und persönlich.</h2>
+    <div class="beratung-contact">
+      <a href={`tel:${company.phone}`}><Icon name="phone" size={20} />{company.phoneDisplay}</a>
+      <a href={`mailto:${company.email}`}><Icon name="mail" size={20} />{company.email}</a>
+      <span><Icon name="clock" size={20} />{company.serviceHours.days} · {company.serviceHours.time}</span>
+      <span><Icon name="location" size={20} />{company.address.street} · {company.address.postalCode} {company.address.city}</span>
+    </div>
+    <div class="btns"><a class="btn" href="/kontakt/">Nachricht senden →</a><a class="btn outline" href="/hautbeduerfnisse/">Nach Hautbedürfnis suchen</a></div>
+  </div>
+  <div class="split-media"><img src="/images/consultation.jpg" alt="Persönliche Hautpflegeberatung" loading="lazy"></div>
+</div></section>
+
+<section class="section section--standard soft"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Ablauf</div><h2>Wie die Beratung funktioniert.</h2></div></div>
+  <div class="grid-3">
+    <div class="ingredient"><div class="dot"><Icon name="phone" size={22} /></div><h3>Kontakt aufnehmen</h3><p>Rufen Sie uns an oder schreiben Sie uns – wir melden uns persönlich zurück.</p></div>
+    <div class="ingredient"><div class="dot"><Icon name="leaf" size={22} /></div><h3>Hautbedürfnis klären</h3><p>Wir sprechen über Ihre Haut und passende Pflegeansätze aus unserem Sortiment.</p></div>
+    <div class="ingredient"><div class="dot"><Icon name="shieldCheck" size={22} /></div><h3>Empfehlung erhalten</h3><p>Sie erhalten eine auf Ihre Situation abgestimmte Produktempfehlung.</p></div>
+  </div>
+</div></section>
+</SiteLayout>

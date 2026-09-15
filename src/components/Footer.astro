@@ -3,29 +3,41 @@ import { company } from '../data/company';
 import Icon from './Icon.astro';
 ---
 <footer class="footer">
-  <div class="container">
+  <div class="container-wide">
     <div class="footer-word">BADESTRAND</div>
     <div class="footer-grid">
       <div class="footer-brand">
         <p class="footer-statement">Natürlich. Wirksam. Zeitlos.</p>
         <p class="footer-sub">Gezielte Wirkstoffpflege aus Deutschland.</p>
       </div>
-      <div><h4>Produkte</h4><a href="/produkte/">Alle Produkte</a><a href="/hautbeduerfnisse/">Hautbedürfnisse</a><a href="/inhaltsstoffe/">Wirkstoffe</a></div>
-      <div><h4>Badestrand</h4><a href="/ueber-uns/">Über uns</a><a href="/kontakt/">Beratung</a><a href="/magazin/">Magazin</a><a href="/kontakt/">Kontakt</a></div>
-      <div><h4>Service</h4><a href="/versand-zahlung/">Versand & Zahlung</a><a href="/agb/">AGB</a><a href="/widerruf/">Widerruf</a><a href="/datenschutz/">Datenschutz</a><a href="/cookie-richtlinie/">Cookie-Richtlinie</a><a href="/gesetzliche-gewaehrleistung/">Gesetzliche Gewährleistung</a></div>
+      <div class="footer-group">
+        <button class="footer-group-toggle" aria-expanded="false" aria-controls="footer-links-produkte" data-footer-toggle><h4>Produkte</h4></button>
+        <div class="footer-group-links" id="footer-links-produkte"><a href="/produkte/">Alle Produkte</a><a href="/hautbeduerfnisse/">Hautbedürfnisse</a><a href="/inhaltsstoffe/">Wirkstoffe</a><a href="/wirkung-studien/">Wirkung & Studien</a></div>
+      </div>
+      <div class="footer-group">
+        <button class="footer-group-toggle" aria-expanded="false" aria-controls="footer-links-badestrand" data-footer-toggle><h4>Badestrand</h4></button>
+        <div class="footer-group-links" id="footer-links-badestrand"><a href="/ueber-uns/">Über uns</a><a href="/beratung/">Beratung</a><a href="/magazin/">Magazin</a><a href="/kontakt/">Kontakt</a></div>
+      </div>
+      <div class="footer-group">
+        <button class="footer-group-toggle" aria-expanded="false" aria-controls="footer-links-service" data-footer-toggle><h4>Service</h4></button>
+        <div class="footer-group-links" id="footer-links-service"><a href="/versand-zahlung/">Versand & Zahlung</a><a href="/agb/">AGB</a><a href="/widerruf/">Widerruf</a><a href="/datenschutz/">Datenschutz</a><a href="/cookie-richtlinie/">Cookie-Richtlinie</a><a href="/gesetzliche-gewaehrleistung/">Gesetzliche Gewährleistung</a><a href="/impressum/">Impressum</a></div>
+      </div>
     </div>
     <div class="footer-contact">
       <span><Icon name="location" size={16} />{company.address.street} · {company.address.postalCode} {company.address.city}</span>
-      <span><Icon name="phone" size={16} />{company.phoneDisplay}</span>
-      <span><Icon name="mail" size={16} />{company.email}</span>
+      <span><a href={`tel:${company.phone}`}><Icon name="phone" size={16} />{company.phoneDisplay}</a></span>
+      <span><a href={`mailto:${company.email}`}><Icon name="mail" size={16} />{company.email}</a></span>
       <span><Icon name="clock" size={16} />{company.serviceHours.days} {company.serviceHours.time}</span>
     </div>
-    <div class="footer-bottom"><span>© {new Date().getFullYear()} {company.legalName}</span><a href="/impressum/">Impressum</a></div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} {company.legalName}</span></div>
   </div>
 </footer>
-<nav class="mobile-dock">
-  <a href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg><span>Home</span></a>
-  <a href="/produkte/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Shop</span></a>
-  <a href="/hautbeduerfnisse/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg><span>Bedürfnis</span></a>
-  <a href="/warenkorb/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="1"/></svg><span>Warenkorb</span></a>
-</nav>
+<script>
+  document.querySelectorAll('[data-footer-toggle]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.closest('.footer-group')?.classList.toggle('open', !expanded);
+    });
+  });
+</script>

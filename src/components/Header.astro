@@ -1,18 +1,20 @@
 ---
 import Icon from './Icon.astro';
 import SearchOverlay from './SearchOverlay.astro';
+import { company } from '../data/company';
 const { current = '' } = Astro.props;
 const nav = [
   ['Produkte','/produkte/','produkte'],
   ['Hautbedürfnisse','/hautbeduerfnisse/','hautbeduerfnisse'],
-  ['Inhaltsstoffe','/inhaltsstoffe/','inhaltsstoffe'],
+  ['Wirkstoffe','/inhaltsstoffe/','inhaltsstoffe'],
+  ['Wirkung & Studien','/wirkung-studien/','wirkung-studien'],
   ['Über uns','/ueber-uns/','ueber-uns'],
   ['Magazin','/magazin/','magazin']
 ];
 ---
 <div class="announcement">In Deutschland hergestellt · Persönliche Beratung</div>
 <header class="header">
-  <div class="container header-inner">
+  <div class="container-wide header-inner">
     <button class="icon mobile-menu" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-drawer" data-menu-open>
       <Icon name="menu" />
     </button>
@@ -48,6 +50,7 @@ const nav = [
   </div>
   <div class="mobile-drawer-links">
     {nav.map(([label, href, key]) => <a class={current===key ? 'active':''} href={href}>{label}</a>)}
+    <a href="/beratung/">Beratung</a>
     <a href="/kontakt/">Kontakt</a>
   </div>
   <div class="mobile-drawer-lang">
@@ -58,7 +61,11 @@ const nav = [
       <span class="lang-soon" aria-disabled="true" title="Englische Version folgt in Kürze">EN</span>
     </div>
   </div>
-  <a class="btn mobile-drawer-cta" href="/kontakt/">Persönliche Beratung</a>
+  <div class="mobile-drawer-consultation">
+    <div class="eyebrow">Persönliche Beratung</div>
+    <a href={`tel:${company.phone}`}><Icon name="phone" size={16} />{company.phoneDisplay}</a>
+    <a href={`mailto:${company.email}`}><Icon name="mail" size={16} />{company.email}</a>
+  </div>
 </nav>
 
 <script>

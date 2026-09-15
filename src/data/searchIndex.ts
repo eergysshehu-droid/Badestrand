@@ -15,9 +15,15 @@ const magazineArticles: SearchEntry[] = [
 
 const ingredientNames = ['Aloe Vera', 'Hyaluron', 'Ringelblume', 'Arnika', 'Honig', 'Bienenwachs', 'Propolis', 'Urea'];
 
+const otherPages: SearchEntry[] = [
+  { title: 'Wirkung & Studien', category: 'Seite', href: '/wirkung-studien/' },
+  { title: 'Beratung', category: 'Seite', href: '/beratung/' }
+];
+
 export const searchIndex: SearchEntry[] = [
   ...products.map((p) => ({ title: p.name, category: 'Produkt', href: `/produkte/${p.slug}/` })),
   ...concerns.map((c) => ({ title: c.title, category: 'Hautbedürfnis', href: c.href })),
-  ...ingredientNames.map((name) => ({ title: name, category: 'Inhaltsstoff', href: '/inhaltsstoffe/' })),
-  ...magazineArticles
+  ...ingredientNames.map((name) => ({ title: name, category: 'Wirkstoff', href: '/inhaltsstoffe/' })),
+  ...magazineArticles,
+  ...otherPages
 ];
