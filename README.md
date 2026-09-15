@@ -27,8 +27,9 @@ npm run build
 The static build is created in `dist/` and is suitable for Cloudflare Pages/Workers Static Assets.
 
 ## Important
-The generated imagery is for the design prototype. Replace it with approved client packshots
-and campaign photography before production.
+All generated campaign imagery, redesigned product packaging and visual environments used in
+this prototype are concept assets for design visualization only. They must be reviewed, approved
+or replaced with final Badestrand photography and packaging before production launch.
 
 Prices, claims and legal text must be re-verified against the client's current data before launch.
 

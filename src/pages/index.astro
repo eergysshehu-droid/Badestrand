@@ -4,7 +4,7 @@ import TrustBar from '../components/TrustBar.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products } from '../data/products';
 ---
-<SiteLayout title="Badestrand Kosmetik — Wirksame Pflege. Natürlich gedacht." ogImage="/images/campaign-car.webp">
+<SiteLayout title="Badestrand Kosmetik — Wirksame Pflege. Natürlich gedacht." ogImage="/images/hero-main.jpg">
 <section class="hero">
   <div class="hero-copy">
     <div class="eyebrow">Gezielte Wirkstoffpflege · Made in Germany</div>
@@ -13,7 +13,7 @@ import { products } from '../data/products';
     <div class="btns"><a class="btn" href="/produkte/">Produkte entdecken →</a><a class="btn outline" href="/problemloesungen/">Nach Hautbedürfnis</a></div>
   </div>
   <div class="hero-image">
-    <img src="/images/campaign-car.webp" alt="Badestrand Kosmetik Editorial-Kampagne" width="832" height="1072" fetchpriority="high" decoding="async" />
+    <img src="/images/hero-main.jpg" alt="Badestrand Kosmetik Editorial-Kampagne" width="1672" height="941" fetchpriority="high" decoding="async" />
     <div class="script-note">Mehr als Pflege. Ein Gefühl.</div>
   </div>
 </section>
@@ -28,16 +28,23 @@ import { products } from '../data/products';
 <section class="section soft"><div class="container">
   <div class="section-head"><div><div class="eyebrow">Wissenschaft & Wirkstoffe</div><h2>Von der Formel zum Ergebnis.</h2></div><a class="btn outline" href="/inhaltsstoffe/">Alle Inhaltsstoffe →</a></div>
   <div class="editorial-grid">
-    <article class="editorial-card"><img src="/images/products-wide.png" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluron</div><h3>Spürbare Feuchtigkeit.</h3><p>Zwei Wirkstoffe, eine Aufgabe – zu finden im Aloe Hyaluron Booster.</p><a href="/inhaltsstoffe/">Mehr erfahren →</a></div></article>
+    <article class="editorial-card"><img src="/images/ingredient-aloe-story.jpg" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluron</div><h3>Spürbare Feuchtigkeit.</h3><p>Zwei Wirkstoffe, eine Aufgabe – zu finden im Aloe Hyaluron Booster.</p><a href="/inhaltsstoffe/">Mehr erfahren →</a></div></article>
     <article class="editorial-card"><img src="/images/cream-texture.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Urea</div><h3>Löst, was raue Haut braucht.</h3><a href="/produkte/hornhaut-balsam/">Zum Hornhaut Balsam →</a></div></article>
-    <article class="editorial-card"><img src="/images/products-editorial-crop.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Ergebnis</div><h3>Wirkung, die sich zeigt.</h3><a href="/produkte/">Alle Produkte →</a></div></article>
+    <article class="editorial-card"><img src="/images/science-dropper.jpg" alt="" loading="lazy"><div class="content"><div class="eyebrow">Wirkstoffe mit Wirkung</div><h3>Wissenschaft trifft Natur.</h3><a href="/inhaltsstoffe/">Mehr erfahren →</a></div></article>
   </div>
 </div></section>
 
 <section class="section"><div class="container">
   <div class="section-head"><div><div class="eyebrow">Schneller finden</div><h2>Was braucht Ihre Haut?</h2></div><a class="btn outline" href="/problemloesungen/">Alle Problemlösungen →</a></div>
-  <div class="concern-grid">
-    {['Hornhaut & raue Haut','Pigmentflecken','Feuchtigkeitsarme Haut','Rötungen & Couperose','Reife Haut','Hände & Füße'].map((x,i)=><a class="concern" href="/problemloesungen/"><span class="num">{String(i+1).padStart(2,'0')}</span><h3>{x}</h3><span>Passende Pflege →</span></a>)}
+  <div class="concern-photo-grid">
+    <a class="concern-photo" href="/problemloesungen/"><img src="/images/concern-hornhaut.jpg" alt="" loading="lazy" /><div class="content"><div class="eyebrow">01 · Hände & Füße</div><h3>Hornhaut & raue Haut</h3><span>Passende Pflege →</span></div></a>
+    <a class="concern-photo" href="/problemloesungen/"><img src="/images/concern-pigment.jpg" alt="" loading="lazy" /><div class="content"><div class="eyebrow">02 · Gesicht</div><h3>Pigmentflecken</h3><span>Passende Pflege →</span></div></a>
+    <a class="concern-photo" href="/problemloesungen/"><img src="/images/concern-feuchtigkeit.jpg" alt="" loading="lazy" /><div class="content"><div class="eyebrow">03 · Gesicht & Körper</div><h3>Feuchtigkeitsarme Haut</h3><span>Passende Pflege →</span></div></a>
+    <a class="concern-photo" href="/problemloesungen/"><img src="/images/concern-reife-haut.jpg" alt="" loading="lazy" /><div class="content"><div class="eyebrow">04 · Gesicht</div><h3>Reife Haut</h3><span>Passende Pflege →</span></div></a>
+  </div>
+  <div class="concern-secondary-grid">
+    <a class="concern" href="/problemloesungen/"><span class="num">05</span><h3>Rötungen & Couperose</h3><span>Passende Pflege →</span></a>
+    <a class="concern" href="/problemloesungen/"><span class="num">06</span><h3>Hände & Füße</h3><span>Passende Pflege →</span></a>
   </div>
 </div></section>
 
@@ -50,10 +57,19 @@ import { products } from '../data/products';
   </div>
 </div></section>
 
+<section class="brand-moment"><img src="/images/hero-family.jpg" alt="Badestrand Kosmetik Pflegeserie" loading="lazy" /><div class="content"><div class="eyebrow">Pflege mit Substanz</div><h2>Gezielt. Natürlich. Wirksam.</h2></div></section>
+
 <section class="section"><div class="container split">
-  <div><div class="eyebrow">Collector's Edit</div><h2>Eine Markenwelt, die man wiedererkennt.</h2><p class="lead">Klassische Automobile, Schmuck, besondere Materialien und Editorial-Fotografie geben Badestrand Charakter. Die Inszenierung bleibt selten genug, um hochwertig zu wirken – die Pflege bleibt Hauptdarstellerin.</p><a class="btn outline" href="/ueber-uns/">Unsere Philosophie →</a></div>
-  <div class="split-media"><img src="/images/campaign-magazine.webp" alt="Badestrand Kosmetik Editorial-Fotografie" loading="lazy"></div>
+  <div class="split-media"><img src="/images/manufaktur.jpg" alt="Badestrand Kosmetik Herstellung (Konzeptdarstellung)" loading="lazy"></div>
+  <div><div class="eyebrow">Herstellung</div><h2>Von der Formulierung bis zur fertigen Pflege.</h2><p class="lead">Sorgfältige Rezepturen, geprüfte Qualität und Herstellung in Deutschland – für Pflege, der man vertrauen kann.</p><a class="btn outline" href="/ueber-uns/">Mehr über Badestrand →</a></div>
 </div></section>
+
+<section class="section soft"><div class="container split">
+  <div><div class="eyebrow">Persönliche Beratung</div><h2>Welche Pflege passt zu Ihrer Haut?</h2><p class="lead">Jede Haut ist unterschiedlich. Unser Team berät Sie persönlich zu Ihren individuellen Hautbedürfnissen.</p><div class="btns"><a class="btn" href="/kontakt/">Beratung kontaktieren →</a><a class="btn outline" href="/problemloesungen/">Pflegefinder starten</a></div></div>
+  <div class="split-media"><img src="/images/consultation.jpg" alt="Persönliche Hautpflegeberatung" loading="lazy"></div>
+</div></section>
+
+<section class="brand-moment"><img src="/images/editorial-riviera.jpg" alt="Badestrand Kosmetik Editorial-Fotografie" loading="lazy" /><div class="content"><div class="eyebrow">Collector's Edit</div><h2>Mehr als Pflege.<br>Ein Lebensgefühl.</h2></div></section>
 
 <section class="section soft"><div class="container">
   <div class="section-head"><div><div class="eyebrow">Magazin</div><h2>Hautwissen, das weiterhilft.</h2></div><a class="btn outline" href="/magazin/">Alle Artikel →</a></div>
