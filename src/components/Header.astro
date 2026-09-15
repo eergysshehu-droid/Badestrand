@@ -1,36 +1,115 @@
 ---
+import Icon from './Icon.astro';
+import SearchOverlay from './SearchOverlay.astro';
 const { current = '' } = Astro.props;
 const nav = [
   ['Produkte','/produkte/','produkte'],
-  ['Problemlösungen','/problemloesungen/','problemloesungen'],
+  ['Hautbedürfnisse','/problemloesungen/','problemloesungen'],
   ['Inhaltsstoffe','/inhaltsstoffe/','inhaltsstoffe'],
   ['Über uns','/ueber-uns/','ueber-uns'],
-  ['Magazin','/magazin/','magazin'],
-  ['Kontakt','/kontakt/','kontakt']
+  ['Magazin','/magazin/','magazin']
 ];
 ---
-<div class="announcement">Wirksame Pflege. Natürlich gedacht. · In Deutschland hergestellt · Persönliche Beratung</div>
+<div class="announcement">In Deutschland hergestellt · Persönliche Beratung</div>
 <header class="header">
   <div class="container header-inner">
-    <button class="icon mobile-menu" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav" data-menu>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    <button class="icon mobile-menu" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-drawer" data-menu-open>
+      <Icon name="menu" />
     </button>
     <a class="logo" href="/"><img src="/images/logo.webp" alt="Badestrand Kosmetik" /></a>
-    <nav class="nav" id="main-nav" data-nav>
+    <nav class="nav" id="main-nav">
       {nav.map(([label, href, key]) => <a class={current===key ? 'active':''} href={href}>{label}</a>)}
     </nav>
     <div class="header-actions">
+      <button class="icon" aria-label="Suche öffnen" data-search-open>
+        <Icon name="search" />
+      </button>
+      <div class="lang-switch" role="group" aria-label="Sprache">
+        <span class="lang-active" aria-current="true">DE</span>
+        <span class="lang-divider">|</span>
+        <span class="lang-soon" aria-disabled="true" title="Englische Version folgt in Kürze">EN</span>
+      </div>
       <a class="icon" href="/warenkorb/" aria-label="Warenkorb">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+        <Icon name="cart" />
       </a>
     </div>
   </div>
 </header>
+
+<SearchOverlay />
+
+<div class="drawer-scrim" id="drawer-scrim" hidden></div>
+<nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation" aria-hidden="true">
+  <div class="mobile-drawer-head">
+    <a class="logo" href="/"><img src="/images/logo.webp" alt="Badestrand Kosmetik" /></a>
+    <button class="icon" aria-label="Menü schließen" data-menu-close>
+      <Icon name="close" />
+    </button>
+  </div>
+  <div class="mobile-drawer-links">
+    {nav.map(([label, href, key]) => <a class={current===key ? 'active':''} href={href}>{label}</a>)}
+    <a href="/kontakt/">Kontakt</a>
+  </div>
+  <div class="mobile-drawer-lang">
+    <div class="eyebrow">Sprache / Language</div>
+    <div class="lang-switch lang-switch--drawer">
+      <span class="lang-active" aria-current="true">DE</span>
+      <span class="lang-divider">|</span>
+      <span class="lang-soon" aria-disabled="true" title="Englische Version folgt in Kürze">EN</span>
+    </div>
+  </div>
+  <a class="btn mobile-drawer-cta" href="/kontakt/">Persönliche Beratung</a>
+</nav>
+
 <script>
-  const menuBtn = document.querySelector('[data-menu]');
-  const nav = document.querySelector('[data-nav]');
-  menuBtn?.addEventListener('click', () => {
-    const isOpen = nav?.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  const menuOpenBtn = document.querySelector('[data-menu-open]');
+  const menuCloseBtn = document.querySelector('[data-menu-close]');
+  const drawer = document.getElementById('mobile-drawer');
+  const scrim = document.getElementById('drawer-scrim');
+  let lastFocused = null;
+
+  function getFocusable() {
+    return drawer.querySelectorAll('a, button');
+  }
+
+  function openDrawer() {
+    lastFocused = document.activeElement;
+    drawer.classList.add('open');
+    scrim.hidden = false;
+    drawer.setAttribute('aria-hidden', 'false');
+    menuOpenBtn?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    const focusable = getFocusable();
+    if (focusable.length) focusable[0].focus();
+  }
+
+  function closeDrawer() {
+    drawer.classList.remove('open');
+    scrim.hidden = true;
+    drawer.setAttribute('aria-hidden', 'true');
+    menuOpenBtn?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    if (lastFocused instanceof HTMLElement) lastFocused.focus();
+  }
+
+  menuOpenBtn?.addEventListener('click', openDrawer);
+  menuCloseBtn?.addEventListener('click', closeDrawer);
+  scrim?.addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+    if (e.key === 'Tab' && drawer.classList.contains('open')) {
+      const focusable = Array.from(getFocusable());
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
   });
 </script>
