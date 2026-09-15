@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.badestrand-kosmetik.de/sitemap.xml

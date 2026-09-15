@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TODO: replace with @astrojs/sitemap auto-generation once the full page set is final -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://www.badestrand-kosmetik.de/</loc></url>
+  <url><loc>https://www.badestrand-kosmetik.de/produkte/</loc></url>
+  <url><loc>https://www.badestrand-kosmetik.de/produkte/hornhaut-balsam/</loc></url>
+  <url><loc>https://www.badestrand-kosmetik.de/problemloesungen/</loc></url>
+  <url><loc>https://www.badestrand-kosmetik.de/inhaltsstoffe/</loc></url>
+  <url><loc>https://www.badestrand-kosmetik.de/ueber-uns/</loc></url>
+  <url><loc>https://www.badestrand-kosmetik.de/magazin/</loc></url>
+  <url><loc>https://www.badestrand-kosmetik.de/kontakt/</loc></url>
+</urlset>

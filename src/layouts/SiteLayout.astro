@@ -2,7 +2,29 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-const { title='Badestrand Kosmetik', description='Luxus-Naturkosmetik für anspruchsvolle Haut.', current='' } = Astro.props;
+const {
+  title = 'Badestrand Kosmetik',
+  description = 'Wirksame Pflege. Natürlich gedacht. Gezielte Wirkstoffpflege für konkrete Hautbedürfnisse – natürlich formuliert, dermatologisch geprüft wo bestätigt. Made in Germany.',
+  current = '',
+  ogImage = '/images/products-editorial-crop.webp'
+} = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Badestrand Kosmetik',
+  url: Astro.site?.toString(),
+  logo: new URL('/images/logo.png', Astro.site).toString(),
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'An der Ahlmühle 11',
+    postalCode: '76831',
+    addressLocality: 'Ilbesheim',
+    addressCountry: 'DE'
+  },
+  telephone: '+49-6341-34830',
+  email: 'bio@badestrand-kosmetik.de'
+};
 ---
 <!doctype html>
 <html lang="de">
@@ -11,6 +33,20 @@ const { title='Badestrand Kosmetik', description='Luxus-Naturkosmetik für anspr
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#13201a" />
+  <link rel="canonical" href={canonicalURL} />
+  <link rel="icon" href="/images/logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Badestrand Kosmetik" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
   <title>{title}</title>
 </head>
 <body>

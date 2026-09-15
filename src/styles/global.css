@@ -9,12 +9,13 @@
   --muted:#687068;
   --gold:#9b7643;
   --white:#fff;
-  --serif: Georgia, "Times New Roman", serif;
-  --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif: 'Fraunces', Georgia, "Times New Roman", serif;
+  --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --shadow:0 24px 70px rgba(18,25,20,.11);
   --radius:0;
 }
 *{box-sizing:border-box}
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5}
 img{display:block;max-width:100%}
@@ -87,7 +88,7 @@ h3{font-size:26px}
 .proof strong{display:block;font:400 70px/1 var(--serif)}
 .proof small{display:block;opacity:.7;margin-top:8px}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.split-media{min-height:520px;overflow:hidden}
+.split-media{height:520px;overflow:hidden}
 .split-media img{width:100%;height:100%;object-fit:cover}
 .quote{font:400 38px/1.2 var(--serif)}
 .page-hero{background:var(--paper-2);padding:72px 0 54px;border-bottom:1px solid var(--line)}
@@ -153,6 +154,24 @@ textarea{min-height:155px}
 .footer .logo img{filter:invert(1) grayscale(1) brightness(2)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.15);margin-top:38px;padding-top:20px;font-size:11px;color:#aeb6b0;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .mobile-dock{display:none}
+.mag-teaser-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.newsletter{padding:80px 0;background:var(--green);color:white}
+.newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.newsletter h2{color:white}
+.newsletter p{color:#cbd2cc;max-width:420px;margin:14px 0 0}
+.newsletter-form{display:flex;gap:10px}
+.newsletter-form input{flex:1;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.25);color:white}
+.newsletter-form input::placeholder{color:#cbd2cc}
+.newsletter-form .btn{background:white;color:var(--deep);border-color:white;white-space:nowrap}
+.newsletter-note{font-size:11px;color:#a9b2ac;margin-top:12px}
+@media(max-width:980px){
+ .newsletter-inner{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+ .mag-teaser-grid{grid-template-columns:1fr}
+ .newsletter{padding:56px 0}
+ .newsletter-form{flex-direction:column}
+}
 @media(max-width:980px){
  .announcement{display:none}.header-inner{height:66px;grid-template-columns:auto 1fr auto}.mobile-menu{display:inline-block}.logo img{height:44px}
  .nav{display:none;position:absolute;top:66px;left:0;right:0;background:var(--paper);padding:22px;flex-direction:column;border-bottom:1px solid var(--line)}
@@ -167,7 +186,7 @@ textarea{min-height:155px}
  .section{padding:60px 0}.section-head{align-items:flex-start;flex-direction:column;margin-bottom:28px}.trust-item{padding:15px 8px;font-size:10px}
  .product-grid,.grid-3,.ingredients,.concern-grid{grid-template-columns:1fr 1fr;gap:9px}.product-copy{padding:12px}.product-copy h3{font-size:18px}.product-copy p{font-size:11px}
  .editorial-grid,.story-grid,.mag-grid{grid-template-columns:1fr}.editorial-card:first-child{grid-column:auto}.proofs{grid-template-columns:1fr}
- .page-hero{padding:42px 0 34px}.page-hero h1{font-size:48px}.gallery-main{min-height:390px;padding:18px}.product-summary h1{font-size:46px}
+ .page-hero{padding:42px 0 34px}.page-hero h1{font-size:48px}.gallery-main{min-height:390px;padding:18px}.product-summary h1{font-size:46px}.split-media{height:320px}
  .contact-grid{gap:28px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-grid{grid-template-columns:1fr}
  .cart-row{grid-template-columns:74px 1fr}.cart-row .product-price{grid-column:2}.mobile-dock{display:flex;position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--line);z-index:50;justify-content:space-around;padding:8px 5px}.mobile-dock a{font-size:9px;display:flex;flex-direction:column;align-items:center;gap:2px}
 }

@@ -4,28 +4,33 @@ import TrustBar from '../components/TrustBar.astro';
 import ProductCard from '../components/ProductCard.astro';
 import { products } from '../data/products';
 ---
-<SiteLayout title="Badestrand Kosmetik — Luxus-Naturkosmetik">
+<SiteLayout title="Badestrand Kosmetik — Wirksame Pflege. Natürlich gedacht." ogImage="/images/campaign-car.webp">
 <section class="hero">
   <div class="hero-copy">
-    <div class="eyebrow">Luxus-Naturkosmetik · Made in Germany</div>
+    <div class="eyebrow">Gezielte Wirkstoffpflege · Made in Germany</div>
     <h1>Schönheit<br>mit Haltung.</h1>
-    <p>Wirksame Pflege für anspruchsvolle Haut – verbunden mit einem modernen, europäischen Luxusgefühl.</p>
-    <div class="btns"><a class="btn" href="/produkte/">Jetzt entdecken →</a><a class="btn outline" href="/problemloesungen/">Nach Hautbedürfnis</a></div>
+    <p>Wirksame Pflege. Natürlich gedacht. Gezielte Pflege für konkrete Hautbedürfnisse – natürlich formuliert, dermatologisch geprüft wo bestätigt.</p>
+    <div class="btns"><a class="btn" href="/produkte/">Produkte entdecken →</a><a class="btn outline" href="/problemloesungen/">Nach Hautbedürfnis</a></div>
   </div>
-  <div class="hero-image"><img src="/images/campaign-car.webp" alt="Badestrand Kampagnenwelt mit klassischem Automobil" /><div class="script-note">Mehr als Pflege. Ein Gefühl.</div></div>
+  <div class="hero-image">
+    <img src="/images/campaign-car.webp" alt="Badestrand Kosmetik Editorial-Kampagne" width="832" height="1072" fetchpriority="high" decoding="async" />
+    <div class="script-note">Mehr als Pflege. Ein Gefühl.</div>
+  </div>
 </section>
 <TrustBar/>
 
 <section class="section"><div class="container">
-  <div class="section-head"><div><div class="eyebrow">Unsere Auswahl</div><h2>Pflege mit klarer Aufgabe.</h2></div><p>Produkte, Wirkung und Anwendung werden im neuen Shop bewusst einfach erklärt – ohne die luxuriöse Markenwelt zu verlieren.</p></div>
+  <div class="section-head"><div><div class="eyebrow">Unsere Auswahl</div><h2>Pflege mit klarer Aufgabe.</h2></div><a class="btn outline" href="/produkte/">Alle Produkte →</a></div>
+  <p class="lead" style="font-size:17px;margin:-18px 0 34px;max-width:640px;color:var(--muted)">Produkte, Wirkung und Anwendung werden bewusst einfach erklärt – vier Kernprodukte als Einstieg in die Marke.</p>
   <div class="product-grid">{products.map(p => <ProductCard product={p}/>)}</div>
 </div></section>
 
 <section class="section soft"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Wissenschaft & Wirkstoffe</div><h2>Von der Formel zum Ergebnis.</h2></div><a class="btn outline" href="/inhaltsstoffe/">Alle Inhaltsstoffe →</a></div>
   <div class="editorial-grid">
-    <article class="editorial-card"><img src="/images/ingredient-editorial.webp" alt=""><div class="content"><div class="eyebrow">Inhaltsstoffe</div><h3>Die Kraft natürlicher Wirkstoffe.</h3><p>Reine Formen. Klare Information.</p><a href="/inhaltsstoffe/">Mehr erfahren →</a></div></article>
-    <article class="editorial-card"><img src="/images/cream-texture.webp" alt=""><div class="content"><div class="eyebrow">Wissenschaft</div><h3>Wirkung, die sichtbar wird.</h3><a href="/magazin/">Zum Magazin →</a></div></article>
-    <article class="editorial-card"><img src="/images/products-wide.png" alt=""><div class="content"><div class="eyebrow">Pflege</div><h3>Für heute. Für morgen.</h3><a href="/produkte/">Produkte →</a></div></article>
+    <article class="editorial-card"><img src="/images/products-wide.png" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluron</div><h3>Spürbare Feuchtigkeit.</h3><p>Zwei Wirkstoffe, eine Aufgabe – zu finden im Aloe Hyaluron Booster.</p><a href="/inhaltsstoffe/">Mehr erfahren →</a></div></article>
+    <article class="editorial-card"><img src="/images/cream-texture.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Urea</div><h3>Löst, was raue Haut braucht.</h3><a href="/produkte/hornhaut-balsam/">Zum Hornhaut Balsam →</a></div></article>
+    <article class="editorial-card"><img src="/images/products-editorial-crop.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Ergebnis</div><h3>Wirkung, die sich zeigt.</h3><a href="/produkte/">Alle Produkte →</a></div></article>
   </div>
 </div></section>
 
@@ -38,11 +43,37 @@ import { products } from '../data/products';
 
 <section class="section dark"><div class="container">
   <div class="section-head"><div><div class="eyebrow">Produktbezogene Tests</div><h2>Ergebnisse, die Vertrauen schaffen.</h2></div><p>Testergebnisse werden immer beim konkreten Produkt erläutert und nicht pauschal auf das gesamte Sortiment übertragen.</p></div>
-  <div class="proofs"><div class="proof"><strong>75%</strong><span>Hornhautreduzierung</span><small>Hornhaut Balsam · 28 Tage</small></div><div class="proof"><strong>30 ml</strong><span>gezielte Spezialpflege</span><small>für verhornte Hautpartien</small></div><div class="proof"><strong>DE</strong><span>hergestellt in Deutschland</span><small>Markenversprechen der bestehenden Website</small></div></div>
+  <div class="proofs">
+    <div class="proof"><strong>75%</strong><span>Hornhautreduzierung</span><small>Hornhaut Balsam · nach 28 Tagen, 2× täglich</small></div>
+    <div class="proof"><strong>DE</strong><span>Hergestellt in Deutschland</span><small>Entwicklung und Produktion am Standort Deutschland</small></div>
+    <div class="proof"><strong>0%</strong><span>Parabene*</span><small>*wo im jeweiligen Produkt bestätigt</small></div>
+  </div>
 </div></section>
 
 <section class="section"><div class="container split">
-  <div><div class="eyebrow">Collector’s Edit</div><h2>Eine Markenwelt, die man wiedererkennt.</h2><p class="lead">Klassische Automobile, Schmuck, besondere Materialien und Editorial-Fotografie geben Badestrand Charakter. Die Inszenierung bleibt selten genug, um hochwertig zu wirken.</p><a class="btn outline" href="/ueber-uns/">Unsere Philosophie →</a></div>
-  <div class="split-media"><img src="/images/campaign-magazine.webp" alt="Luxuriöse Badestrand Editorial-Fotografie"></div>
+  <div><div class="eyebrow">Collector's Edit</div><h2>Eine Markenwelt, die man wiedererkennt.</h2><p class="lead">Klassische Automobile, Schmuck, besondere Materialien und Editorial-Fotografie geben Badestrand Charakter. Die Inszenierung bleibt selten genug, um hochwertig zu wirken – die Pflege bleibt Hauptdarstellerin.</p><a class="btn outline" href="/ueber-uns/">Unsere Philosophie →</a></div>
+  <div class="split-media"><img src="/images/campaign-magazine.webp" alt="Badestrand Kosmetik Editorial-Fotografie" loading="lazy"></div>
+</div></section>
+
+<section class="section soft"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Magazin</div><h2>Hautwissen, das weiterhilft.</h2></div><a class="btn outline" href="/magazin/">Alle Artikel →</a></div>
+  <div class="mag-teaser-grid">
+    <a class="mag-card" href="/magazin/"><div class="content"><div class="eyebrow">Hautpflege</div><h3>Warum die Hautbarriere so wichtig ist.</h3><span>Artikel lesen →</span></div></a>
+    <a class="mag-card" href="/magazin/"><div class="content"><div class="eyebrow">Inhaltsstoffe</div><h3>Hyaluron: mehr als nur Feuchtigkeit.</h3><span>Artikel lesen →</span></div></a>
+    <a class="mag-card" href="/magazin/"><div class="content"><div class="eyebrow">Problemlösungen</div><h3>Hornhaut sinnvoll pflegen.</h3><span>Artikel lesen →</span></div></a>
+  </div>
+</div></section>
+
+<section class="newsletter"><div class="container newsletter-inner">
+  <div><div class="eyebrow">Newsletter</div><h2>Bleiben Sie informiert.</h2><p>Pflegetipps, neue Produkte und Neuigkeiten von Badestrand Kosmetik – direkt in Ihr Postfach.</p></div>
+  <div>
+    <!-- TODO: an E-Mail-Anbieter / Sanity-Formularverarbeitung anbinden -->
+    <form class="newsletter-form" action="#" method="post">
+      <label for="newsletter-email" class="visually-hidden">E-Mail-Adresse</label>
+      <input id="newsletter-email" type="email" name="email" placeholder="Ihre E-Mail-Adresse" required />
+      <button class="btn" type="submit">Anmelden →</button>
+    </form>
+    <p class="newsletter-note">Mit der Anmeldung stimmen Sie unserer Datenschutzerklärung zu. Abmeldung jederzeit möglich.</p>
+  </div>
 </div></section>
 </SiteLayout>
