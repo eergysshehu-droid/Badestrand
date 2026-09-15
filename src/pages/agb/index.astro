@@ -1,0 +1,23 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { company } from '../../data/company';
+---
+<SiteLayout title="AGB | Badestrand Kosmetik" current="agb" description="Allgemeine Geschäftsbedingungen der Badestrand Kosmetik GmbH.">
+<section class="page-hero"><div class="container"><div class="eyebrow">Rechtliches</div><h1>Allgemeine Geschäftsbedingungen</h1></div></section>
+<section class="section"><div class="container legal-content">
+  <div class="legal-notice"><strong>In Vorbereitung:</strong> Die finalen AGB werden derzeit mit unserer Rechtsberatung abgestimmt und vor Shop-Start an dieser Stelle veröffentlicht.</div>
+  <h2>1. Geltungsbereich</h2>
+  <p>Es gelten die Allgemeinen Geschäftsbedingungen der {company.legalName} in ihrer zum Zeitpunkt der Bestellung gültigen Fassung.</p>
+  <h2>2. Vertragspartner</h2>
+  <p>Der Kaufvertrag kommt zustande mit der {company.legalName}, {company.address.street}, {company.address.postalCode} {company.address.city}.</p>
+  <h2>3. Vertragsschluss</h2>
+  <h2>4. Preise und Versandkosten</h2>
+  <h2>5. Zahlung</h2>
+  <h2>6. Lieferung</h2>
+  <h2>7. Eigentumsvorbehalt</h2>
+  <h2>8. Gewährleistung</h2>
+  <p>Es gelten die gesetzlichen Gewährleistungsrechte. Weitere Informationen finden Sie unter <a href="/gesetzliche-gewaehrleistung/">Gesetzliche Gewährleistung</a>.</p>
+  <h2>9. Streitbeilegung</h2>
+  <p>Weitere Angaben hierzu finden Sie in unserem <a href="/impressum/">Impressum</a>.</p>
+</div></section>
+</SiteLayout>

@@ -3,7 +3,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import { products } from '../../data/products';
-import { site } from '../../data/site';
+import { company } from '../../data/company';
 
 export function getStaticPaths() {
   return products.map((product) => ({
@@ -19,8 +19,8 @@ const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Produkte', item: `${site.domain}/produkte/` },
-    { '@type': 'ListItem', position: 2, name: product.name, item: `${site.domain}/produkte/${product.slug}/` }
+    { '@type': 'ListItem', position: 1, name: 'Produkte', item: `${company.domain}/produkte/` },
+    { '@type': 'ListItem', position: 2, name: product.name, item: `${company.domain}/produkte/${product.slug}/` }
   ]
 };
 
@@ -29,7 +29,7 @@ const productJsonLd = {
   '@type': 'Product',
   name: product.name,
   description: product.description,
-  brand: { '@type': 'Brand', name: site.name },
+  brand: { '@type': 'Brand', name: company.name },
   ...(product.priceVerified && product.price
     ? {
         offers: {
@@ -42,7 +42,7 @@ const productJsonLd = {
     : {})
 };
 ---
-<SiteLayout title={`${product.name} | Badestrand Kosmetik`} current="produkte" description={`${product.description} ${site.name} – ${product.eyebrow}.`}>
+<SiteLayout title={`${product.name} | Badestrand Kosmetik`} current="produkte" description={`${product.description} ${company.name} – ${product.eyebrow}.`}>
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
 <script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
 <nav class="breadcrumbs container"><a href="/">Start</a><span>/</span><a href="/produkte/">Produkte</a><span>/</span><span>{product.name}</span></nav>

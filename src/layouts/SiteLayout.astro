@@ -2,7 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
-import { site } from '../data/site';
+import { company } from '../data/company';
 const {
   title = 'Badestrand Kosmetik',
   description = 'Gezielte Wirkstoffpflege für konkrete Hautbedürfnisse. Natürlich formuliert und in Deutschland hergestellt.',
@@ -13,18 +13,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const orgJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: site.name,
+  name: company.name,
   url: Astro.site?.toString(),
   logo: new URL('/images/logo.webp', Astro.site).toString(),
   address: {
     '@type': 'PostalAddress',
-    streetAddress: site.address.street,
-    postalCode: site.address.postalCode,
-    addressLocality: site.address.city,
-    addressCountry: site.address.country
+    streetAddress: company.address.street,
+    postalCode: company.address.postalCode,
+    addressLocality: company.address.city,
+    addressCountry: company.address.country
   },
-  telephone: site.phone,
-  email: site.email
+  telephone: company.phone,
+  email: company.email
 };
 ---
 <!doctype html>

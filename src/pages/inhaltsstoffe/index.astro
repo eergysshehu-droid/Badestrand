@@ -1,12 +1,47 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
+import Icon from '../../components/Icon.astro';
+
+const ingredients = [
+  { name: 'Aloe Vera', category: 'Feuchtigkeit', icon: 'leaf', copy: 'Beruhigende Pflege und intensive Feuchtigkeitsversorgung.' },
+  { name: 'Hyaluron', category: 'Feuchtigkeit', icon: 'droplet', copy: 'Bindet Feuchtigkeit und unterstützt ein glatteres Hautgefühl.' },
+  { name: 'Ringelblume', category: 'Pflege', icon: 'leaf', copy: 'Traditionell geschätzter Pflanzenextrakt für beanspruchte Haut.' },
+  { name: 'Arnika', category: 'Pflanzenpflege', icon: 'leaf', copy: 'Botanischer Wirkstoff für ausgewählte Pflegeformulierungen.' },
+  { name: 'Honig', category: 'Pflege', icon: 'droplet', copy: 'Pflegender Inhaltsstoff für trockene und beanspruchte Haut.' },
+  { name: 'Bienenwachs', category: 'Schutz', icon: 'shieldCheck', copy: 'Hilft, die Haut vor Feuchtigkeitsverlust zu schützen.' },
+  { name: 'Propolis', category: 'Pflege', icon: 'leaf', copy: 'Bienenprodukt mit traditioneller Verwendung in pflegenden Formulierungen.' },
+  { name: 'Urea', category: 'Hornhautpflege', icon: 'droplet', copy: 'Feuchtigkeitsbindender Wirkstoff für raue und verhornte Haut.' }
+];
 ---
 <SiteLayout title="Inhaltsstoffe | Badestrand Kosmetik" current="inhaltsstoffe">
 <section class="hero" style="min-height:560px"><div class="hero-copy"><div class="eyebrow">Natur · Wissen · Wirkung</div><h1>Die Kraft der Inhaltsstoffe.</h1><p>Wirkstoffe werden nicht nur schön fotografiert, sondern mit ihren Funktionen und passenden Produkten erklärt.</p><a class="btn" href="#wirkstoffe">Wirkstoffe entdecken →</a></div><div class="hero-image" style="min-height:560px"><img src="/images/products-editorial-crop.webp" alt="Inhaltsstoffe und Wirkstoffwelt"></div></section>
 <TrustBar/>
-<section class="section" id="wirkstoffe"><div class="container"><div class="section-head"><div><div class="eyebrow">Unsere wichtigsten Wirkstoffe</div><h2>Natürlich. Präzise. Verständlich.</h2></div><p>Die finale Version verknüpft jeden Wirkstoff automatisch mit den Badestrand-Produkten, in denen er vorkommt.</p></div><div class="ingredients">
-{[['Aloe Vera','Feuchtigkeit'],['Hyaluron','Feuchtigkeit'],['Ringelblume','Pflege'],['Arnika','Pflanzenkraft'],['Honig','Pflege'],['Bienenwachs','Schutz'],['Propolis','Pflege'],['Urea','Hornhautpflege']].map(([a,b])=><article class="ingredient"><div class="dot">◌</div><h3>{a}</h3><p>{b} · Inhaltsstoffprofil im finalen CMS.</p></article>)}
-</div></div></section>
-<section class="section dark"><div class="container split"><div><div class="eyebrow">Transparenz</div><h2>Wirkung gehört zum Produkt.</h2><p class="lead">Studienwerte werden immer eindeutig dem Produkt zugeordnet, auf das sie sich beziehen.</p></div><div class="quote">„Wenn Natur auf Wissen trifft, entsteht Pflege mit Charakter.“</div></div></section>
+<section class="section" id="wirkstoffe"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Unsere wichtigsten Wirkstoffe</div><h2>Natürlich. Präzise. Verständlich.</h2></div><p>Ausgewählte Wirkstoffe, Pflanzenextrakte und Lipide – verständlich erklärt und direkt mit den passenden Badestrand-Produkten verknüpft.</p></div>
+  <div class="ingredients">
+    {ingredients.map((ing) => (
+      <article class="ingredient">
+        <div class="dot"><Icon name={ing.icon} size={24} /></div>
+        <h3>{ing.name}</h3>
+        <div class="ingredient-category">{ing.category}</div>
+        <p>{ing.copy}</p>
+        <a class="ingredient-link" href="/produkte/">Mehr erfahren →</a>
+      </article>
+    ))}
+  </div>
+</div></section>
+<section class="section dark"><div class="container proof-split">
+  <div class="proof-split-copy">
+    <div class="eyebrow">Wirkung & Transparenz</div>
+    <h2>Wirkung gehört zum Produkt.</h2>
+    <p>Testergebnisse werden immer dem konkreten Produkt zugeordnet, auf das sie sich beziehen – nicht pauschal auf das gesamte Sortiment übertragen.</p>
+    <a class="text-link" href="/produkte/hornhaut-balsam/">Zum Hornhaut Balsam →</a>
+  </div>
+  <div class="proof-split-metric">
+    <strong>75%</strong>
+    <span>Hornhautreduktion</span>
+    <small>Hornhaut Balsam · nach 28 Tagen bei 2× täglicher Anwendung</small>
+  </div>
+</div></section>
 </SiteLayout>

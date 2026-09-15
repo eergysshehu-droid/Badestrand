@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import { company } from '../../data/company';
+---
+<SiteLayout title="Datenschutzerklärung | Badestrand Kosmetik" current="datenschutz" description="Datenschutzerklärung der Badestrand Kosmetik GmbH gemäß DSGVO.">
+<section class="page-hero"><div class="container"><div class="eyebrow">Rechtliches</div><h1>Datenschutzerklärung</h1></div></section>
+<section class="section"><div class="container legal-content">
+  <div class="legal-notice"><strong>In Vorbereitung:</strong> Die vollständige, DSGVO-konforme Datenschutzerklärung wird derzeit erstellt (u. a. Hosting, Cookies, Kontaktformular, Newsletter, Analyse-Tools) und vor Shop-Start an dieser Stelle veröffentlicht.</div>
+  <h2>1. Verantwortlicher</h2>
+  <p>{company.legalName}<br>{company.address.street}, {company.address.postalCode} {company.address.city}<br>E-Mail: <a href={`mailto:${company.email}`}>{company.email}</a></p>
+  <h2>2. Erhebung und Verarbeitung personenbezogener Daten</h2>
+  <h2>3. Cookies</h2>
+  <p>Weitere Informationen finden Sie in unserer <a href="/cookie-richtlinie/">Cookie-Richtlinie</a>.</p>
+  <h2>4. Ihre Rechte</h2>
+  <h2>5. Kontakt bei Fragen zum Datenschutz</h2>
+</div></section>
+</SiteLayout>

@@ -1,0 +1,13 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+import ConcernCard from '../../components/ConcernCard.astro';
+import { concerns } from '../../data/concerns';
+---
+<SiteLayout title="Hautbedürfnisse | Badestrand Kosmetik" current="hautbeduerfnisse" description="Von Hornhaut bis Pigmentflecken – finden Sie die passende Pflege für Ihr Hautbedürfnis.">
+<section class="page-hero"><div class="container"><div class="eyebrow">Direkt zur passenden Pflege</div><h1>Hautbedürfnisse</h1><p class="lead">Der schnellste Weg durch das Sortiment: Hautbedürfnis wählen, Empfehlung verstehen, Produkt öffnen.</p></div></section>
+<section class="section"><div class="container">
+  <div class="concern-directory-grid">
+    {concerns.map((concern, i) => <ConcernCard concern={concern} index={i} />)}
+  </div>
+</div></section>
+</SiteLayout>
