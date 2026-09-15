@@ -1,4 +1,22 @@
-export const products = [
+export interface ProductEfficacy {
+  value: string;
+  statement: string;
+  context: string;
+}
+
+export interface Product {
+  slug: string;
+  name: string;
+  eyebrow: string;
+  description: string;
+  size: string;
+  image: string;
+  price?: string;
+  priceVerified: boolean;
+  efficacy?: ProductEfficacy;
+}
+
+export const products: Product[] = [
   {
     slug: 'hornhaut-balsam',
     name: 'Hornhaut Balsam',
@@ -6,8 +24,13 @@ export const products = [
     description: 'Gezielte Pflege für verhornte Hautpartien.',
     size: '30 ml',
     price: '7,25 €',
-    image: '/images/hornhaut.png',
-    result: '75 % Reduzierung der Hornhaut nach 28 Tagen bei 2× täglicher Anwendung.'
+    priceVerified: true,
+    image: '/images/hornhaut.webp',
+    efficacy: {
+      value: '75 %',
+      statement: 'Reduzierung der Hornhaut',
+      context: 'nach 28 Tagen bei 2× täglicher Anwendung.'
+    }
   },
   {
     slug: 'aloe-hyaluron-booster',
@@ -15,8 +38,8 @@ export const products = [
     eyebrow: 'Feuchtigkeit',
     description: 'Intensive Feuchtigkeitspflege mit Aloe Vera und Hyaluron.',
     size: '50 ml',
-    price: 'Preis im finalen Shop',
-    image: '/images/aloe.png'
+    priceVerified: false,
+    image: '/images/aloe.webp'
   },
   {
     slug: 'pigmentflecken-creme',
@@ -24,8 +47,8 @@ export const products = [
     eyebrow: 'Problemlösung',
     description: 'Pflege bei Altersflecken und Pigmentstörungen.',
     size: '30 ml',
-    price: 'Preis im finalen Shop',
-    image: '/images/pigment.png'
+    priceVerified: false,
+    image: '/images/pigment.webp'
   },
   {
     slug: 'langzeit-abdeck-creme',
@@ -33,7 +56,7 @@ export const products = [
     eyebrow: 'Abdeckpflege',
     description: 'Stark deckende, wasserfeste Spezialpflege.',
     size: '30 ml',
-    price: 'Preis im finalen Shop',
-    image: '/images/abdeck.png'
+    priceVerified: false,
+    image: '/images/abdeck.webp'
   }
 ];

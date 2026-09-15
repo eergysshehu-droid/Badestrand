@@ -12,19 +12,25 @@ const nav = [
 <div class="announcement">Wirksame Pflege. Natürlich gedacht. · In Deutschland hergestellt · Persönliche Beratung</div>
 <header class="header">
   <div class="container header-inner">
-    <button class="icon mobile-menu" aria-label="Menü" data-menu>☰</button>
-    <a class="logo" href="/"><img src="/images/logo.png" alt="Badestrand Kosmetik" /></a>
-    <nav class="nav" data-nav>
+    <button class="icon mobile-menu" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav" data-menu>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+    <a class="logo" href="/"><img src="/images/logo.webp" alt="Badestrand Kosmetik" /></a>
+    <nav class="nav" id="main-nav" data-nav>
       {nav.map(([label, href, key]) => <a class={current===key ? 'active':''} href={href}>{label}</a>)}
     </nav>
     <div class="header-actions">
-      <button class="icon optional" aria-label="Suche">⌕</button>
-      <button class="icon optional" aria-label="Konto">○</button>
-      <a class="icon" href="/warenkorb/" aria-label="Warenkorb">◫</a>
+      <a class="icon" href="/warenkorb/" aria-label="Warenkorb">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      </a>
     </div>
   </div>
 </header>
 <script>
-  const b=document.querySelector('[data-menu]'); const n=document.querySelector('[data-nav]');
-  b?.addEventListener('click',()=>n?.classList.toggle('open'));
+  const menuBtn = document.querySelector('[data-menu]');
+  const nav = document.querySelector('[data-nav]');
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
 </script>

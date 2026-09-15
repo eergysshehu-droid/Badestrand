@@ -1,0 +1,15 @@
+:root{
+  --paper:#f8f6f1;
+  --paper-2:#efe9df;
+  --ink:#101512;
+  --deep:#13201a;
+  --green:#1e342a;
+  --line:#dcd5ca;
+  --muted:#687068;
+  --gold:#9b7643;
+  --white:#fff;
+  --serif: 'Fraunces', Georgia, "Times New Roman", serif;
+  --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --shadow:0 24px 70px rgba(18,25,20,.11);
+  --radius:0;
+}

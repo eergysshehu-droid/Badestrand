@@ -8,7 +8,7 @@ import { products } from '../data/products';
 <section class="hero">
   <div class="hero-copy">
     <h1 class="tight">Wirksame Pflege.<br>Natürlich gedacht.</h1>
-    <p>Gezielte Wirkstoffpflege für Ihre Hautbedürfnisse – natürlich formuliert, dermatologisch geprüft wo bestätigt. Made in Germany.</p>
+    <p>Gezielte Wirkstoffpflege für konkrete Hautbedürfnisse. Entwickelt und hergestellt in Deutschland.</p>
     <div class="btns"><a class="btn" href="/produkte/">Produkte entdecken →</a><a class="btn outline" href="/problemloesungen/">Nach Hautbedürfnis</a></div>
   </div>
   <div class="hero-image">
@@ -48,11 +48,13 @@ import { products } from '../data/products';
 </div></section>
 
 <section class="section dark"><div class="container">
-  <div class="section-head"><div><div class="eyebrow">Produktbezogene Tests</div><h2>Ergebnisse, die Vertrauen schaffen.</h2></div><p>Testergebnisse werden immer beim konkreten Produkt erläutert und nicht pauschal auf das gesamte Sortiment übertragen.</p></div>
+  <div class="section-head"><div><div class="eyebrow">Nachgewiesene Wirkung</div><h2>Ein Ergebnis, dem man vertrauen kann.</h2></div><p>Testergebnisse werden immer beim konkreten Produkt erläutert und nicht pauschal auf das gesamte Sortiment übertragen.</p></div>
   <div class="proofs">
-    <div class="proof"><strong>75%</strong><span>Hornhautreduzierung</span><small>Hornhaut Balsam · nach 28 Tagen, 2× täglich</small></div>
-    <div class="proof"><strong>DE</strong><span>Hergestellt in Deutschland</span><small>Entwicklung und Produktion am Standort Deutschland</small></div>
-    <div class="proof"><strong>0%</strong><span>Parabene*</span><small>*wo im jeweiligen Produkt bestätigt</small></div>
+    <div class="proof-efficacy"><strong>75%</strong><span>Hornhautreduzierung</span><small>Hornhaut Balsam · nach 28 Tagen bei 2× täglicher Anwendung</small></div>
+    <div class="proof-trust-row">
+      <div class="proof-trust"><strong>DE</strong><span>Hergestellt in Deutschland</span><small>Entwicklung und Produktion am Standort Deutschland</small></div>
+      <div class="proof-trust"><strong>0%</strong><span>Parabene*</span><small>*wo im jeweiligen Produkt bestätigt</small></div>
+    </div>
   </div>
 </div></section>
 
@@ -83,12 +85,12 @@ import { products } from '../data/products';
   <div><div class="eyebrow">Newsletter</div><h2>Bleiben Sie informiert.</h2><p>Pflegetipps, neue Produkte und Neuigkeiten von Badestrand Kosmetik – direkt in Ihr Postfach.</p></div>
   <div>
     <!-- TODO: an E-Mail-Anbieter / Sanity-Formularverarbeitung anbinden -->
-    <form class="newsletter-form" action="#" method="post">
+    <form class="newsletter-form" onsubmit="return false;">
       <label for="newsletter-email" class="visually-hidden">E-Mail-Adresse</label>
-      <input id="newsletter-email" type="email" name="email" placeholder="Ihre E-Mail-Adresse" required />
-      <button class="btn" type="submit">Anmelden →</button>
+      <input id="newsletter-email" type="email" name="email" placeholder="Ihre E-Mail-Adresse" disabled />
+      <button class="btn" type="submit" disabled>Anmelden →</button>
     </form>
-    <p class="newsletter-note">Mit der Anmeldung stimmen Sie unserer Datenschutzerklärung zu. Abmeldung jederzeit möglich.</p>
+    <p class="newsletter-note">Prototyp – Anmeldung noch nicht mit einem E-Mail-Anbieter verbunden.</p>
   </div>
 </div></section>
 </SiteLayout>

@@ -2,9 +2,10 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { site } from '../data/site';
 const {
   title = 'Badestrand Kosmetik',
-  description = 'Wirksame Pflege. Natürlich gedacht. Gezielte Wirkstoffpflege für konkrete Hautbedürfnisse – natürlich formuliert, dermatologisch geprüft wo bestätigt. Made in Germany.',
+  description = 'Gezielte Wirkstoffpflege für konkrete Hautbedürfnisse. Natürlich formuliert und in Deutschland hergestellt.',
   current = '',
   ogImage = '/images/products-editorial-crop.webp'
 } = Astro.props;
@@ -12,18 +13,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const orgJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Badestrand Kosmetik',
+  name: site.name,
   url: Astro.site?.toString(),
-  logo: new URL('/images/logo.png', Astro.site).toString(),
+  logo: new URL('/images/logo.webp', Astro.site).toString(),
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'An der Ahlmühle 11',
-    postalCode: '76831',
-    addressLocality: 'Ilbesheim',
-    addressCountry: 'DE'
+    streetAddress: site.address.street,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.city,
+    addressCountry: site.address.country
   },
-  telephone: '+49-6341-34830',
-  email: 'bio@badestrand-kosmetik.de'
+  telephone: site.phone,
+  email: site.email
 };
 ---
 <!doctype html>
@@ -34,7 +35,7 @@ const orgJsonLd = {
   <meta name="description" content={description} />
   <meta name="theme-color" content="#13201a" />
   <link rel="canonical" href={canonicalURL} />
-  <link rel="icon" href="/images/logo.png" />
+  <link rel="icon" href="/images/logo.webp" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="de_DE" />
   <meta property="og:site_name" content="Badestrand Kosmetik" />

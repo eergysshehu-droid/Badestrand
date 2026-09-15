@@ -1,19 +1,4 @@
-
-:root{
-  --paper:#f8f6f1;
-  --paper-2:#efe9df;
-  --ink:#101512;
-  --deep:#13201a;
-  --green:#1e342a;
-  --line:#dcd5ca;
-  --muted:#687068;
-  --gold:#9b7643;
-  --white:#fff;
-  --serif: 'Fraunces', Georgia, "Times New Roman", serif;
-  --sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --shadow:0 24px 70px rgba(18,25,20,.11);
-  --radius:0;
-}
+@import './tokens.css';
 *{box-sizing:border-box}
 .visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 html{scroll-behavior:smooth}
@@ -31,7 +16,9 @@ button,input,select,textarea{font:inherit}
 .nav a::after{content:"";position:absolute;left:0;right:100%;bottom:1px;height:1px;background:var(--ink);transition:.25s}
 .nav a:hover::after{right:0}
 .header-actions{display:flex;gap:14px;align-items:center}
-.icon{border:0;background:none;font-size:18px;cursor:pointer}
+.icon{border:0;background:none;font-size:18px;cursor:pointer;display:inline-flex}
+.icon svg{width:20px;height:20px}
+.mobile-menu svg{width:22px;height:22px}
 .mobile-menu{display:none}
 .hero{display:grid;grid-template-columns:.88fr 1.12fr;min-height:670px;background:#e8e0d4}
 .hero-copy{padding:76px max(44px,calc((100vw - 1240px)/2));padding-right:54px;display:flex;flex-direction:column;justify-content:center}
@@ -84,14 +71,21 @@ h3{font-size:26px}
 .concern{background:white;border:1px solid var(--line);padding:28px;min-height:205px;display:flex;flex-direction:column;justify-content:space-between}
 .concern .num{font-family:var(--serif);font-size:44px;color:#c3b7a6}
 .concern h3{font-size:28px}
-.proofs{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-.proof{border-top:1px solid currentColor;padding-top:20px}
-.proof strong{display:block;font:400 70px/1 var(--serif)}
-.proof small{display:block;opacity:.7;margin-top:8px}
+.proofs{display:grid;gap:40px}
+.proof-efficacy{border-top:1px solid currentColor;padding-top:24px}
+.proof-efficacy strong{display:block;font:400 96px/1 var(--serif)}
+.proof-efficacy small{display:block;opacity:.7;margin-top:10px;font-size:13px}
+.proof-trust-row{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;border-top:1px solid rgba(255,255,255,.2);padding-top:24px}
+.proof-trust{padding-top:0}
+.proof-trust strong{display:block;font:400 34px/1 var(--serif)}
+.proof-trust small{display:block;opacity:.7;margin-top:8px;font-size:12px}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .split-media{height:520px;overflow:hidden}
 .split-media img{width:100%;height:100%;object-fit:cover}
 .quote{font:400 38px/1.2 var(--serif)}
+.breadcrumbs{display:flex;gap:8px;padding:18px 0 0;font-size:11px;color:var(--muted)}
+.breadcrumbs a{color:var(--muted)}
+.breadcrumbs a:hover{color:var(--ink)}
 .page-hero{background:var(--paper-2);padding:72px 0 54px;border-bottom:1px solid var(--line)}
 .page-hero h1{font-size:clamp(50px,6vw,84px)}
 .page-hero p{max-width:760px}
@@ -175,6 +169,8 @@ textarea{min-height:155px}
 .brand-moment.align-right{align-items:flex-start;justify-content:flex-end;text-align:right}
 .brand-moment.align-right .content{max-width:460px}
 .brand-moment.align-right::after{background:linear-gradient(270deg,rgba(7,12,9,.72) 0%,rgba(7,12,9,.4) 40%,transparent 75%)}
+.brand-moment + .section{padding-top:132px}
+section.brand-moment.align-right{margin-top:44px}
 .newsletter{padding:80px 0;background:var(--green);color:white}
 .newsletter-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 .newsletter h2{color:white}
@@ -184,6 +180,7 @@ textarea{min-height:155px}
 .newsletter-form input::placeholder{color:#cbd2cc}
 .newsletter-form .btn{background:white;color:var(--deep);border-color:white;white-space:nowrap}
 .newsletter-note{font-size:11px;color:#a9b2ac;margin-top:12px}
+.newsletter-form input:disabled,.newsletter-form .btn:disabled{opacity:.5;cursor:not-allowed}
 @media(max-width:980px){
  .newsletter-inner{grid-template-columns:1fr}
 }
@@ -205,12 +202,12 @@ textarea{min-height:155px}
  .grid-3{grid-template-columns:1fr 1fr}.product-summary,.cart-summary{position:static}.mag-grid{grid-template-columns:1fr 1fr}.mag-card.featured{grid-column:1/-1;grid-row:auto}.footer-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:640px){
- body{padding-bottom:56px}.container{width:min(100% - 28px,1240px)}.header-inner{gap:8px}.header-actions .optional{display:none}
+ body{padding-bottom:56px}.container{width:min(100% - 28px,1240px)}.header-inner{gap:8px}
  h1{font-size:50px}.hero-image{min-height:360px}.script-note{font-size:20px}.hero-copy{padding:38px 20px 44px}.hero-copy p,.lead{font-size:18px}
  .section{padding:60px 0}.section-head{align-items:flex-start;flex-direction:column;margin-bottom:28px}.trust-item{padding:15px 8px;font-size:10px}
  .product-grid,.grid-3,.ingredients,.concern-grid{grid-template-columns:1fr 1fr;gap:9px}.product-copy{padding:12px}.product-copy h3{font-size:18px}.product-copy p{font-size:11px}
- .editorial-grid,.story-grid,.mag-grid{grid-template-columns:1fr}.editorial-card:first-child{grid-column:auto}.proofs{grid-template-columns:1fr}
+ .editorial-grid,.story-grid,.mag-grid{grid-template-columns:1fr}.editorial-card:first-child{grid-column:auto}.proof-efficacy strong{font-size:64px}.proof-trust-row{grid-template-columns:1fr}
  .page-hero{padding:42px 0 34px}.page-hero h1{font-size:48px}.gallery-main{min-height:390px;padding:18px}.product-summary h1{font-size:46px}.split-media{height:320px}
  .contact-grid{gap:28px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-grid{grid-template-columns:1fr}
- .cart-row{grid-template-columns:74px 1fr}.cart-row .product-price{grid-column:2}.mobile-dock{display:flex;position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--line);z-index:50;justify-content:space-around;padding:8px 5px}.mobile-dock a{font-size:9px;display:flex;flex-direction:column;align-items:center;gap:2px}
+ .cart-row{grid-template-columns:74px 1fr}.cart-row .product-price{grid-column:2}.mobile-dock{display:flex;position:fixed;bottom:0;left:0;right:0;background:white;border-top:1px solid var(--line);z-index:50;justify-content:space-around;padding:8px 5px}.mobile-dock a{font-size:9px;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--muted)}.mobile-dock svg{width:20px;height:20px}
 }

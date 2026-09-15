@@ -11,7 +11,7 @@ import { products } from '../../data/products';
   <div class="filters"><button class="pill active">Alle</button><button class="pill">Gesicht / Decolleté</button><button class="pill">Körper</button><button class="pill">Hände & Füße</button><button class="pill">Altershautpflege</button></div>
   <div class="catalog">
     <aside class="filter-panel"><h3>Filtern</h3><div class="filter-group"><strong>Kategorie</strong><label class="check"><input type="checkbox"> Gesicht / Decolleté</label><label class="check"><input type="checkbox"> Körper</label><label class="check"><input type="checkbox"> Hände & Füße</label></div><div class="filter-group"><strong>Hautbedürfnis</strong><label class="check"><input type="checkbox"> Feuchtigkeit</label><label class="check"><input type="checkbox"> Pigmentflecken</label><label class="check"><input type="checkbox"> Hornhaut</label><label class="check"><input type="checkbox"> Rötungen</label></div></aside>
-    <div><div class="section-head" style="margin-bottom:18px"><p>Prototyp-Auswahl</p><select><option>Empfohlen</option><option>Preis aufsteigend</option><option>Preis absteigend</option></select></div><div class="grid-3">{products.concat(products.slice(1,3)).map(p=><ProductCard product={p}/>)}</div></div>
+    <div><div class="section-head" style="margin-bottom:18px"><p>{products.length} Produkte</p><select><option>Empfohlen</option></select></div><div class="grid-3">{products.map(p=><ProductCard product={p}/>)}</div></div>
   </div>
 </div></section>
 </SiteLayout>
