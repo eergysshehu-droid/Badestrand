@@ -215,6 +215,8 @@ h3{font-size:var(--h3);letter-spacing:-.01em}
 .product-trust p{font-size:12px;color:var(--muted);margin:0}
 .made-in-germany-badge img{width:clamp(180px,22vw,260px);height:auto;object-fit:contain;display:block}
 .made-in-germany-badge p{font-size:12px;color:var(--muted);margin:10px 0 0}
+.made-in-germany-mark{width:clamp(150px,18vw,220px);height:auto;object-fit:contain;display:block;margin:16px 0}
+.story .made-in-germany-mark{width:clamp(120px,14vw,170px);margin:0 0 10px}
 .study-metrics-block{margin-top:24px;background:var(--paper-2);border:1px solid var(--line);padding:22px}
 .study-metrics-title{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
 .study-metrics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:14px}
@@ -241,7 +243,7 @@ h3{font-size:var(--h3);letter-spacing:-.01em}
 }
 .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .story{min-height:420px;position:relative;overflow:hidden;padding:32px;display:flex;align-items:flex-end}
-.story img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.story > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .story::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(0,0,0,.65))}
 .story .content{z-index:2;color:white}
 .mag-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:15px}
