@@ -4,27 +4,38 @@ import Icon from './Icon.astro';
 const { lang = 'de' } = Astro.props;
 const items = {
   de: [
-    ['leaf', 'Natürliche', 'Inhaltsstoffe'],
-    ['flask', 'Dermatologisch', 'geprüft*'],
-    ['germany', 'Made in', 'Germany'],
-    ['shieldCheck', 'Ohne', 'Parabene']
+    ['leaf', 'Natürliche Inhaltsstoffe'],
+    ['flask', 'Dermatologisch geprüft*'],
+    ['germany', 'Made in Germany'],
+    ['consultation', 'Persönliche Beratung']
   ],
   en: [
-    ['leaf', 'Natural', 'Ingredients'],
-    ['flask', 'Dermatologically', 'tested*'],
-    ['germany', 'Made in', 'Germany'],
-    ['shieldCheck', 'Paraben', 'Free']
+    ['leaf', 'Natural Ingredients'],
+    ['flask', 'Dermatologically tested*'],
+    ['germany', 'Made in Germany'],
+    ['consultation', 'Personal Consultation']
   ]
 };
 const trust = items[lang] ?? items.de;
+const ariaLabel = lang === 'en' ? "Badestrand quality marks" : 'Badestrand Qualitätsmerkmale';
 ---
-<div class="trust">
-  <div class="container trust-grid">
-    {trust.map(([icon, line1, line2]) => (
-      <div class="trust-item">
-        <Icon name={icon} class="trust-icon" size={26} />
-        <span>{line1}<br>{line2}</span>
-      </div>
-    ))}
+<div class="trust-marquee" aria-label={ariaLabel}>
+  <div class="trust-marquee__track">
+    <div class="trust-marquee__group">
+      {trust.map(([icon, label]) => (
+        <div class="trust-marquee__item">
+          <Icon name={icon} size={23} />
+          <span>{label}</span>
+        </div>
+      ))}
+    </div>
+    <div class="trust-marquee__group" aria-hidden="true">
+      {trust.map(([icon, label]) => (
+        <div class="trust-marquee__item">
+          <Icon name={icon} size={23} />
+          <span>{label}</span>
+        </div>
+      ))}
+    </div>
   </div>
 </div>
