@@ -37,6 +37,12 @@ const p = (path: string) => localizePath(path, lang);
       <span><a href={`mailto:${c.email}`}><Icon name="mail" size={16} />{c.email}</a></span>
       <span><Icon name="clock" size={16} />{c.serviceHours.days} {c.serviceHours.time}</span>
     </div>
+    {c.amazonStoreUrl && (
+      <div class="footer-retailer">
+        <span class="footer-retailer-label">{lang === 'en' ? 'Also available on' : 'Auch erhältlich bei'}</span>
+        <a href={c.amazonStoreUrl} target="_blank" rel="noopener noreferrer" data-amazon-link data-product-slug="" data-product-name="" data-page-location="footer">Amazon <Icon name="externalLink" size={12} /></a>
+      </div>
+    )}
     <PaymentMethods lang={lang} />
     <div class="footer-bottom"><span>© {new Date().getFullYear()} {c.legalName}</span><span>{lang === 'en' ? 'Website design by Ergys Shehu' : 'Website-Design: Ergys Shehu'}</span></div>
   </div>
