@@ -77,5 +77,14 @@ const orgJsonLd = {
     }, { threshold: 0.15 });
     document.querySelectorAll('[data-reveal], [data-reveal-stagger], [data-reveal-clip]').forEach((el) => revealIo.observe(el));
   </script>
+  <script>
+    document.addEventListener('contextmenu', (e) => e.preventDefault());
+    document.addEventListener('keydown', (e) => {
+      const key = e.key.toUpperCase();
+      if (key === 'F12') e.preventDefault();
+      if (e.ctrlKey && e.shiftKey && (key === 'I' || key === 'J' || key === 'C')) e.preventDefault();
+      if (e.ctrlKey && key === 'U') e.preventDefault();
+    });
+  </script>
 </body>
 </html>

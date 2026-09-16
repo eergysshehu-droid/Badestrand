@@ -36,7 +36,7 @@ const p = (path: string) => localizePath(path, lang);
       <span><a href={`mailto:${c.email}`}><Icon name="mail" size={16} />{c.email}</a></span>
       <span><Icon name="clock" size={16} />{c.serviceHours.days} {c.serviceHours.time}</span>
     </div>
-    <div class="footer-bottom"><span>© {new Date().getFullYear()} {c.legalName}</span></div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} {c.legalName}</span><span>{lang === 'en' ? 'Website design by Ergys Shehu' : 'Website-Design: Ergys Shehu'}</span></div>
   </div>
 </footer>
 <script>
