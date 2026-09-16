@@ -24,7 +24,7 @@ import { concernsEn as concerns } from '../../data/concerns.en';
 <section class="section section--standard"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Our Selection</div><h2>Care with a clear purpose.</h2></div><a class="btn outline" href="/en/produkte/">All products →</a></div>
   <p class="lead" style="margin:-18px 0 34px;max-width:640px;color:var(--muted)">Products, benefits and application are explained simply and clearly — four core products as an entry point into the brand.</p>
-  <div class="product-grid">{products.map(p => <ProductCard product={p} lang="en" />)}</div>
+  <div class="product-grid">{products.filter(p => p.featured).map(p => <ProductCard product={p} lang="en" />)}</div>
 </div></section>
 
 <section class="section section--standard soft"><div class="container-wide">

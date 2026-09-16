@@ -3,15 +3,40 @@ import SiteLayout from '../../../layouts/SiteLayout.astro';
 import TrustBar from '../../../components/TrustBar.astro';
 import ProductCard from '../../../components/ProductCard.astro';
 import { productsEn as products } from '../../../data/products.en';
+
+const categories = ['Face & Décolleté', 'Hands & Feet', 'Body', 'Intimate Care'];
 ---
 <SiteLayout title="Products | Badestrand Kosmetik" current="produkte">
 <section class="page-hero"><div class="container"><div class="eyebrow">Badestrand Kosmetik</div><h1>Our Products</h1><p class="lead">Clear navigation for face, body, hands and feet — with direct access to skin concerns and specialty care.</p></div></section>
 <TrustBar lang="en" />
 <section class="section section--standard"><div class="container-wide">
-  <div class="filters"><button class="pill active">All</button><button class="pill">Face / Décolleté</button><button class="pill">Body</button><button class="pill">Hands & Feet</button><button class="pill">Mature Skin Care</button></div>
+  <div class="filters" id="product-filters">
+    <button class="pill active" data-filter="all">All</button>
+    {categories.map((c) => <button class="pill" data-filter={c}>{c}</button>)}
+  </div>
   <div class="catalog">
-    <aside class="filter-panel"><h3>Filter</h3><div class="filter-group"><strong>Category</strong><label class="check"><input type="checkbox"> Face / Décolleté</label><label class="check"><input type="checkbox"> Body</label><label class="check"><input type="checkbox"> Hands & Feet</label></div><div class="filter-group"><strong>Skin Concern</strong><label class="check"><input type="checkbox"> Hydration</label><label class="check"><input type="checkbox"> Pigmentation</label><label class="check"><input type="checkbox"> Calluses</label><label class="check"><input type="checkbox"> Redness</label></div></aside>
-    <div><div class="section-head" style="margin-bottom:18px"><p>{products.length} products</p><select><option>Recommended</option></select></div><div class="grid-3">{products.map(p=><ProductCard product={p} lang="en" />)}</div></div>
+    <aside class="filter-panel"><h3>Filter</h3><div class="filter-group"><strong>Category</strong>{categories.map((c) => <label class="check"><input type="checkbox" disabled /> {c}</label>)}</div></aside>
+    <div><div class="section-head" style="margin-bottom:18px"><p id="product-count">{products.length} products</p><select><option>Recommended</option></select></div><div class="grid-3" id="product-grid">{products.map(p=><ProductCard product={p} lang="en" />)}</div></div>
   </div>
 </div></section>
 </SiteLayout>
+<script>
+  const pills = document.querySelectorAll('#product-filters .pill');
+  const cards = document.querySelectorAll('#product-grid .product-card');
+  const count = document.getElementById('product-count');
+
+  pills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      pills.forEach((p) => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.getAttribute('data-filter');
+      let visible = 0;
+      cards.forEach((card) => {
+        const match = filter === 'all' || card.getAttribute('data-category') === filter;
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      if (count) count.textContent = `${visible} products`;
+    });
+  });
+</script>

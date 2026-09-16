@@ -13,7 +13,8 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props;
-const related = products.filter((p) => p.slug !== product.slug);
+const sameCategory = products.filter((p) => p.slug !== product.slug && p.category === product.category);
+const related = (sameCategory.length > 0 ? sameCategory : products.filter((p) => p.slug !== product.slug)).slice(0, 4);
 
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -48,16 +49,22 @@ const productJsonLd = {
 <nav class="breadcrumbs container"><a href="/en/">Home</a><span>/</span><a href="/en/produkte/">Products</a><span>/</span><span>{product.name}</span></nav>
 <section class="section"><div class="container product-detail">
   <div>
-    <div class="gallery-main"><img src={product.image} alt={product.name} /></div>
-    <div class="gallery-thumbs">
-      <div><img src={product.image} alt="" /></div>
-      <div><img src="/images/cream-texture.webp" alt="" /></div>
-      <div><img src="/images/products-wide.webp" alt="" /></div>
-      <div><img src={product.image} alt="" /></div>
-    </div>
+    {product.image ? (
+      <>
+        <div class="gallery-main"><img src={product.image} alt={product.name} /></div>
+        <div class="gallery-thumbs">
+          <div><img src={product.image} alt="" /></div>
+          <div><img src="/images/cream-texture.webp" alt="" /></div>
+          <div><img src="/images/products-wide.webp" alt="" /></div>
+          <div><img src={product.image} alt="" /></div>
+        </div>
+      </>
+    ) : (
+      <div class="gallery-main"><div class="product-visual-placeholder"><span>{product.name.slice(0, 1)}</span><small>Photo coming soon</small></div></div>
+    )}
   </div>
   <div class="product-summary">
-    <div class="eyebrow">{product.eyebrow} · {product.size}</div>
+    <div class="eyebrow">{product.eyebrow}{product.size ? ` · ${product.size}` : ''}</div>
     <h1>{product.name}</h1>
     <p class="lead">{product.description}</p>
     {product.priceVerified ? (

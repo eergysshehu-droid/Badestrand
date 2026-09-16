@@ -1,9 +1,14 @@
 ---
 import { localizePath } from '../i18n/utils';
 const { product, lang = 'de' } = Astro.props;
+const photoSoon = lang === 'en' ? 'Photo coming soon' : 'Foto folgt';
 ---
-<a class="product-card" href={localizePath(`/produkte/${product.slug}/`, lang)}>
-  <div class="product-visual"><img src={product.image} alt={product.name} loading="lazy" /></div>
+<a class="product-card" href={localizePath(`/produkte/${product.slug}/`, lang)} data-category={product.category}>
+  <div class="product-visual">
+    {product.image
+      ? <img src={product.image} alt={product.name} loading="lazy" />
+      : <div class="product-visual-placeholder"><span>{product.name.slice(0, 1)}</span><small>{photoSoon}</small></div>}
+  </div>
   <div class="product-copy">
     <div class="micro">{product.eyebrow}</div>
     <h3>{product.name}</h3>

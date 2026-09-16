@@ -24,7 +24,7 @@ import { concerns } from '../data/concerns';
 <section class="section section--standard"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Unsere Auswahl</div><h2>Pflege mit klarer Aufgabe.</h2></div><a class="btn outline" href="/produkte/">Alle Produkte →</a></div>
   <p class="lead" style="margin:-18px 0 34px;max-width:640px;color:var(--muted)">Produkte, Wirkung und Anwendung werden bewusst einfach erklärt – vier Kernprodukte als Einstieg in die Marke.</p>
-  <div class="product-grid">{products.map(p => <ProductCard product={p}/>)}</div>
+  <div class="product-grid">{products.filter(p => p.featured).map(p => <ProductCard product={p}/>)}</div>
 </div></section>
 
 <section class="section section--standard soft"><div class="container-wide">
