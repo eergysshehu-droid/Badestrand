@@ -1,11 +1,16 @@
 ---
 const { lang = 'de', compact = false } = Astro.props;
 const label = lang === 'en' ? 'Secure Payment' : 'Sichere Bezahlung';
-const methods = ['PayPal', 'Visa', 'Mastercard'];
+const methods = [
+  { name: 'PayPal', src: '/images/payments/paypal.png' },
+  { name: 'Visa', src: '/images/payments/visa.png' },
+  { name: 'Mastercard', src: '/images/payments/mastercard.png' }
+];
+const groupLabel = lang === 'en' ? 'Accepted payment methods' : 'Akzeptierte Zahlungsmethoden';
 ---
-<div class={`payment-strip${compact ? ' payment-strip--compact' : ''}`} role="group" aria-label={label}>
+<div class={`payment-strip${compact ? ' payment-strip--compact' : ''}`} role="group" aria-label={groupLabel}>
   <div class="payment-strip-label">{label}</div>
   <ul class="payment-strip-marks">
-    {methods.map((m) => <li class="payment-mark">{m}</li>)}
+    {methods.map((m) => <li class="payment-mark"><img src={m.src} alt={m.name} loading="lazy" /></li>)}
   </ul>
 </div>
