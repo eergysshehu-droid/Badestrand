@@ -10,13 +10,13 @@ const categories = ['Face & Décolleté', 'Hands & Feet', 'Body', 'Intimate Care
 <section class="page-hero"><div class="container"><div class="eyebrow">Badestrand Kosmetik</div><h1>Our Products</h1><p class="lead">Clear navigation for face, body, hands and feet — with direct access to skin concerns and specialty care.</p></div></section>
 <TrustBar lang="en" />
 <section class="section section--standard"><div class="container-wide">
-  <div class="filters" id="product-filters">
+  <div class="filters filters--scroll" id="product-filters">
     <button class="pill active" data-filter="all">All</button>
     {categories.map((c) => <button class="pill" data-filter={c}>{c}</button>)}
   </div>
   <div class="catalog">
     <aside class="filter-panel"><h3>Filter</h3><div class="filter-group"><strong>Category</strong>{categories.map((c) => <label class="check"><input type="checkbox" disabled /> {c}</label>)}</div></aside>
-    <div><div class="section-head" style="margin-bottom:18px"><p id="product-count">{products.length} products</p><select><option>Recommended</option></select></div><div class="grid-3" id="product-grid">{products.map(p=><ProductCard product={p} lang="en" />)}</div></div>
+    <div><div class="catalog-toolbar"><p id="product-count">{products.length} products</p><select><option>Recommended</option></select></div><div class="grid-3" id="product-grid">{products.map(p=><ProductCard product={p} lang="en" />)}</div></div>
   </div>
 </div></section>
 </SiteLayout>

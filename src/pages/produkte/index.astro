@@ -10,13 +10,13 @@ const categories = ['Gesicht & Decolleté', 'Hände & Füße', 'Körper', 'Intim
 <section class="page-hero"><div class="container"><div class="eyebrow">Badestrand Kosmetik</div><h1>Unsere Produkte</h1><p class="lead">Klare Navigation für Gesicht, Körper, Hände und Füße – mit direktem Zugang zu Hautbedürfnissen und Spezialpflege.</p></div></section>
 <TrustBar/>
 <section class="section section--standard"><div class="container-wide">
-  <div class="filters" id="product-filters">
+  <div class="filters filters--scroll" id="product-filters">
     <button class="pill active" data-filter="all">Alle</button>
     {categories.map((c) => <button class="pill" data-filter={c}>{c}</button>)}
   </div>
   <div class="catalog">
     <aside class="filter-panel"><h3>Filtern</h3><div class="filter-group"><strong>Kategorie</strong>{categories.map((c) => <label class="check"><input type="checkbox" disabled /> {c}</label>)}</div></aside>
-    <div><div class="section-head" style="margin-bottom:18px"><p id="product-count">{products.length} Produkte</p><select><option>Empfohlen</option></select></div><div class="grid-3" id="product-grid">{products.map(p=><ProductCard product={p}/>)}</div></div>
+    <div><div class="catalog-toolbar"><p id="product-count">{products.length} Produkte</p><select><option>Empfohlen</option></select></div><div class="grid-3" id="product-grid">{products.map(p=><ProductCard product={p}/>)}</div></div>
   </div>
 </div></section>
 </SiteLayout>
