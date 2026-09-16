@@ -57,23 +57,30 @@ const nav = [
       <Icon name="close" />
     </button>
   </div>
+  <div class="mobile-drawer-eyebrow">{lang === 'en' ? 'MENU' : 'MENÜ'}</div>
   <div class="mobile-drawer-links">
-    {nav.map(([label, href, key]) => <a class={current===key ? 'active':''} href={href}>{label}</a>)}
+    {nav.map(([label, href, key], i) => (
+      <a class={current===key ? 'active':''} href={href}>
+        <span class="drawer-link-num">{String(i+1).padStart(2,'0')}</span>
+        <span class="drawer-link-label">{label}</span>
+      </a>
+    ))}
+  </div>
+  <div class="mobile-drawer-secondary">
+    <a href={localizePath('/produkte/', lang)}>{t('footer.alleProdukte')}</a>
+    <a href={localizePath('/hautbeduerfnisse/', lang)}>{t('btn.nachHautbeduerfnis')}</a>
     <a href={localizePath('/beratung/', lang)}>{t('nav.beratung')}</a>
     <a href={localizePath('/kontakt/', lang)}>{t('nav.kontakt')}</a>
-  </div>
-  <div class="mobile-drawer-lang">
-    <div class="eyebrow">Sprache / Language</div>
-    <div class="lang-switch lang-switch--drawer">
-      <a href={dePath} class={lang === 'de' ? 'lang-active' : ''} aria-current={lang === 'de' ? 'true' : undefined}>DE</a>
-      <span class="lang-divider">|</span>
-      <a href={enPath} class={lang === 'en' ? 'lang-active' : ''} aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
-    </div>
   </div>
   <div class="mobile-drawer-consultation">
     <div class="eyebrow">{t('nav.consultation')}</div>
     <a href={`tel:${c.phone}`}><Icon name="phone" size={16} />{c.phoneDisplay}</a>
     <a href={`mailto:${c.email}`}><Icon name="mail" size={16} />{c.email}</a>
+    <div class="lang-switch lang-switch--drawer" role="group" aria-label={t('nav.language')}>
+      <a href={dePath} class={lang === 'de' ? 'lang-active' : ''} aria-current={lang === 'de' ? 'true' : undefined}>DE</a>
+      <span class="lang-divider">|</span>
+      <a href={enPath} class={lang === 'en' ? 'lang-active' : ''} aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
+    </div>
   </div>
 </nav>
 
