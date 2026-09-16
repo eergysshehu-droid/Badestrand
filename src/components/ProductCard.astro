@@ -1,7 +1,11 @@
 ---
 import { localizePath } from '../i18n/utils';
+import { concerns } from '../data/concerns';
+import { concernsEn } from '../data/concerns.en';
 const { product, lang = 'de' } = Astro.props;
 const photoSoon = lang === 'en' ? 'Photo coming soon' : 'Foto folgt';
+const concernList = lang === 'en' ? concernsEn : concerns;
+const skinNeed = concernList.find((c) => c.productSlugs.includes(product.slug));
 ---
 <a class="product-card" href={localizePath(`/produkte/${product.slug}/`, lang)} data-category={product.category}>
   <div class="product-visual">
@@ -13,6 +17,7 @@ const photoSoon = lang === 'en' ? 'Photo coming soon' : 'Foto folgt';
     <div class="micro">{product.eyebrow}</div>
     <h3>{product.name}</h3>
     <p>{product.description}</p>
+    {skinNeed && <span class="product-skin-need">{skinNeed.title}</span>}
     {product.priceVerified && <div class="product-price">{product.price}</div>}
   </div>
 </a>

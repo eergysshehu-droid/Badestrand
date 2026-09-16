@@ -23,11 +23,11 @@ import { company } from '../data/company';
 
 <section class="section section--standard"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Hautbedürfnisse</div><h2>Was braucht Ihre Haut?</h2></div><a class="btn outline" href="/hautbeduerfnisse/">Alle Hautbedürfnisse →</a></div>
-  <div class="concern-editorial-grid">
+  <div class="concern-editorial-grid" data-reveal-stagger>
     <ConcernCard concern={concerns[0]} size="large" index={0} />
     <ConcernCard concern={concerns[1]} size="large" index={1} />
   </div>
-  <div class="concern-standard-grid">
+  <div class="concern-standard-grid" data-reveal-stagger>
     <ConcernCard concern={concerns[2]} index={2} />
     <ConcernCard concern={concerns[3]} index={3} />
     <ConcernCard concern={concerns[4]} index={4} />
@@ -37,16 +37,16 @@ import { company } from '../data/company';
 
 <section class="section section--standard soft"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Unsere Auswahl</div><h2>Pflege mit klarer Aufgabe.</h2></div><a class="btn outline" href="/produkte/">Alle Produkte →</a></div>
-  <div class="product-grid">{products.filter(p => p.featured).map(p => <ProductCard product={p}/>)}</div>
+  <div class="product-grid" data-reveal-stagger>{products.filter(p => p.featured).map(p => <ProductCard product={p}/>)}</div>
 </div></section>
 
 <section class="section section--standard"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Wissenschaft & Wirkstoffe</div><h2>Von der Formel zum Ergebnis.</h2></div><a class="btn outline" href="/inhaltsstoffe/">Alle Wirkstoffe →</a></div>
   <div class="editorial-grid editorial-grid--4">
-    <article class="editorial-card"><img src="/images/ingredient-olive.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Olivenöl</div><h3>Nährt die Hautbarriere.</h3><a href="/produkte/sebum-plus-aufbaucreme/">Zu Sebum Plus →</a></div></article>
-    <article class="editorial-card"><img src="/images/ingredient-aloe.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluron</div><h3>Spürbare Feuchtigkeit.</h3><a href="/produkte/aloe-hyaluron-booster/">Zum Aloe Hyaluron Booster →</a></div></article>
-    <article class="editorial-card"><img src="/images/ingredient-rose.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Rosenblüten</div><h3>Pflege für reife Haut.</h3><a href="/produkte/rosenmandel-nachtcreme/">Zur Rosenmandel Nachtcreme →</a></div></article>
-    <article class="editorial-card"><img src="/images/ingredient-hyaluron-water.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Intensive Feuchtigkeit</div><h3>Frische, die man spürt.</h3><a href="/produkte/aqua-plus-creme/">Zur Aqua Plus Creme →</a></div></article>
+    <article class="editorial-card" data-reveal-clip><img src="/images/ingredient-olive.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Olivenöl</div><h3>Nährt die Hautbarriere.</h3><a href="/produkte/sebum-plus-aufbaucreme/">Zu Sebum Plus →</a></div></article>
+    <article class="editorial-card" data-reveal-clip><img src="/images/ingredient-aloe.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluron</div><h3>Spürbare Feuchtigkeit.</h3><a href="/produkte/aloe-hyaluron-booster/">Zum Aloe Hyaluron Booster →</a></div></article>
+    <article class="editorial-card" data-reveal-clip><img src="/images/ingredient-rose.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Rosenblüten</div><h3>Pflege für reife Haut.</h3><a href="/produkte/rosenmandel-nachtcreme/">Zur Rosenmandel Nachtcreme →</a></div></article>
+    <article class="editorial-card" data-reveal-clip><img src="/images/ingredient-hyaluron-water.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Intensive Feuchtigkeit</div><h3>Frische, die man spürt.</h3><a href="/produkte/aqua-plus-creme/">Zur Aqua Plus Creme →</a></div></article>
   </div>
 </div></section>
 

@@ -23,11 +23,11 @@ import { companyEn as company } from '../../data/company.en';
 
 <section class="section section--standard"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Skin Concerns</div><h2>What does your skin need?</h2></div><a class="btn outline" href="/en/hautbeduerfnisse/">All skin concerns →</a></div>
-  <div class="concern-editorial-grid">
+  <div class="concern-editorial-grid" data-reveal-stagger>
     <ConcernCard concern={concerns[0]} size="large" index={0} lang="en" />
     <ConcernCard concern={concerns[1]} size="large" index={1} lang="en" />
   </div>
-  <div class="concern-standard-grid">
+  <div class="concern-standard-grid" data-reveal-stagger>
     <ConcernCard concern={concerns[2]} index={2} lang="en" />
     <ConcernCard concern={concerns[3]} index={3} lang="en" />
     <ConcernCard concern={concerns[4]} index={4} lang="en" />
@@ -37,16 +37,16 @@ import { companyEn as company } from '../../data/company.en';
 
 <section class="section section--standard soft"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Our Selection</div><h2>Care with a clear purpose.</h2></div><a class="btn outline" href="/en/produkte/">All products →</a></div>
-  <div class="product-grid">{products.filter(p => p.featured).map(p => <ProductCard product={p} lang="en" />)}</div>
+  <div class="product-grid" data-reveal-stagger>{products.filter(p => p.featured).map(p => <ProductCard product={p} lang="en" />)}</div>
 </div></section>
 
 <section class="section section--standard"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Science & Ingredients</div><h2>From formula to result.</h2></div><a class="btn outline" href="/en/inhaltsstoffe/">All ingredients →</a></div>
   <div class="editorial-grid editorial-grid--4">
-    <article class="editorial-card"><img src="/images/ingredient-olive.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Olive Oil</div><h3>Nourishes the skin barrier.</h3><a href="/en/produkte/sebum-plus-aufbaucreme/">To Sebum Plus →</a></div></article>
-    <article class="editorial-card"><img src="/images/ingredient-aloe.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluronic Acid</div><h3>Noticeable hydration.</h3><a href="/en/produkte/aloe-hyaluron-booster/">To the Aloe Hyaluron Booster →</a></div></article>
-    <article class="editorial-card"><img src="/images/ingredient-rose.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Rose Blossom</div><h3>Care for mature skin.</h3><a href="/en/produkte/rosenmandel-nachtcreme/">To Rosenmandel Nachtcreme →</a></div></article>
-    <article class="editorial-card"><img src="/images/ingredient-hyaluron-water.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Intensive Moisture</div><h3>Freshness you can feel.</h3><a href="/en/produkte/aqua-plus-creme/">To Aqua Plus Creme →</a></div></article>
+    <article class="editorial-card" data-reveal-clip><img src="/images/ingredient-olive.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Olive Oil</div><h3>Nourishes the skin barrier.</h3><a href="/en/produkte/sebum-plus-aufbaucreme/">To Sebum Plus →</a></div></article>
+    <article class="editorial-card" data-reveal-clip><img src="/images/ingredient-aloe.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluronic Acid</div><h3>Noticeable hydration.</h3><a href="/en/produkte/aloe-hyaluron-booster/">To the Aloe Hyaluron Booster →</a></div></article>
+    <article class="editorial-card" data-reveal-clip><img src="/images/ingredient-rose.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Rose Blossom</div><h3>Care for mature skin.</h3><a href="/en/produkte/rosenmandel-nachtcreme/">To Rosenmandel Nachtcreme →</a></div></article>
+    <article class="editorial-card" data-reveal-clip><img src="/images/ingredient-hyaluron-water.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Intensive Moisture</div><h3>Freshness you can feel.</h3><a href="/en/produkte/aqua-plus-creme/">To Aqua Plus Creme →</a></div></article>
   </div>
 </div></section>
 

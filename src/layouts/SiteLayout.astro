@@ -66,5 +66,16 @@ const orgJsonLd = {
   <Header current={current} lang={lang} />
   <main id="main"><slot /></main>
   <Footer lang={lang} />
+  <script>
+    const revealIo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealIo.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('[data-reveal], [data-reveal-stagger], [data-reveal-clip]').forEach((el) => revealIo.observe(el));
+  </script>
 </body>
 </html>
