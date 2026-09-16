@@ -2,69 +2,78 @@
 import Icon from './Icon.astro';
 import SearchOverlay from './SearchOverlay.astro';
 import { company } from '../data/company';
-const { current = '' } = Astro.props;
+import { companyEn } from '../data/company.en';
+import { useTranslations, localizePath } from '../i18n/utils';
+
+const { current = '', lang = 'de' } = Astro.props;
+const t = useTranslations(lang);
+const c = lang === 'en' ? companyEn : company;
+
+const dePath = lang === 'en' ? Astro.url.pathname.replace(/^\/en/, '') || '/' : Astro.url.pathname;
+const enPath = lang === 'en' ? Astro.url.pathname : `/en${Astro.url.pathname}`;
+
 const nav = [
-  ['Produkte','/produkte/','produkte'],
-  ['Hautbedürfnisse','/hautbeduerfnisse/','hautbeduerfnisse'],
-  ['Wirkstoffe','/inhaltsstoffe/','inhaltsstoffe'],
-  ['Wirkung & Studien','/wirkung-studien/','wirkung-studien'],
-  ['Über uns','/ueber-uns/','ueber-uns'],
-  ['Magazin','/magazin/','magazin']
+  [t('nav.produkte'), localizePath('/produkte/', lang), 'produkte'],
+  [t('nav.hautbeduerfnisse'), localizePath('/hautbeduerfnisse/', lang), 'hautbeduerfnisse'],
+  [t('nav.wirkstoffe'), localizePath('/inhaltsstoffe/', lang), 'inhaltsstoffe'],
+  [t('nav.wirkungStudien'), localizePath('/wirkung-studien/', lang), 'wirkung-studien'],
+  [t('nav.ueberUns'), localizePath('/ueber-uns/', lang), 'ueber-uns'],
+  [t('nav.magazin'), localizePath('/magazin/', lang), 'magazin']
 ];
 ---
-<div class="announcement">In Deutschland hergestellt · Persönliche Beratung</div>
+<div class="announcement">{t('nav.announcement')}</div>
 <header class="header">
   <div class="container-wide header-inner">
-    <button class="icon mobile-menu" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-drawer" data-menu-open>
+    <button class="icon mobile-menu" aria-label={t('nav.menuOpen')} aria-expanded="false" aria-controls="mobile-drawer" data-menu-open>
       <Icon name="menu" />
     </button>
-    <a class="logo" href="/"><img src="/images/logo.webp" alt="Badestrand Kosmetik" /></a>
+    <a class="logo" href={localizePath('/', lang)}><img src="/images/logo.webp" alt="Badestrand Kosmetik" /></a>
     <nav class="nav" id="main-nav">
       {nav.map(([label, href, key]) => <a class={current===key ? 'active':''} href={href}>{label}</a>)}
     </nav>
     <div class="header-actions">
-      <button class="icon" aria-label="Suche öffnen" data-search-open>
+      <button class="icon" aria-label={t('nav.searchOpen')} data-search-open>
         <Icon name="search" />
       </button>
-      <div class="lang-switch" role="group" aria-label="Sprache">
-        <span class="lang-active" aria-current="true">DE</span>
+      <div class="lang-switch" role="group" aria-label={t('nav.language')}>
+        <a href={dePath} class={lang === 'de' ? 'lang-active' : ''} aria-current={lang === 'de' ? 'true' : undefined}>DE</a>
         <span class="lang-divider">|</span>
-        <span class="lang-soon" aria-disabled="true" title="Englische Version folgt in Kürze">EN</span>
+        <a href={enPath} class={lang === 'en' ? 'lang-active' : ''} aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
       </div>
-      <a class="icon" href="/warenkorb/" aria-label="Warenkorb">
+      <a class="icon" href={localizePath('/warenkorb/', lang)} aria-label={t('nav.warenkorb')}>
         <Icon name="cart" />
       </a>
     </div>
   </div>
 </header>
 
-<SearchOverlay />
+<SearchOverlay lang={lang} />
 
 <div class="drawer-scrim" id="drawer-scrim" hidden></div>
 <nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile Navigation" aria-hidden="true">
   <div class="mobile-drawer-head">
-    <a class="logo" href="/"><img src="/images/logo.webp" alt="Badestrand Kosmetik" /></a>
-    <button class="icon" aria-label="Menü schließen" data-menu-close>
+    <a class="logo" href={localizePath('/', lang)}><img src="/images/logo.webp" alt="Badestrand Kosmetik" /></a>
+    <button class="icon" aria-label={t('nav.menuClose')} data-menu-close>
       <Icon name="close" />
     </button>
   </div>
   <div class="mobile-drawer-links">
     {nav.map(([label, href, key]) => <a class={current===key ? 'active':''} href={href}>{label}</a>)}
-    <a href="/beratung/">Beratung</a>
-    <a href="/kontakt/">Kontakt</a>
+    <a href={localizePath('/beratung/', lang)}>{t('nav.beratung')}</a>
+    <a href={localizePath('/kontakt/', lang)}>{t('nav.kontakt')}</a>
   </div>
   <div class="mobile-drawer-lang">
     <div class="eyebrow">Sprache / Language</div>
     <div class="lang-switch lang-switch--drawer">
-      <span class="lang-active" aria-current="true">DE</span>
+      <a href={dePath} class={lang === 'de' ? 'lang-active' : ''} aria-current={lang === 'de' ? 'true' : undefined}>DE</a>
       <span class="lang-divider">|</span>
-      <span class="lang-soon" aria-disabled="true" title="Englische Version folgt in Kürze">EN</span>
+      <a href={enPath} class={lang === 'en' ? 'lang-active' : ''} aria-current={lang === 'en' ? 'true' : undefined}>EN</a>
     </div>
   </div>
   <div class="mobile-drawer-consultation">
-    <div class="eyebrow">Persönliche Beratung</div>
-    <a href={`tel:${company.phone}`}><Icon name="phone" size={16} />{company.phoneDisplay}</a>
-    <a href={`mailto:${company.email}`}><Icon name="mail" size={16} />{company.email}</a>
+    <div class="eyebrow">{t('nav.consultation')}</div>
+    <a href={`tel:${c.phone}`}><Icon name="phone" size={16} />{c.phoneDisplay}</a>
+    <a href={`mailto:${c.email}`}><Icon name="mail" size={16} />{c.email}</a>
   </div>
 </nav>
 

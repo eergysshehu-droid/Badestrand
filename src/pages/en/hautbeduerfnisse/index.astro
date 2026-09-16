@@ -1,0 +1,13 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import ConcernCard from '../../../components/ConcernCard.astro';
+import { concernsEn as concerns } from '../../../data/concerns.en';
+---
+<SiteLayout title="Skin Concerns | Badestrand Kosmetik" current="hautbeduerfnisse" description="From calluses to pigmentation — find the right care for your skin concern.">
+<section class="page-hero"><div class="container"><div class="eyebrow">Straight to the right care</div><h1>Skin Concerns</h1><p class="lead">The fastest way through the range: choose a skin concern, understand the recommendation, open the product.</p></div></section>
+<section class="section section--standard"><div class="container-wide">
+  <div class="concern-directory-grid">
+    {concerns.map((concern, i) => <ConcernCard concern={concern} index={i} lang="en" />)}
+  </div>
+</div></section>
+</SiteLayout>

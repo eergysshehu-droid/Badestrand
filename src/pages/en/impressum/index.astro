@@ -1,0 +1,35 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { companyEn as company } from '../../../data/company.en';
+---
+<SiteLayout title="Legal Notice | Badestrand Kosmetik" current="impressum" description="Legal notice and provider identification for Badestrand Kosmetik GmbH pursuant to § 5 TMG (German Telemedia Act).">
+<section class="page-hero"><div class="container"><div class="eyebrow">Legal</div><h1>Legal Notice</h1><p class="lead">Information pursuant to § 5 TMG (German Telemedia Act).</p></div></section>
+<section class="section"><div class="container legal-content">
+  <div class="legal-notice"><strong>Note:</strong> This English version is provided for convenience. The <a href="/impressum/">German-language Impressum</a> is the legally binding version.</div>
+
+  <h2>Provider</h2>
+  <p>{company.legalName}<br>{company.address.street}<br>{company.address.postalCode} {company.address.city}<br>{company.address.countryName}</p>
+
+  <h2>Represented by</h2>
+  <p>Managing Director: {company.managingDirector}</p>
+
+  <h2>Contact</h2>
+  <dl>
+    <dt>Phone</dt><dd>{company.phoneDisplay}</dd>
+    <dt>Fax</dt><dd>{company.faxDisplay}</dd>
+    <dt>Email</dt><dd><a href={`mailto:${company.email}`}>{company.email}</a></dd>
+  </dl>
+
+  <h2>Register Entry</h2>
+  <p>Entered in the Commercial Register.<br>Register court: {company.registerCourt}<br>Register number: {company.registerNumber}</p>
+
+  <h2>VAT ID</h2>
+  <p>VAT identification number pursuant to § 27a of the German VAT Act:<br>{company.vatId}</p>
+
+  <h2>Dispute Resolution</h2>
+  <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr/</a>. Our email address can be found above in this legal notice.</p>
+  <p>We are not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+
+  <div class="legal-notice"><strong>Note:</strong> This page is undergoing final legal review. Please have the details confirmed by legal counsel before publication.</div>
+</div></section>
+</SiteLayout>

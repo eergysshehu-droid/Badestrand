@@ -1,7 +1,8 @@
 ---
-const { product } = Astro.props;
+import { localizePath } from '../i18n/utils';
+const { product, lang = 'de' } = Astro.props;
 ---
-<a class="product-card" href={`/produkte/${product.slug}/`}>
+<a class="product-card" href={localizePath(`/produkte/${product.slug}/`, lang)}>
   <div class="product-visual"><img src={product.image} alt={product.name} loading="lazy" /></div>
   <div class="product-copy">
     <div class="micro">{product.eyebrow}</div>

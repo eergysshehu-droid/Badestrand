@@ -3,13 +3,22 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 import { company } from '../data/company';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const defaultDescriptions = {
+  de: 'Gezielte Wirkstoffpflege für konkrete Hautbedürfnisse. Natürlich formuliert und in Deutschland hergestellt.',
+  en: 'Targeted active-ingredient skincare for specific skin concerns. Naturally formulated and made in Germany.'
+};
 const {
   title = 'Badestrand Kosmetik',
-  description = 'Gezielte Wirkstoffpflege für konkrete Hautbedürfnisse. Natürlich formuliert und in Deutschland hergestellt.',
+  description = defaultDescriptions[lang],
   current = '',
   ogImage = '/images/products-editorial-crop.webp'
 } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const dePath = lang === 'en' ? Astro.url.pathname.replace(/^\/en/, '') || '/' : Astro.url.pathname;
+const enPath = lang === 'en' ? Astro.url.pathname : `/en${Astro.url.pathname}`;
 const orgJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -28,16 +37,19 @@ const orgJsonLd = {
 };
 ---
 <!doctype html>
-<html lang="de">
+<html lang={lang}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#13201a" />
   <link rel="canonical" href={canonicalURL} />
+  <link rel="alternate" hreflang="de" href={new URL(dePath, Astro.site).toString()} />
+  <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site).toString()} />
+  <link rel="alternate" hreflang="x-default" href={new URL(dePath, Astro.site).toString()} />
   <link rel="icon" href="/images/logo.webp" />
   <meta property="og:type" content="website" />
-  <meta property="og:locale" content="de_DE" />
+  <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'de_DE'} />
   <meta property="og:site_name" content="Badestrand Kosmetik" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -50,9 +62,9 @@ const orgJsonLd = {
   <title>{title}</title>
 </head>
 <body>
-  <a class="skip-link" href="#main">Zum Inhalt springen</a>
-  <Header current={current} />
+  <a class="skip-link" href="#main">{lang === 'en' ? 'Skip to content' : 'Zum Inhalt springen'}</a>
+  <Header current={current} lang={lang} />
   <main id="main"><slot /></main>
-  <Footer />
+  <Footer lang={lang} />
 </body>
 </html>

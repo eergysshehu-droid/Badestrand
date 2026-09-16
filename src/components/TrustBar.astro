@@ -1,23 +1,30 @@
 ---
 import Icon from './Icon.astro';
+
+const { lang = 'de' } = Astro.props;
+const items = {
+  de: [
+    ['leaf', 'Natürliche', 'Inhaltsstoffe'],
+    ['flask', 'Dermatologisch', 'geprüft*'],
+    ['germany', 'Made in', 'Germany'],
+    ['shieldCheck', 'Ohne', 'Parabene']
+  ],
+  en: [
+    ['leaf', 'Natural', 'Ingredients'],
+    ['flask', 'Dermatologically', 'tested*'],
+    ['germany', 'Made in', 'Germany'],
+    ['shieldCheck', 'Paraben', 'Free']
+  ]
+};
+const trust = items[lang] ?? items.de;
 ---
 <div class="trust">
   <div class="container trust-grid">
-    <div class="trust-item">
-      <Icon name="leaf" class="trust-icon" size={26} />
-      <span>Natürliche<br>Inhaltsstoffe</span>
-    </div>
-    <div class="trust-item">
-      <Icon name="flask" class="trust-icon" size={26} />
-      <span>Dermatologisch<br>geprüft*</span>
-    </div>
-    <div class="trust-item">
-      <Icon name="germany" class="trust-icon" size={26} />
-      <span>Made in<br>Germany</span>
-    </div>
-    <div class="trust-item">
-      <Icon name="shieldCheck" class="trust-icon" size={26} />
-      <span>Ohne<br>Parabene</span>
-    </div>
+    {trust.map(([icon, line1, line2]) => (
+      <div class="trust-item">
+        <Icon name={icon} class="trust-icon" size={26} />
+        <span>{line1}<br>{line2}</span>
+      </div>
+    ))}
   </div>
 </div>

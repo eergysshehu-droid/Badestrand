@@ -1,0 +1,47 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import Icon from '../../../components/Icon.astro';
+
+const ingredients = [
+  { name: 'Aloe Vera', category: 'Hydration', icon: 'leaf', copy: 'Soothing care and intensive moisture supply.' },
+  { name: 'Hyaluronic Acid', category: 'Hydration', icon: 'droplet', copy: 'Binds moisture and supports a smoother skin feel.' },
+  { name: 'Marigold', category: 'Care', icon: 'leaf', copy: 'A traditionally valued plant extract for stressed skin.' },
+  { name: 'Arnica', category: 'Plant Care', icon: 'leaf', copy: 'A botanical active ingredient for selected care formulas.' },
+  { name: 'Honey', category: 'Care', icon: 'droplet', copy: 'A nourishing ingredient for dry, stressed skin.' },
+  { name: 'Beeswax', category: 'Protection', icon: 'shieldCheck', copy: 'Helps protect skin from moisture loss.' },
+  { name: 'Propolis', category: 'Care', icon: 'leaf', copy: 'A bee product with traditional use in nourishing formulas.' },
+  { name: 'Urea', category: 'Callus Care', icon: 'droplet', copy: 'A moisture-binding active ingredient for rough, hardened skin.' }
+];
+---
+<SiteLayout title="Ingredients | Badestrand Kosmetik" current="inhaltsstoffe">
+<section class="hero" style="min-height:560px"><div class="hero-copy"><div class="eyebrow">Nature · Knowledge · Results</div><h1>The power of ingredients.</h1><p>Ingredients aren't just photographed beautifully — they're explained by their function and matched to the right products.</p><a class="btn" href="#wirkstoffe">Discover ingredients →</a></div><div class="hero-image" style="min-height:560px"><img src="/images/products-editorial-crop.webp" alt="Ingredients and active ingredient world"></div></section>
+<TrustBar lang="en" />
+<section class="section section--standard" id="wirkstoffe"><div class="container-wide">
+  <div class="section-head"><div><div class="eyebrow">Our Key Ingredients</div><h2>Natural. Precise. Understandable.</h2></div><p>Selected active ingredients, plant extracts and lipids — explained clearly and linked directly to the matching Badestrand products.</p></div>
+  <div class="ingredients">
+    {ingredients.map((ing) => (
+      <article class="ingredient">
+        <div class="dot"><Icon name={ing.icon} size={24} /></div>
+        <h3>{ing.name}</h3>
+        <div class="ingredient-category">{ing.category}</div>
+        <p>{ing.copy}</p>
+        <a class="ingredient-link" href="/en/produkte/">Learn more →</a>
+      </article>
+    ))}
+  </div>
+</div></section>
+<section class="section dark"><div class="container proof-split">
+  <div class="proof-split-copy">
+    <div class="eyebrow">Results & Transparency</div>
+    <h2>Results belong to the product.</h2>
+    <p>Test results are always attributed to the specific product they were measured for — never applied broadly across the whole range.</p>
+    <a class="text-link" href="/en/produkte/hornhaut-balsam/">To Hornhaut Balsam →</a>
+  </div>
+  <div class="proof-split-metric">
+    <strong>75%</strong>
+    <span>Reduction in callus</span>
+    <small>Hornhaut Balsam · after 28 days with twice-daily application</small>
+  </div>
+</div></section>
+</SiteLayout>

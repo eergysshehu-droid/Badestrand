@@ -29,8 +29,9 @@ button,input,select,textarea{font:inherit}
 .mobile-menu{display:none}
 .header-actions button.icon{padding:0}
 .lang-switch{display:flex;align-items:center;gap:6px;font-size:11px;letter-spacing:.05em}
+.lang-switch a{color:var(--muted)}
+.lang-switch a:hover{color:var(--ink)}
 .lang-switch .lang-active{color:var(--ink);font-weight:600}
-.lang-switch .lang-soon{color:var(--line);cursor:default}
 .lang-divider{color:var(--line)}
 .search-overlay{position:fixed;inset:0;z-index:100;background:rgba(16,21,18,.5);display:flex;align-items:flex-start;justify-content:center;padding:0}
 .search-overlay[hidden]{display:none}

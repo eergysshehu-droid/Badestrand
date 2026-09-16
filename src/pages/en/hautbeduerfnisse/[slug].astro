@@ -1,0 +1,92 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import Icon from '../../../components/Icon.astro';
+import { concernsEn as concerns } from '../../../data/concerns.en';
+import { productsEn as products } from '../../../data/products.en';
+import { companyEn as company } from '../../../data/company.en';
+
+export function getStaticPaths() {
+  return concerns.map((concern) => ({
+    params: { slug: concern.slug },
+    props: { concern }
+  }));
+}
+
+const { concern } = Astro.props;
+const recommended = products.filter((p) => concern.productSlugs.includes(p.slug));
+const efficacyProduct = concern.showEfficacyFor ? products.find((p) => p.slug === concern.showEfficacyFor) : undefined;
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Skin Concerns', item: `${company.domain}/en/hautbeduerfnisse/` },
+    { '@type': 'ListItem', position: 2, name: concern.title, item: `${company.domain}${concern.href}` }
+  ]
+};
+---
+<SiteLayout title={`${concern.title} | Badestrand Kosmetik`} current="hautbeduerfnisse" description={`${concern.subline} Matching care from Badestrand Kosmetik.`}>
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+<nav class="breadcrumbs container"><a href="/en/">Home</a><span>/</span><a href="/en/hautbeduerfnisse/">Skin Concerns</a><span>/</span><span>{concern.title}</span></nav>
+
+<section class="hero" style="min-height:520px">
+  <div class="hero-copy">
+    <div class="eyebrow">{concern.eyebrow}</div>
+    <h1 class="tight">{concern.title}</h1>
+    <p>{concern.subline}</p>
+  </div>
+  <div class="hero-image" style="min-height:520px"><img src={concern.image} alt={concern.title} /></div>
+</section>
+
+<section class="section"><div class="container" style="max-width:760px">
+  <p class="lead">{concern.intro}</p>
+</div></section>
+
+{recommended.length > 0 && (
+  <section class="section soft"><div class="container">
+    <div class="section-head"><div><div class="eyebrow">Matching Care</div><h2>Recommended products.</h2></div></div>
+    <div class="product-grid">{recommended.map((p) => <ProductCard product={p} lang="en" />)}</div>
+  </div></section>
+)}
+
+{concern.ingredientNames.length > 0 && (
+  <section class="section"><div class="container">
+    <div class="section-head"><div><div class="eyebrow">Relevant Ingredients</div><h2>What your skin needs.</h2></div><a class="btn outline" href="/en/inhaltsstoffe/">All ingredients →</a></div>
+    <div class="concern-ingredient-row">
+      {concern.ingredientNames.map((name) => (
+        <a class="concern-ingredient" href="/en/inhaltsstoffe/">
+          <div class="dot"><Icon name="leaf" size={22} /></div>
+          <span>{name}</span>
+        </a>
+      ))}
+    </div>
+  </div></section>
+)}
+
+{efficacyProduct?.efficacy && (
+  <section class="section dark"><div class="container proof-split">
+    <div class="proof-split-copy">
+      <div class="eyebrow">Proven Results</div>
+      <h2>A result you can trust.</h2>
+      <a class="text-link" href={`/en/produkte/${efficacyProduct.slug}/`}>To {efficacyProduct.name} →</a>
+    </div>
+    <div class="proof-split-metric">
+      <strong>{efficacyProduct.efficacy.value}</strong>
+      <span>{efficacyProduct.efficacy.statement}</span>
+      <small>{efficacyProduct.name} · {efficacyProduct.efficacy.context}</small>
+    </div>
+  </div></section>
+)}
+
+<section class="section soft"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Journal</div><h2>More on this topic.</h2></div></div>
+  <a class="mag-card mag-card-single" href="/en/magazin/"><div class="content"><h3>{concern.articleTitle}</h3><span>Read article →</span></div></a>
+</div></section>
+
+<section class="section"><div class="container consultation-cta">
+  <h2>Not sure which care is right for you?</h2>
+  <p>We offer personal consultation — {company.serviceHours.days} {company.serviceHours.time}.</p>
+  <div class="btns"><a class="btn" href="/en/beratung/">Contact us →</a><a class="btn outline" href={`tel:${company.phone}`}>{company.phoneDisplay}</a></div>
+</div></section>
+</SiteLayout>

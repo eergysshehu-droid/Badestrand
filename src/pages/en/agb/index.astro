@@ -1,0 +1,23 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { companyEn as company } from '../../../data/company.en';
+---
+<SiteLayout title="Terms & Conditions | Badestrand Kosmetik" current="agb" description="General Terms and Conditions of Badestrand Kosmetik GmbH.">
+<section class="page-hero"><div class="container"><div class="eyebrow">Legal</div><h1>General Terms & Conditions</h1></div></section>
+<section class="section"><div class="container legal-content">
+  <div class="legal-notice"><strong>In preparation:</strong> The final Terms & Conditions are currently being reviewed with our legal counsel and will be published here before shop launch.</div>
+  <h2>1. Scope</h2>
+  <p>The General Terms and Conditions of {company.legalName} apply in the version valid at the time of order.</p>
+  <h2>2. Contracting Party</h2>
+  <p>The purchase contract is concluded with {company.legalName}, {company.address.street}, {company.address.postalCode} {company.address.city}.</p>
+  <h2>3. Conclusion of Contract</h2>
+  <h2>4. Prices and Shipping Costs</h2>
+  <h2>5. Payment</h2>
+  <h2>6. Delivery</h2>
+  <h2>7. Retention of Title</h2>
+  <h2>8. Warranty</h2>
+  <p>Statutory warranty rights apply. For more information, see <a href="/en/gesetzliche-gewaehrleistung/">Statutory Warranty</a>.</p>
+  <h2>9. Dispute Resolution</h2>
+  <p>For further details, see our <a href="/en/impressum/">Legal Notice</a>.</p>
+</div></section>
+</SiteLayout>

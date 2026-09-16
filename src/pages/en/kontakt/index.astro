@@ -1,0 +1,8 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import { companyEn as company } from '../../../data/company.en';
+---
+<SiteLayout title="Contact | Badestrand Kosmetik" current="kontakt">
+<section class="page-hero"><div class="container"><div class="eyebrow">Contact</div><h1>We're here for you.</h1><p class="lead">Personal consultation remains part of the brand experience — clear, approachable and high-quality.</p></div></section>
+<section class="section"><div class="container contact-grid"><aside class="contact-box"><div class="eyebrow">Badestrand Kosmetik</div><h2>How to reach us.</h2><p>{company.address.street}<br>D-{company.address.postalCode} {company.address.city}</p><p><strong>Phone</strong><br>{company.phoneDisplay}</p><p><strong>Fax</strong><br>{company.faxDisplay}</p><p><strong>Email</strong><br>{company.email}</p><p><strong>Service hours</strong><br>{company.serviceHours.days}<br>{company.serviceHours.time}</p></aside><form><div class="section-head"><div><div class="eyebrow">Send a message</div><h2>How can we help?</h2></div></div><div class="form-grid"><div class="field"><label>First name</label><input></div><div class="field"><label>Last name</label><input></div><div class="field full"><label>Email address</label><input type="email"></div><div class="field full"><label>What is this about?</label><select><option>Product advice</option><option>Order</option><option>Skin concern</option><option>Other question</option></select></div><div class="field full"><label>Message</label><textarea></textarea></div><div class="field full"><button type="button" class="btn">Send message →</button></div></div></form></div></section>
+</SiteLayout>

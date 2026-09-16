@@ -1,0 +1,32 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import Icon from '../../../components/Icon.astro';
+import { companyEn as company } from '../../../data/company.en';
+---
+<SiteLayout title="Consultation | Badestrand Kosmetik" current="beratung" description="Personal skincare consultation from Badestrand Kosmetik — by phone or email.">
+<section class="page-hero"><div class="container"><div class="eyebrow">Personal Consultation</div><h1>Which care suits your skin?</h1><p class="lead">Every skin is different. Our team advises you personally on your individual skin concerns — before you decide on a product.</p></div></section>
+
+<section class="section section--standard"><div class="container split">
+  <div>
+    <div class="eyebrow">How to reach us</div>
+    <h2>Direct and personal.</h2>
+    <div class="beratung-contact">
+      <a href={`tel:${company.phone}`}><Icon name="phone" size={20} />{company.phoneDisplay}</a>
+      <a href={`mailto:${company.email}`}><Icon name="mail" size={20} />{company.email}</a>
+      <span><Icon name="clock" size={20} />{company.serviceHours.days} · {company.serviceHours.time}</span>
+      <span><Icon name="location" size={20} />{company.address.street} · {company.address.postalCode} {company.address.city}</span>
+    </div>
+    <div class="btns"><a class="btn" href="/en/kontakt/">Send a message →</a><a class="btn outline" href="/en/hautbeduerfnisse/">Search by skin concern</a></div>
+  </div>
+  <div class="split-media"><img src="/images/consultation.jpg" alt="Personal skincare consultation" loading="lazy"></div>
+</div></section>
+
+<section class="section section--standard soft"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Process</div><h2>How the consultation works.</h2></div></div>
+  <div class="grid-3">
+    <div class="ingredient"><div class="dot"><Icon name="phone" size={22} /></div><h3>Get in touch</h3><p>Call or write to us — we'll get back to you personally.</p></div>
+    <div class="ingredient"><div class="dot"><Icon name="leaf" size={22} /></div><h3>Clarify your skin concern</h3><p>We talk about your skin and suitable care approaches from our range.</p></div>
+    <div class="ingredient"><div class="dot"><Icon name="shieldCheck" size={22} /></div><h3>Get a recommendation</h3><p>You receive a product recommendation tailored to your situation.</p></div>
+  </div>
+</div></section>
+</SiteLayout>

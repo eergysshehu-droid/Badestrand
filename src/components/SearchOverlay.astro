@@ -1,22 +1,28 @@
 ---
 import Icon from './Icon.astro';
 import { searchIndex } from '../data/searchIndex';
+import { searchIndexEn } from '../data/searchIndex.en';
+import { useTranslations } from '../i18n/utils';
+
+const { lang = 'de' } = Astro.props;
+const t = useTranslations(lang);
+const index = lang === 'en' ? searchIndexEn : searchIndex;
 ---
-<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Suche" hidden>
+<div class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label={t('search.placeholder')} hidden>
   <div class="search-overlay-inner">
     <div class="search-overlay-head">
       <div class="search-field">
         <Icon name="search" class="search-field-icon" />
-        <input type="text" id="search-input" placeholder="Produkte, Hautbedürfnisse oder Wirkstoffe suchen" autocomplete="off" />
+        <input type="text" id="search-input" placeholder={t('search.placeholder')} autocomplete="off" />
       </div>
-      <button type="button" class="icon" id="search-close" aria-label="Suche schließen">
+      <button type="button" class="icon" id="search-close" aria-label={t('nav.searchClose')}>
         <Icon name="close" />
       </button>
     </div>
     <div id="search-results" class="search-results"></div>
   </div>
 </div>
-<script define:vars={{ searchIndex }}>
+<script define:vars={{ searchIndex: index, emptyLabel: t('search.empty') }}>
   const overlay = document.getElementById('search-overlay');
   const input = document.getElementById('search-input');
   const results = document.getElementById('search-results');
@@ -32,7 +38,7 @@ import { searchIndex } from '../data/searchIndex';
     }
     const matches = searchIndex.filter((entry) => entry.title.toLowerCase().includes(q)).slice(0, 8);
     if (matches.length === 0) {
-      results.innerHTML = '<p class="search-empty">Keine Ergebnisse gefunden.</p>';
+      results.innerHTML = `<p class="search-empty">${emptyLabel}</p>`;
       return;
     }
     results.innerHTML = matches

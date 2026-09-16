@@ -1,0 +1,17 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import ProductCard from '../../../components/ProductCard.astro';
+import { productsEn as products } from '../../../data/products.en';
+---
+<SiteLayout title="Products | Badestrand Kosmetik" current="produkte">
+<section class="page-hero"><div class="container"><div class="eyebrow">Badestrand Kosmetik</div><h1>Our Products</h1><p class="lead">Clear navigation for face, body, hands and feet — with direct access to skin concerns and specialty care.</p></div></section>
+<TrustBar lang="en" />
+<section class="section section--standard"><div class="container-wide">
+  <div class="filters"><button class="pill active">All</button><button class="pill">Face / Décolleté</button><button class="pill">Body</button><button class="pill">Hands & Feet</button><button class="pill">Mature Skin Care</button></div>
+  <div class="catalog">
+    <aside class="filter-panel"><h3>Filter</h3><div class="filter-group"><strong>Category</strong><label class="check"><input type="checkbox"> Face / Décolleté</label><label class="check"><input type="checkbox"> Body</label><label class="check"><input type="checkbox"> Hands & Feet</label></div><div class="filter-group"><strong>Skin Concern</strong><label class="check"><input type="checkbox"> Hydration</label><label class="check"><input type="checkbox"> Pigmentation</label><label class="check"><input type="checkbox"> Calluses</label><label class="check"><input type="checkbox"> Redness</label></div></aside>
+    <div><div class="section-head" style="margin-bottom:18px"><p>{products.length} products</p><select><option>Recommended</option></select></div><div class="grid-3">{products.map(p=><ProductCard product={p} lang="en" />)}</div></div>
+  </div>
+</div></section>
+</SiteLayout>

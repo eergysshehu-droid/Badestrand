@@ -1,35 +1,42 @@
 ---
 import { company } from '../data/company';
+import { companyEn } from '../data/company.en';
 import Icon from './Icon.astro';
+import { useTranslations, localizePath } from '../i18n/utils';
+
+const { lang = 'de' } = Astro.props;
+const t = useTranslations(lang);
+const c = lang === 'en' ? companyEn : company;
+const p = (path: string) => localizePath(path, lang);
 ---
 <footer class="footer">
   <div class="container-wide">
     <div class="footer-word">BADESTRAND</div>
     <div class="footer-grid">
       <div class="footer-brand">
-        <p class="footer-statement">Natürlich. Wirksam. Zeitlos.</p>
-        <p class="footer-sub">Gezielte Wirkstoffpflege aus Deutschland.</p>
+        <p class="footer-statement">{t('footer.statement')}</p>
+        <p class="footer-sub">{t('footer.sub')}</p>
       </div>
       <div class="footer-group">
-        <button class="footer-group-toggle" aria-expanded="false" aria-controls="footer-links-produkte" data-footer-toggle><h4>Produkte</h4></button>
-        <div class="footer-group-links" id="footer-links-produkte"><a href="/produkte/">Alle Produkte</a><a href="/hautbeduerfnisse/">Hautbedürfnisse</a><a href="/inhaltsstoffe/">Wirkstoffe</a><a href="/wirkung-studien/">Wirkung & Studien</a></div>
+        <button class="footer-group-toggle" aria-expanded="false" aria-controls="footer-links-produkte" data-footer-toggle><h4>{t('footer.produkte')}</h4></button>
+        <div class="footer-group-links" id="footer-links-produkte"><a href={p('/produkte/')}>{t('footer.alleProdukte')}</a><a href={p('/hautbeduerfnisse/')}>{t('nav.hautbeduerfnisse')}</a><a href={p('/inhaltsstoffe/')}>{t('nav.wirkstoffe')}</a><a href={p('/wirkung-studien/')}>{t('nav.wirkungStudien')}</a></div>
       </div>
       <div class="footer-group">
-        <button class="footer-group-toggle" aria-expanded="false" aria-controls="footer-links-badestrand" data-footer-toggle><h4>Badestrand</h4></button>
-        <div class="footer-group-links" id="footer-links-badestrand"><a href="/ueber-uns/">Über uns</a><a href="/beratung/">Beratung</a><a href="/magazin/">Magazin</a><a href="/kontakt/">Kontakt</a></div>
+        <button class="footer-group-toggle" aria-expanded="false" aria-controls="footer-links-badestrand" data-footer-toggle><h4>{t('footer.badestrand')}</h4></button>
+        <div class="footer-group-links" id="footer-links-badestrand"><a href={p('/ueber-uns/')}>{t('nav.ueberUns')}</a><a href={p('/beratung/')}>{t('nav.beratung')}</a><a href={p('/magazin/')}>{t('nav.magazin')}</a><a href={p('/kontakt/')}>{t('nav.kontakt')}</a></div>
       </div>
       <div class="footer-group">
-        <button class="footer-group-toggle" aria-expanded="false" aria-controls="footer-links-service" data-footer-toggle><h4>Service</h4></button>
-        <div class="footer-group-links" id="footer-links-service"><a href="/versand-zahlung/">Versand & Zahlung</a><a href="/agb/">AGB</a><a href="/widerruf/">Widerruf</a><a href="/datenschutz/">Datenschutz</a><a href="/cookie-richtlinie/">Cookie-Richtlinie</a><a href="/gesetzliche-gewaehrleistung/">Gesetzliche Gewährleistung</a><a href="/impressum/">Impressum</a></div>
+        <button class="footer-group-toggle" aria-expanded="false" aria-controls="footer-links-service" data-footer-toggle><h4>{t('footer.service')}</h4></button>
+        <div class="footer-group-links" id="footer-links-service"><a href={p('/versand-zahlung/')}>{t('footer.versandZahlung')}</a><a href={p('/agb/')}>{t('footer.agb')}</a><a href={p('/widerruf/')}>{t('footer.widerruf')}</a><a href={p('/datenschutz/')}>{t('footer.datenschutz')}</a><a href={p('/cookie-richtlinie/')}>{t('footer.cookieRichtlinie')}</a><a href={p('/gesetzliche-gewaehrleistung/')}>{t('footer.gewaehrleistung')}</a><a href={p('/impressum/')}>{t('footer.impressum')}</a></div>
       </div>
     </div>
     <div class="footer-contact">
-      <span><Icon name="location" size={16} />{company.address.street} · {company.address.postalCode} {company.address.city}</span>
-      <span><a href={`tel:${company.phone}`}><Icon name="phone" size={16} />{company.phoneDisplay}</a></span>
-      <span><a href={`mailto:${company.email}`}><Icon name="mail" size={16} />{company.email}</a></span>
-      <span><Icon name="clock" size={16} />{company.serviceHours.days} {company.serviceHours.time}</span>
+      <span><Icon name="location" size={16} />{c.address.street} · {c.address.postalCode} {c.address.city}</span>
+      <span><a href={`tel:${c.phone}`}><Icon name="phone" size={16} />{c.phoneDisplay}</a></span>
+      <span><a href={`mailto:${c.email}`}><Icon name="mail" size={16} />{c.email}</a></span>
+      <span><Icon name="clock" size={16} />{c.serviceHours.days} {c.serviceHours.time}</span>
     </div>
-    <div class="footer-bottom"><span>© {new Date().getFullYear()} {company.legalName}</span></div>
+    <div class="footer-bottom"><span>© {new Date().getFullYear()} {c.legalName}</span></div>
   </div>
 </footer>
 <script>

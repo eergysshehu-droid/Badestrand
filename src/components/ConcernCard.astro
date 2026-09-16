@@ -1,12 +1,13 @@
 ---
-const { concern, size = 'standard', index } = Astro.props;
+const { concern, size = 'standard', index, lang = 'de' } = Astro.props;
 const label = typeof index === 'number' ? `${String(index + 1).padStart(2, '0')} · ${concern.eyebrow}` : concern.eyebrow;
+const cta = lang === 'en' ? 'Shop the fix →' : 'Passende Pflege →';
 ---
 <a class={`concern-photo ${size === 'large' ? 'concern-photo--large' : ''}`} href={concern.href}>
   <img src={concern.image} alt={concern.title} loading="lazy" />
   <div class="content">
     <div class="eyebrow">{label}</div>
     <h3>{concern.title}</h3>
-    <span>Passende Pflege →</span>
+    <span>{cta}</span>
   </div>
 </a>
