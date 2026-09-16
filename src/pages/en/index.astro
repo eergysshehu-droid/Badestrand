@@ -3,11 +3,11 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import ProductCard from '../../components/ProductCard.astro';
 import ConcernCard from '../../components/ConcernCard.astro';
-import Icon from '../../components/Icon.astro';
 import { productsEn as products } from '../../data/products.en';
 import { concernsEn as concerns } from '../../data/concerns.en';
+import { companyEn as company } from '../../data/company.en';
 ---
-<SiteLayout title="Badestrand Kosmetik — Effective Care. Naturally Considered." ogImage="/images/hero-main.jpg">
+<SiteLayout title="Badestrand Kosmetik — Effective Care. Naturally Considered." ogImage="/images/hero-product-family.jpg">
 <section class="hero">
   <div class="hero-copy">
     <h1 class="tight">Effective Care.<br>Naturally Considered.</h1>
@@ -15,26 +15,11 @@ import { concernsEn as concerns } from '../../data/concerns.en';
     <div class="btns"><a class="btn" href="/en/produkte/">Discover products →</a><a class="btn outline" href="/en/hautbeduerfnisse/">By skin concern</a></div>
   </div>
   <div class="hero-image">
-    <img src="/images/hero-main.jpg" alt="Badestrand Kosmetik editorial campaign" width="1374" height="1145" fetchpriority="high" decoding="async" />
+    <img src="/images/hero-product-family.jpg" alt="Badestrand Kosmetik product family" width="1672" height="941" fetchpriority="high" decoding="async" />
     <div class="script-note">More than care. A feeling.</div>
   </div>
 </section>
 <TrustBar lang="en" />
-
-<section class="section section--standard"><div class="container-wide">
-  <div class="section-head"><div><div class="eyebrow">Our Selection</div><h2>Care with a clear purpose.</h2></div><a class="btn outline" href="/en/produkte/">All products →</a></div>
-  <p class="lead" style="margin:-18px 0 34px;max-width:640px;color:var(--muted)">Products, benefits and application are explained simply and clearly — four core products as an entry point into the brand.</p>
-  <div class="product-grid">{products.filter(p => p.featured).map(p => <ProductCard product={p} lang="en" />)}</div>
-</div></section>
-
-<section class="section section--standard soft"><div class="container-wide">
-  <div class="section-head"><div><div class="eyebrow">Science & Ingredients</div><h2>From formula to result.</h2></div><a class="btn outline" href="/en/inhaltsstoffe/">All ingredients →</a></div>
-  <div class="editorial-grid">
-    <article class="editorial-card"><img src="/images/ingredient-aloe-story.jpg" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluronic Acid</div><h3>Noticeable hydration.</h3><p>Two active ingredients, one job — found in the Aloe Hyaluron Booster.</p><a href="/en/inhaltsstoffe/">Learn more →</a></div></article>
-    <article class="editorial-card"><img src="/images/cream-texture.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Urea</div><h3>Softens what rough skin needs.</h3><a href="/en/produkte/hornhaut-balsam/">To Hornhaut Balsam →</a></div></article>
-    <article class="editorial-card"><img src="/images/science-dropper.jpg" alt="" loading="lazy"><div class="content"><div class="eyebrow">Ingredient Knowledge</div><h3>Ingredients that work.</h3><p>Science meets nature.</p><a href="/en/inhaltsstoffe/">Learn more →</a></div></article>
-  </div>
-</div></section>
 
 <section class="section section--standard"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Skin Concerns</div><h2>What does your skin need?</h2></div><a class="btn outline" href="/en/hautbeduerfnisse/">All skin concerns →</a></div>
@@ -50,6 +35,21 @@ import { concernsEn as concerns } from '../../data/concerns.en';
   </div>
 </div></section>
 
+<section class="section section--standard soft"><div class="container-wide">
+  <div class="section-head"><div><div class="eyebrow">Our Selection</div><h2>Care with a clear purpose.</h2></div><a class="btn outline" href="/en/produkte/">All products →</a></div>
+  <div class="product-grid">{products.filter(p => p.featured).map(p => <ProductCard product={p} lang="en" />)}</div>
+</div></section>
+
+<section class="section section--standard"><div class="container-wide">
+  <div class="section-head"><div><div class="eyebrow">Science & Ingredients</div><h2>From formula to result.</h2></div><a class="btn outline" href="/en/inhaltsstoffe/">All ingredients →</a></div>
+  <div class="editorial-grid editorial-grid--4">
+    <article class="editorial-card"><img src="/images/ingredient-olive.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Olive Oil</div><h3>Nourishes the skin barrier.</h3><a href="/en/produkte/sebum-plus-aufbaucreme/">To Sebum Plus →</a></div></article>
+    <article class="editorial-card"><img src="/images/ingredient-aloe.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Aloe Vera & Hyaluronic Acid</div><h3>Noticeable hydration.</h3><a href="/en/produkte/aloe-hyaluron-booster/">To the Aloe Hyaluron Booster →</a></div></article>
+    <article class="editorial-card"><img src="/images/ingredient-rose.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Rose Blossom</div><h3>Care for mature skin.</h3><a href="/en/produkte/rosenmandel-nachtcreme/">To Rosenmandel Nachtcreme →</a></div></article>
+    <article class="editorial-card"><img src="/images/ingredient-hyaluron-water.webp" alt="" loading="lazy"><div class="content"><div class="eyebrow">Intensive Moisture</div><h3>Freshness you can feel.</h3><a href="/en/produkte/aqua-plus-creme/">To Aqua Plus Creme →</a></div></article>
+  </div>
+</div></section>
+
 <section class="section section--spacious dark"><div class="container proof-split">
   <div class="proof-split-copy">
     <div class="eyebrow">Results & Transparency</div>
@@ -62,27 +62,30 @@ import { concernsEn as concerns } from '../../data/concerns.en';
     <span>Reduction in callus</span>
     <small>after 28 days with twice-daily application · Hornhaut Balsam</small>
   </div>
-</div>
-<div class="container trust-strip">
-  <div class="trust-strip-item"><Icon name="germany" size={22} /><span>Made in Germany</span></div>
-  <div class="trust-strip-item"><Icon name="flask" size={22} /><span>Dermatologically tested*</span></div>
-  <div class="trust-strip-item"><Icon name="consultation" size={22} /><span>Personal consultation</span></div>
-</div>
-</section>
-
-<section class="brand-moment"><img src="/images/hero-family.jpg" alt="Badestrand Kosmetik care range" loading="lazy" /><div class="content"><div class="eyebrow">Care with substance</div><h2>Beauty with character.</h2><p>Timeless care for every stage of life.</p><a class="text-link" href="/en/ueber-uns/">Learn more →</a></div></section>
-
-<section class="section section--standard"><div class="container-wide split split--media-lead">
-  <div class="split-media"><img src="/images/manufaktur.jpg" alt="Badestrand Kosmetik manufacturing (concept depiction)" loading="lazy"></div>
-  <div><div class="eyebrow">Manufacturing</div><h2>From formulation to finished care.</h2><p class="lead">Careful formulas, tested quality and manufacturing in Germany — for care you can trust.</p><img src="/images/badges/made-in-germany.webp" alt="Made in Germany" class="made-in-germany-mark" loading="lazy" /><a class="btn outline" href="/en/ueber-uns/">More about Badestrand →</a></div>
 </div></section>
 
-<section class="section section--standard soft"><div class="container split">
+<section class="brand-moment brand-moment--compact"><img src="/images/editorial-car-portrait.jpg" alt="Badestrand Kosmetik editorial photography" loading="lazy" /><div class="content"><div class="eyebrow">Collector's Edit</div><h2>More than care.<br>A way of life.</h2><a class="text-link" href="/en/produkte/">Shop now →</a></div></section>
+
+<section class="section soft"><div class="container richard-section richard-section--compact">
+  <div class="richard-portrait"><img src="/images/brand/richard-jung-portrait.jpg" alt="Richard Jung, Managing Director Badestrand Kosmetik" loading="lazy" /></div>
+  <div class="richard-copy">
+    <div class="eyebrow">Personally run</div>
+    <h2>Care needs trust.</h2>
+    <p class="lead">Badestrand Kosmetik is personally run — from formulation to application, with personal consultation for individual skin concerns.</p>
+    <img class="richard-signature" src="/images/brand/richard-jung-signature.png" alt="" aria-hidden="true" />
+    <div class="richard-name">Richard Jung<span>Managing Director, {company.legalName}</span></div>
+    <a class="text-link" href="/en/ueber-uns/">More about Badestrand →</a>
+  </div>
+</div></section>
+
+<section class="section section--standard soft"><div class="container">
+  <div class="made-in-germany-badge"><img src="/images/badges/made-in-germany.webp" alt="Made in Germany" loading="lazy" /><p>Development and manufacturing take place in Germany — tested quality, careful formulas.</p></div>
+</div></section>
+
+<section class="section section--standard"><div class="container split">
   <div><div class="eyebrow">Personal Consultation</div><h2>Which care suits your skin?</h2><p class="lead" style="max-width:480px">Every skin is different. Our team advises you personally on your individual skin concerns.</p><div class="btns"><a class="btn" href="/en/beratung/">Contact us →</a><a class="text-link" href="/en/hautbeduerfnisse/">Search by skin concern →</a></div></div>
   <div class="split-media"><img src="/images/consultation.jpg" alt="Personal skincare consultation" loading="lazy"></div>
 </div></section>
-
-<section class="brand-moment align-right brand-moment--compact"><img src="/images/editorial-riviera.jpg" alt="Badestrand Kosmetik editorial photography" loading="lazy" /><div class="content"><div class="eyebrow">Collector's Edit</div><h2>More than care.<br>A way of life.</h2><a class="text-link" href="/en/produkte/">Shop now →</a></div></section>
 
 <section class="section section--standard soft"><div class="container-wide">
   <div class="section-head"><div><div class="eyebrow">Journal</div><h2>Skin knowledge that helps.</h2></div><a class="btn outline" href="/en/magazin/">All articles →</a></div>

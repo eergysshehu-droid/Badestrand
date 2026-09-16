@@ -114,6 +114,9 @@ h3{font-size:var(--h3);letter-spacing:-.01em}
 .editorial-card h3{font-size:34px}
 .editorial-card p{max-width:330px}
 .editorial-card:nth-child(2),.editorial-card:nth-child(3){min-height:300px}
+.editorial-grid--4{grid-template-columns:repeat(4,1fr)}
+.editorial-grid--4 .editorial-card{min-height:300px}
+.editorial-grid--4 .editorial-card:nth-child(2),.editorial-grid--4 .editorial-card:nth-child(3){min-height:300px}
 .concern-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .concern{background:white;border:1px solid var(--line);padding:28px;min-height:205px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
 .concern .num{font-family:var(--serif);font-size:44px;color:#c3b7a6}
@@ -204,6 +207,8 @@ h3{font-size:var(--h3);letter-spacing:-.01em}
 .consultation-cta p{color:var(--muted);margin-bottom:26px}
 .consultation-cta .btns{justify-content:center}
 .richard-section{display:grid;grid-template-columns:.46fr .54fr;gap:56px;align-items:center}
+.richard-section--compact{grid-template-columns:.32fr .68fr;gap:44px}
+.richard-section--compact .richard-portrait{max-width:260px}
 .richard-portrait{aspect-ratio:4/5;overflow:hidden}
 .richard-portrait img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
 .richard-signature{width:clamp(130px,14vw,190px);height:auto;object-fit:contain;margin-top:22px;display:block}
@@ -361,10 +366,12 @@ section.brand-moment.align-right{margin-top:44px}
  .trust-item:nth-child(2n){border-right:0}
  .trust-item:nth-child(n+3){border-bottom:0}
  .product-grid,.ingredients{grid-template-columns:repeat(2,1fr)}.editorial-grid{grid-template-columns:1fr 1fr}.editorial-card:first-child{grid-column:1/-1}
+ .editorial-grid--4{grid-template-columns:1fr 1fr}.editorial-grid--4 .editorial-card:first-child{grid-column:auto}
  .concern-grid,.concern-standard-grid,.concern-directory-grid{grid-template-columns:1fr 1fr}.split,.product-detail,.contact-grid,.cart-grid{grid-template-columns:1fr}.catalog{grid-template-columns:1fr}.filter-panel{display:none}
  .grid-3,.study-grid{grid-template-columns:1fr 1fr}.product-summary,.cart-summary{position:static}.mag-grid{grid-template-columns:1fr 1fr}.mag-card.featured{grid-column:1/-1;grid-row:auto}.footer-grid{grid-template-columns:1fr 1fr}
  .proof-split{grid-template-columns:1fr;gap:40px;padding:64px 0}.proof-split-metric{border-left:0;padding-left:0;border-top:1px solid rgba(248,246,241,.2);padding-top:28px}
  .richard-section{grid-template-columns:1fr;gap:28px}
+ .richard-section--compact .richard-portrait{max-width:220px;margin:0 auto}
 }
 @media(max-width:640px){
  .container{width:min(100% - 28px,1240px)}.header-inner{gap:8px}
@@ -373,7 +380,7 @@ section.brand-moment.align-right{margin-top:44px}
  .section{padding:var(--space-compact) 0}.section-head{align-items:flex-start;flex-direction:column;margin-bottom:28px}.trust-item{padding:18px 10px;font-size:10.5px;gap:8px}
  .product-grid,.grid-3,.ingredients,.concern-grid,.study-grid{grid-template-columns:1fr 1fr;gap:9px}.product-copy{padding:12px}.product-copy h3{font-size:18px}.product-copy p{font-size:11px}
  .concern-editorial-grid,.concern-standard-grid,.concern-directory-grid{grid-template-columns:1fr}
- .editorial-grid,.story-grid,.mag-grid{grid-template-columns:1fr}.editorial-card:first-child{grid-column:auto}
+ .editorial-grid,.editorial-grid--4,.story-grid,.mag-grid{grid-template-columns:1fr}.editorial-card:first-child{grid-column:auto}
  .page-hero{padding:42px 0 34px}.page-hero h1{font-size:44px}.gallery-main{min-height:390px;padding:18px}.product-summary h1{font-size:44px}.split-media{height:320px}
  .contact-grid{gap:28px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.footer-grid{grid-template-columns:1fr}
  .derma-badge{width:64px}.product-trust{align-items:flex-start}
