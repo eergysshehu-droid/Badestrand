@@ -75,6 +75,7 @@ h3{font-size:var(--h3);letter-spacing:-.01em}
 .hero-image{position:relative;overflow:hidden;min-height:670px}
 .hero-image img{width:100%;height:100%;object-fit:cover;object-position:62% center;animation:heroZoom 16s ease-out forwards}
 .hero-image::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(17,23,19,.06),transparent 35%)}
+.hero-image::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(to top,rgba(10,22,17,.38) 0%,rgba(10,22,17,.12) 32%,transparent 58%)}
 @keyframes heroZoom{from{transform:scale(1)}to{transform:scale(1.025)}}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .hero-copy h1{animation:fadeUp .6s ease-out both}
@@ -91,7 +92,7 @@ h3{font-size:var(--h3);letter-spacing:-.01em}
 [data-reveal-stagger].is-visible>*:nth-child(6){transition-delay:.4s}
 [data-reveal-clip] img{clip-path:inset(0 0 100% 0);transition:clip-path .7s ease-out}
 [data-reveal-clip].is-visible img{clip-path:inset(0 0 0% 0)}
-.script-note{position:absolute;right:34px;bottom:30px;color:#fff;font-family:var(--serif);font-style:italic;font-size:27px;text-shadow:0 3px 25px rgba(0,0,0,.3)}
+.script-note{position:absolute;right:32px;bottom:28px;color:#F8F6F1;font-family:var(--serif);font-style:italic;font-size:clamp(20px,1.7vw,28px);line-height:1.2}
 .btns{display:flex;gap:10px;flex-wrap:wrap}
 .btn{height:48px;display:inline-flex;align-items:center;justify-content:center;padding:0 23px;border:1px solid var(--deep);background:var(--deep);color:white;font-size:11px;letter-spacing:.12em;text-transform:uppercase;transition:.25s}
 .btn:hover{opacity:.88}
@@ -402,7 +403,7 @@ section.brand-moment.align-right{margin-top:44px}
 }
 @media(max-width:640px){
  .container{width:min(100% - 28px,1240px)}.header-inner{gap:8px}
- h1{font-size:44px}.hero h1{font-size:44px;max-width:100%}.hero-image{min-height:360px}.hero-image img{object-position:60% center}.script-note{font-size:20px}.hero-copy{padding:38px 20px 44px}.hero-copy p,.lead{font-size:17px;max-width:100%}
+ h1{font-size:44px}.hero h1{font-size:44px;max-width:100%}.hero-image{min-height:360px}.hero-image img{object-position:60% center}.script-note{display:none}.hero-copy{padding:38px 20px 44px}.hero-copy p,.lead{font-size:17px;max-width:100%}
  h2{font-size:36px}h3{font-size:26px}
  .section{padding:var(--space-compact) 0}.section-head{align-items:flex-start;flex-direction:column;margin-bottom:28px}
  .filters{margin:16px 0 20px}.catalog-toolbar{margin-bottom:14px}
