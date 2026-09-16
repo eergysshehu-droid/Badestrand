@@ -78,7 +78,7 @@ const orgJsonLd = {
   <Header current={current} lang={lang} />
   <main id="main"><slot /></main>
   <Footer lang={lang} />
-  <script is:inline define:vars={{ ACCESS_CODE: 'BADESTRAND2026' }}>
+  <script is:inline define:vars={{ ACCESS_CODE: 'Ergys206092' }}>
     (function () {
       var KEY = 'badestrand_access_granted';
       function unlock() {
@@ -89,7 +89,7 @@ const orgJsonLd = {
         e.preventDefault();
         var input = document.getElementById('access-gate-input');
         var error = document.getElementById('access-gate-error');
-        if (input.value.trim().toUpperCase() === ACCESS_CODE) {
+        if (input.value.trim().toLowerCase() === ACCESS_CODE.toLowerCase()) {
           sessionStorage.setItem(KEY, '1');
           unlock();
           error.classList.remove('show');
