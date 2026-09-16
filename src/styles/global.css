@@ -9,6 +9,16 @@ html{scroll-behavior:smooth}
 html,body{overflow-x:hidden}
 
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.5}
+html:not(.site-unlocked) .header,html:not(.site-unlocked) main,html:not(.site-unlocked) .footer,html:not(.site-unlocked) .skip-link{display:none}
+html.site-unlocked .access-gate{display:none}
+.access-gate{position:fixed;inset:0;z-index:999;background:var(--paper);display:flex;align-items:center;justify-content:center;padding:24px}
+.access-gate-box{max-width:360px;width:100%;text-align:center}
+.access-gate-box h1{font-family:var(--serif);font-size:26px;margin-bottom:10px}
+.access-gate-box p{color:var(--muted);font-size:13px;margin-bottom:22px}
+.access-gate-box input{width:100%;padding:13px 14px;border:1px solid var(--line);background:white;font-size:16px;text-align:center;letter-spacing:.08em;margin-bottom:12px;font-family:var(--sans)}
+.access-gate-box .btn{width:100%}
+.access-gate-error{color:#b0413e;font-size:12px;margin-top:12px;display:none}
+.access-gate-error.show{display:block}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit}

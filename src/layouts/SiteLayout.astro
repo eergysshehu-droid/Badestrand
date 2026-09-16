@@ -63,10 +63,42 @@ const orgJsonLd = {
   <title>{title}</title>
 </head>
 <body>
+  <div class="access-gate" id="access-gate">
+    <div class="access-gate-box">
+      <h1>Badestrand Kosmetik</h1>
+      <p>{lang === 'en' ? 'This is a private preview. Please enter the access code.' : 'Dies ist eine private Vorschau. Bitte geben Sie den Zugangscode ein.'}</p>
+      <form id="access-gate-form" autocomplete="off">
+        <input type="password" id="access-gate-input" inputmode="text" placeholder={lang === 'en' ? 'Access code' : 'Zugangscode'} autofocus />
+        <button type="submit" class="btn">{lang === 'en' ? 'Enter' : 'Zugang'} →</button>
+        <div class="access-gate-error" id="access-gate-error">{lang === 'en' ? 'Incorrect code.' : 'Falscher Code.'}</div>
+      </form>
+    </div>
+  </div>
   <a class="skip-link" href="#main">{lang === 'en' ? 'Skip to content' : 'Zum Inhalt springen'}</a>
   <Header current={current} lang={lang} />
   <main id="main"><slot /></main>
   <Footer lang={lang} />
+  <script is:inline define:vars={{ ACCESS_CODE: 'BADESTRAND2026' }}>
+    (function () {
+      var KEY = 'badestrand_access_granted';
+      function unlock() {
+        document.documentElement.classList.add('site-unlocked');
+      }
+      if (sessionStorage.getItem(KEY) === '1') unlock();
+      document.getElementById('access-gate-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var input = document.getElementById('access-gate-input');
+        var error = document.getElementById('access-gate-error');
+        if (input.value.trim().toUpperCase() === ACCESS_CODE) {
+          sessionStorage.setItem(KEY, '1');
+          unlock();
+          error.classList.remove('show');
+        } else {
+          error.classList.add('show');
+        }
+      });
+    })();
+  </script>
   <script>
     const revealIo = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
