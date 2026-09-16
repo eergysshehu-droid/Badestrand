@@ -6,11 +6,14 @@ import DermatologyBadge from '../../../components/DermatologyBadge.astro';
 import { productsEn as products } from '../../../data/products.en';
 import { companyEn as company } from '../../../data/company.en';
 
+// Sebum Plus Aufbaucreme has its own dedicated flagship page (richer source content)
 export function getStaticPaths() {
-  return products.map((product) => ({
-    params: { slug: product.slug },
-    props: { product }
-  }));
+  return products
+    .filter((product) => product.slug !== 'sebum-plus-aufbaucreme')
+    .map((product) => ({
+      params: { slug: product.slug },
+      props: { product }
+    }));
 }
 
 const { product } = Astro.props;

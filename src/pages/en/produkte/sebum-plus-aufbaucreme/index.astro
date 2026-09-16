@@ -1,0 +1,182 @@
+---
+import SiteLayout from '../../../../layouts/SiteLayout.astro';
+import TrustBar from '../../../../components/TrustBar.astro';
+import ProductCard from '../../../../components/ProductCard.astro';
+import DermatologyBadge from '../../../../components/DermatologyBadge.astro';
+import Icon from '../../../../components/Icon.astro';
+import { productsEn as products } from '../../../../data/products.en';
+import { companyEn as company } from '../../../../data/company.en';
+
+const product = products.find((p) => p.slug === 'sebum-plus-aufbaucreme')!;
+const related = products.filter((p) => ['aloe-hyaluron-booster', 'rotalgen-aloe-hyaluron-konzentrat'].includes(p.slug));
+
+const naturalProtection = ['Triglycerides', 'Fatty acids', 'Cholesterol', 'Ceramides', 'Phospholipids', 'Squalane'];
+const sebumPlusBase = ['Caprylic/Capric Triglyceride', 'Palmitic Acid', 'Phytosterols', 'Ceramide 3 / Ceramide NP', 'Phospholipids', 'Squalane'];
+
+const keyIngredients = [
+  { name: 'Olive Oil', copy: 'Rich in unsaturated fatty acids, with a smoothing effect on the skin.' },
+  { name: 'Cupuaçu Butter', copy: 'Moisturizing and skin-protective.' },
+  { name: 'Squalane', copy: 'Supports skin function, moisture retention and absorption.' },
+  { name: 'Shea Butter', copy: 'Soothing, with lipid-replenishing and moisture-retaining properties.' }
+];
+
+const formulaFacts = [
+  'Free from conventional emulsifiers',
+  'Not a conventional W/O or O/W emulsion',
+  'Stabilized with lecithin',
+  'Fragrance-free',
+  'Dye-free',
+  'No animal-derived ingredients according to the supplied formulation data'
+];
+
+const qualityChecks = [
+  'Microbiological purity testing',
+  'Stability testing under heat, cold and temperature fluctuation',
+  'Packaging suitability testing',
+  'Antioxidant content testing',
+  'Skin compatibility testing',
+  'Efficacy testing',
+  'Safety assessment of the finished product'
+];
+
+const faqs = [
+  { q: 'What skin type is the cream suitable for?', a: 'Sebum Plus Aufbaucreme was developed for dry, sensitive and mature skin.' },
+  { q: 'Is it also suitable for the sensitive eye area?', a: 'Yes, the formula is designed for the face, eye area and décolleté.' },
+  { q: 'Does the cream contain fragrance?', a: 'No, the formula is fragrance-free.' },
+  { q: 'Are animal-derived ingredients used?', a: 'According to the supplied formulation data, Sebum Plus contains no animal-derived ingredients.' },
+  { q: 'Why is the formula described as especially well-tolerated?', a: "The cream base is modeled on the skin's own natural protective structure and was tested in a skin compatibility study over 48 and 72 hours on 50 subjects with different skin types, with no complaints reported." },
+  { q: 'Which products can Sebum Plus be combined with?', a: 'Sebum Plus pairs well with the Aloe Hyaluron Booster or the Rotalgen Aloe Hyaluron Konzentrat.' },
+  { q: 'Where is Sebum Plus made?', a: 'Development and manufacturing take place in Germany.' }
+];
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Products', item: `${company.domain}/en/produkte/` },
+    { '@type': 'ListItem', position: 2, name: product.name, item: `${company.domain}/en/produkte/${product.slug}/` }
+  ]
+};
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a }
+  }))
+};
+
+const productJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: product.name,
+  description: product.description,
+  brand: { '@type': 'Brand', name: company.name }
+};
+---
+<SiteLayout title={`${product.name} | Badestrand Kosmetik`} current="produkte" description="Sebum Plus Aufbaucreme: a cream base modeled on the skin's natural protective barrier, developed for dry, sensitive and mature skin.">
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(productJsonLd)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+<nav class="breadcrumbs container"><a href="/en/">Home</a><span>/</span><a href="/en/produkte/">Products</a><span>/</span><span>{product.name}</span></nav>
+
+<section class="section"><div class="container product-detail">
+  <div>
+    <div class="gallery-main"><img src={product.image} alt={product.name} /></div>
+  </div>
+  <div class="product-summary">
+    <div class="eyebrow">{product.eyebrow} · {product.size}</div>
+    <h1>{product.name}</h1>
+    <p class="lead">{product.description}</p>
+    <div class="note">Price to be confirmed before launch.</div>
+    <div class="btns" style="margin-top:20px"><button class="btn">Add to cart →</button><button class="btn outline">♡</button></div>
+    {product.study && (
+      <div class="study-metrics-block">
+        <div class="study-metrics-title">{product.study.title}</div>
+        <div class="study-metrics-grid">
+          {product.study.metrics.map((m) => (
+            <div class="study-metrics-item"><strong>{m.value}</strong><span>{m.label}</span></div>
+          ))}
+        </div>
+        <small>{product.study.context}</small>
+      </div>
+    )}
+    {product.dermatologicallyTested && <DermatologyBadge lang="en" />}
+  </div>
+</div></section>
+
+<TrustBar lang="en" />
+
+<section class="section section--standard soft"><div class="container" style="max-width:760px">
+  <div class="eyebrow">Development Approach</div>
+  <h2>Care modeled on the skin's natural protection.</h2>
+  <p class="lead">Sebum Plus Aufbaucreme was developed as a care formula for the face, eye area and décolleté — with particular focus on dry, sensitive and mature skin. The goal of the formulation is to help aged, slack skin regain more youthful protection and freshness.</p>
+</div></section>
+
+<section class="section section--standard"><div class="container">
+  <div class="eyebrow">Skin Barrier</div>
+  <h2>Natural skin protection as the model.</h2>
+  <p class="lead" style="max-width:640px">The cream base of Sebum Plus was developed with the natural composition of the skin's own lipid film in mind. The goal is to specifically supplement the skin's natural protection.</p>
+  <div class="barrier-grid">
+    <div class="barrier-col"><h3>Natural Skin Protection</h3><ul>{naturalProtection.map((i) => <li>{i}</li>)}</ul></div>
+    <div class="barrier-col is-sebum"><h3>Sebum Plus Cream Base</h3><ul>{sebumPlusBase.map((i) => <li>{i}</li>)}</ul></div>
+  </div>
+</div></section>
+
+<section class="section section--standard soft"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Selected Lipids & Care Ingredients</div><h2>What's in the formula.</h2></div></div>
+  <div class="grid-3">
+    {keyIngredients.map((ing) => (
+      <div class="ingredient"><div class="dot"><Icon name="droplet" size={22} /></div><h3>{ing.name}</h3><p>{ing.copy}</p></div>
+    ))}
+  </div>
+</div></section>
+
+<section class="section section--standard"><div class="container" style="max-width:820px">
+  <div class="eyebrow">Formula Facts</div>
+  <h2>What sets the formula apart.</h2>
+  <div class="fact-grid">
+    {formulaFacts.map((fact) => (
+      <div class="fact-item"><Icon name="shieldCheck" size={16} />{fact}</div>
+    ))}
+  </div>
+</div></section>
+
+<section class="section section--standard soft"><div class="container" style="max-width:820px">
+  <div class="eyebrow">Quality & Testing</div>
+  <h2>The care you don't see.</h2>
+  <p class="lead" style="font-size:15px;color:var(--muted)">These tests apply to Sebum Plus Aufbaucreme — not automatically to the entire range.</p>
+  <ul class="quality-list">
+    {qualityChecks.map((check) => (
+      <li><Icon name="shieldCheck" size={16} />{check}</li>
+    ))}
+  </ul>
+  <div class="product-trust" style="margin-top:28px">
+    <Icon name="germany" size={40} />
+    <div><strong>Made in Germany</strong><p>Development and manufacturing take place in Germany.</p></div>
+  </div>
+</div></section>
+
+<section class="section section--standard"><div class="container" style="max-width:760px">
+  <div class="section-head"><div><div class="eyebrow">FAQ</div><h2>Frequently asked questions.</h2></div></div>
+  <div class="accordions">
+    {faqs.map((f) => (
+      <details class="acc"><summary>{f.q}</summary><p>{f.a}</p></details>
+    ))}
+    <details class="acc"><summary>Full INCI</summary><p>Full INCI details will follow before shop launch.</p></details>
+  </div>
+</div></section>
+
+<section class="section section--standard soft"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Pairs Well With</div><h2>Complete your routine.</h2></div></div>
+  <div class="product-grid">{related.map((p) => <ProductCard product={p} lang="en" />)}</div>
+</div></section>
+
+<section class="section"><div class="container consultation-cta">
+  <h2>Questions about Sebum Plus?</h2>
+  <p>Our team offers personal consultation — {company.serviceHours.days} {company.serviceHours.time}.</p>
+  <div class="btns"><a class="btn" href="/en/beratung/">Contact us →</a><a class="btn outline" href={`tel:${company.phone}`}>{company.phoneDisplay}</a></div>
+</div></section>
+</SiteLayout>
