@@ -2,6 +2,7 @@
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import TrustBar from '../../../components/TrustBar.astro';
 import ProductCard from '../../../components/ProductCard.astro';
+import DermatologyBadge from '../../../components/DermatologyBadge.astro';
 import { productsEn as products } from '../../../data/products.en';
 import { companyEn as company } from '../../../data/company.en';
 
@@ -76,11 +77,23 @@ const productJsonLd = {
     {product.efficacy && (
       <div class="result"><b>{product.efficacy.value}</b><div>{product.efficacy.statement} {product.efficacy.context}</div></div>
     )}
+    {product.study && (
+      <div class="study-metrics-block">
+        <div class="study-metrics-title">{product.study.title}</div>
+        <div class="study-metrics-grid">
+          {product.study.metrics.map((m) => (
+            <div class="study-metrics-item"><strong>{m.value}</strong><span>{m.label}</span></div>
+          ))}
+        </div>
+        <small>{product.study.context}</small>
+      </div>
+    )}
+    {product.dermatologicallyTested && <DermatologyBadge lang="en" />}
     <div class="accordions">
-      <details class="acc" open><summary>Description</summary><p>{product.description} Final copy and legal wording will be reviewed again when imported from the existing product catalogue.</p></details>
-      <details class="acc"><summary>Application</summary><p>Apply thinly, morning and evening.</p></details>
-      <details class="acc"><summary>Ingredients</summary><p>Full INCI list will be published from the production content system.</p></details>
-      <details class="acc"><summary>Results</summary><p>{product.efficacy ? 'See test results above, with source reference before launch.' : 'No confirmed test results are available yet for this product.'}</p></details>
+      <details class="acc" open><summary>Description</summary><p>{product.description}</p></details>
+      <details class="acc"><summary>Application</summary><p>{product.application ?? 'Apply thinly, morning and evening.'}</p></details>
+      <details class="acc"><summary>Ingredients</summary><p>Full INCI details will follow before shop launch.</p></details>
+      <details class="acc"><summary>Results</summary><p>{product.efficacy || product.study ? 'See test results above, with source reference before launch.' : 'No confirmed test results are available yet for this product.'}</p></details>
     </div>
   </div>
 </div></section>

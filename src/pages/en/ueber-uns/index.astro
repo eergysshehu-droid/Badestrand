@@ -1,10 +1,32 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import TrustBar from '../../../components/TrustBar.astro';
+import { companyEn as company } from '../../../data/company.en';
 ---
-<SiteLayout title="About | Badestrand Kosmetik" current="ueber-uns">
-<section class="hero" style="min-height:600px"><div class="hero-copy"><div class="eyebrow">Our Philosophy</div><h1>More than skincare. A stance.</h1><p>The brand isn't dressed up with invented tradition. Instead, quality, results, nature and a modern luxury aesthetic take center stage.</p><a class="btn" href="#ansatz">Learn more →</a></div><div class="hero-image" style="min-height:600px"><img src="/images/campaign-car.webp" alt="Badestrand brand world"></div></section>
+<SiteLayout title="About | Badestrand Kosmetik" current="ueber-uns" description="Badestrand Kosmetik: selected active ingredients, dermatological knowledge and a personally run brand from Germany.">
+<section class="hero" style="min-height:560px"><div class="hero-copy"><div class="eyebrow">About Badestrand</div><h1 class="tight">Care with a stance.</h1><p>Badestrand combines selected active ingredients, dermatological knowledge and a clear approach to product development — for care you understand and can trust.</p><a class="btn" href="#philosophie">Learn more →</a></div><div class="hero-image" style="min-height:560px"><img src="/images/campaign-car.webp" alt="Badestrand brand world"></div></section>
 <TrustBar lang="en" />
-<section class="section" id="ansatz"><div class="container split"><div class="split-media"><img src="/images/products-editorial-crop.webp" alt="Badestrand products"></div><div><div class="eyebrow">Our Approach</div><h2>Natural effectiveness for today and tomorrow.</h2><p class="lead">The new website connects the documented product philosophy with a noticeably more refined visual language.</p><p>Classic cars, jewelry and special objects are used as an editorial element — never as a substitute for the products.</p></div></div></section>
-<section class="section soft"><div class="container"><div class="story-grid"><article class="story"><img src="/images/campaign-magazine.webp" alt=""><div class="content"><div class="eyebrow">Collector's Edit</div><h2>Character without kitsch.</h2></div></article><article class="story"><img src="/images/products-wide.webp" alt=""><div class="content"><div class="eyebrow">Modern Luxury</div><h2>Clear information. Quiet luxury.</h2></div></article></div></div></section>
+
+<section class="section" id="philosophie"><div class="container split"><div class="split-media"><img src="/images/products-editorial-crop.webp" alt="Badestrand products"></div><div><div class="eyebrow">Our Philosophy</div><h2>Nature. Knowledge. Results.</h2><p class="lead">Effective care starts with a clear understanding of the skin. That's why Badestrand combines selected ingredients with dermatological knowledge and careful product development — the right care for each skin concern.</p></div></div></section>
+
+<section class="section soft"><div class="container richard-section">
+  <div class="richard-portrait"><img src="/images/brand/richard-jung-portrait.jpg" alt="Richard Jung, Managing Director of Badestrand Kosmetik" loading="lazy" /></div>
+  <div class="richard-copy">
+    <div class="eyebrow">Personally Run</div>
+    <h2>Care needs trust.</h2>
+    <p class="lead">Badestrand Kosmetik is personally run. What matters most is that care products stay understandable — from formulation to application, with personal consultation for individual skin concerns.</p>
+    <img class="richard-signature" src="/images/brand/richard-jung-signature.png" alt="" aria-hidden="true" />
+    <div class="richard-name">Richard Jung<span>Managing Director, {company.legalName}</span></div>
+  </div>
+</div></section>
+
+<section class="section" id="ansatz"><div class="container split"><div class="split-media"><img src="/images/manufaktur.jpg" alt="Badestrand Kosmetik manufacturing (concept depiction)"></div><div><div class="eyebrow">Our Approach</div><h2>Care that connects nature and knowledge.</h2><p class="lead">Selected plant-based ingredients, skin-related lipids and modern care concepts form the basis of our products. What matters to us isn't a general promise, but the right care for the specific skin concern.</p><a class="btn outline" href="/en/inhaltsstoffe/">Discover ingredients →</a></div></div></section>
+
+<section class="section soft"><div class="container"><div class="story-grid"><article class="story"><img src="/images/campaign-magazine.webp" alt=""><div class="content"><div class="eyebrow">Quality</div><h2>Tested formulas, carefully developed.</h2></div></article><article class="story"><img src="/images/products-wide.webp" alt=""><div class="content"><div class="eyebrow">Made in Germany</div><h2>Developed and made in Germany.</h2></div></article></div></div></section>
+
+<section class="section"><div class="container consultation-cta">
+  <h2>Questions about our products?</h2>
+  <p>Our team offers personal consultation — {company.serviceHours.days} {company.serviceHours.time}.</p>
+  <div class="btns"><a class="btn" href="/en/beratung/">Contact us →</a><a class="btn outline" href={`tel:${company.phone}`}>{company.phoneDisplay}</a></div>
+</div></section>
 </SiteLayout>

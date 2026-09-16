@@ -2,6 +2,7 @@
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import ProductCard from '../../components/ProductCard.astro';
+import DermatologyBadge from '../../components/DermatologyBadge.astro';
 import { products } from '../../data/products';
 import { company } from '../../data/company';
 
@@ -76,11 +77,23 @@ const productJsonLd = {
     {product.efficacy && (
       <div class="result"><b>{product.efficacy.value}</b><div>{product.efficacy.statement} {product.efficacy.context}</div></div>
     )}
+    {product.study && (
+      <div class="study-metrics-block">
+        <div class="study-metrics-title">{product.study.title}</div>
+        <div class="study-metrics-grid">
+          {product.study.metrics.map((m) => (
+            <div class="study-metrics-item"><strong>{m.value}</strong><span>{m.label}</span></div>
+          ))}
+        </div>
+        <small>{product.study.context}</small>
+      </div>
+    )}
+    {product.dermatologicallyTested && <DermatologyBadge lang="de" />}
     <div class="accordions">
-      <details class="acc" open><summary>Beschreibung</summary><p>{product.description} Die finalen Texte und rechtlichen Formulierungen werden beim Import aus dem bestehenden Produktkatalog nochmals geprüft.</p></details>
-      <details class="acc"><summary>Anwendung</summary><p>Morgens und abends dünn und sparsam auftragen.</p></details>
-      <details class="acc"><summary>Inhaltsstoffe</summary><p>INCI wird im Produktionssystem vollständig aus Sanity ausgegeben.</p></details>
-      <details class="acc"><summary>Wirkung & Ergebnisse</summary><p>{product.efficacy ? 'Testergebnisse siehe oben, mit Quellenhinweis vor Livegang.' : 'Für dieses Produkt liegen noch keine bestätigten Testergebnisse vor.'}</p></details>
+      <details class="acc" open><summary>Beschreibung</summary><p>{product.description}</p></details>
+      <details class="acc"><summary>Anwendung</summary><p>{product.application ?? 'Morgens und abends dünn und sparsam auftragen.'}</p></details>
+      <details class="acc"><summary>Inhaltsstoffe</summary><p>Vollständige INCI-Angaben folgen vor Shop-Start.</p></details>
+      <details class="acc"><summary>Wirkung & Ergebnisse</summary><p>{product.efficacy || product.study ? 'Testergebnisse siehe oben, mit Quellenhinweis vor Livegang.' : 'Für dieses Produkt liegen noch keine bestätigten Testergebnisse vor.'}</p></details>
     </div>
   </div>
 </div></section>

@@ -4,6 +4,17 @@ export interface ProductEfficacy {
   context: string;
 }
 
+export interface ProductStudyMetric {
+  value: string;
+  label: string;
+}
+
+export interface ProductStudy {
+  title: string;
+  metrics: ProductStudyMetric[];
+  context: string;
+}
+
 export interface Product {
   slug: string;
   name: string;
@@ -15,7 +26,10 @@ export interface Product {
   price?: string;
   priceVerified: boolean;
   featured?: boolean;
+  application?: string;
   efficacy?: ProductEfficacy;
+  study?: ProductStudy;
+  dermatologicallyTested?: boolean;
 }
 
 export const products: Product[] = [
@@ -101,7 +115,18 @@ export const products: Product[] = [
     description: 'Verhilft alter, schlaffer Haut zu jugendlichem Hautschutz und Frische. Baut die Hautbarriere durch eine hautstrukturähnliche Formulierung mit Cupuaçu- und Karitébutter wieder auf. Ideal für Altershaut und bei Couperose.',
     size: '50 ml',
     priceVerified: false,
-    image: '/images/sebum-plus-aufbaucreme.webp'
+    image: '/images/sebum-plus-aufbaucreme.webp',
+    dermatologicallyTested: true,
+    study: {
+      title: '28-Tage-Anwendungstest',
+      metrics: [
+        { value: '+31,5 %', label: 'Hautfeuchtigkeit nach 14 Tagen' },
+        { value: '+32,6 %', label: 'Hautfeuchtigkeit nach 28 Tagen' },
+        { value: '+10,2 %', label: 'Hautglätte nach 14 Tagen' },
+        { value: '+14,4 %', label: 'Hautglätte nach 28 Tagen' }
+      ],
+      context: 'Bei 2× täglicher Anwendung. Hautverträglichkeit zusätzlich über 48 und 72 Stunden an 50 Personen unterschiedlicher Hauttypen geprüft, ohne berichtete Beanstandungen.'
+    }
   },
   {
     slug: 'honig-propolis-universalcreme',
@@ -131,10 +156,21 @@ export const products: Product[] = [
     priceVerified: false,
     image: '/images/pigmentflecken-creme.webp',
     featured: true,
+    application: 'Sparsam auftragen, 2× täglich. Direkte Sonneneinstrahlung auf die behandelten Stellen vermeiden. Kombinierbar mit Süßholz Gesichts- und Reinigungswasser und der Aloe Hyaluron Vitamin B3 Gesichtsmaske.',
+    dermatologicallyTested: true,
     efficacy: {
-      value: '23 %',
-      statement: 'Reduzierung von Alters- und Pigmentflecken',
-      context: 'in 6 Wochen.'
+      value: '23,2 %',
+      statement: 'Aufhellender Effekt',
+      context: 'nach 42 Tagen bei 2× täglicher Anwendung.'
+    },
+    study: {
+      title: '42-Tage-Anwendungstest',
+      metrics: [
+        { value: '23,2 %', label: 'Aufhellender Effekt' },
+        { value: '+43,9 %', label: 'Steigerung der Hautfeuchtigkeit' },
+        { value: '+25,2 %', label: 'Steigerung der Hautglätte' }
+      ],
+      context: 'Bei 2× täglicher Anwendung. Hautverträglichkeit zusätzlich über 48 und 72 Stunden an 50 Personen unterschiedlicher Hauttypen geprüft, ohne berichtete Beanstandungen.'
     }
   },
   {

@@ -1,0 +1,14 @@
+---
+const { lang = 'de' } = Astro.props;
+const label = lang === 'en' ? 'Dermatologically tested' : 'Dermatologisch getestet';
+const copy = lang === 'en'
+  ? 'Tolerability and efficacy were tested for this product.'
+  : 'Verträglichkeit und Wirkung wurden für dieses Produkt geprüft.';
+---
+<div class="product-trust">
+  <img src="/images/badges/dermatologisch-getestet.webp" alt={label} class="derma-badge" loading="lazy" />
+  <div>
+    <strong>{label}</strong>
+    <p>{copy}</p>
+  </div>
+</div>

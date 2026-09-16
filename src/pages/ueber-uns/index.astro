@@ -1,10 +1,32 @@
 ---
 import SiteLayout from '../../layouts/SiteLayout.astro';
 import TrustBar from '../../components/TrustBar.astro';
+import { company } from '../../data/company';
 ---
-<SiteLayout title="Über uns | Badestrand Kosmetik" current="ueber-uns">
-<section class="hero" style="min-height:600px"><div class="hero-copy"><div class="eyebrow">Unsere Philosophie</div><h1>Mehr als Hautpflege. Eine Haltung.</h1><p>Die Marke wird nicht mit erfundener Tradition aufgeladen. Stattdessen stehen Qualität, Wirkung, Natur und eine moderne Luxusästhetik im Mittelpunkt.</p><a class="btn" href="#ansatz">Mehr erfahren →</a></div><div class="hero-image" style="min-height:600px"><img src="/images/campaign-car.webp" alt="Badestrand Markenwelt"></div></section>
+<SiteLayout title="Über uns | Badestrand Kosmetik" current="ueber-uns" description="Badestrand Kosmetik: ausgewählte Wirkstoffe, dermatologisches Wissen und eine persönlich geführte Marke aus Deutschland.">
+<section class="hero" style="min-height:560px"><div class="hero-copy"><div class="eyebrow">Über Badestrand</div><h1 class="tight">Pflege mit Haltung.</h1><p>Badestrand verbindet ausgewählte Wirkstoffe, dermatologisches Wissen und eine klare Haltung zur Produktentwicklung – für Pflege, die man versteht und der man vertraut.</p><a class="btn" href="#philosophie">Mehr erfahren →</a></div><div class="hero-image" style="min-height:560px"><img src="/images/campaign-car.webp" alt="Badestrand Markenwelt"></div></section>
 <TrustBar/>
-<section class="section" id="ansatz"><div class="container split"><div class="split-media"><img src="/images/products-editorial-crop.webp" alt="Badestrand Produkte"></div><div><div class="eyebrow">Unser Ansatz</div><h2>Natürliche Wirksamkeit für heute und morgen.</h2><p class="lead">Die neue Website verbindet die dokumentierte Produktphilosophie mit einer deutlich hochwertigeren visuellen Sprache.</p><p>Classic Cars, Schmuck und besondere Objekte werden als Editorial-Element genutzt – nie als Ersatz für die Produkte.</p></div></div></section>
-<section class="section soft"><div class="container"><div class="story-grid"><article class="story"><img src="/images/campaign-magazine.webp" alt=""><div class="content"><div class="eyebrow">Collector’s Edit</div><h2>Persönlichkeit ohne Kitsch.</h2></div></article><article class="story"><img src="/images/products-wide.webp" alt=""><div class="content"><div class="eyebrow">Modern Luxury</div><h2>Klare Information. Ruhiger Luxus.</h2></div></article></div></div></section>
+
+<section class="section" id="philosophie"><div class="container split"><div class="split-media"><img src="/images/products-editorial-crop.webp" alt="Badestrand Produkte"></div><div><div class="eyebrow">Unsere Philosophie</div><h2>Natur. Wissen. Wirkung.</h2><p class="lead">Wirksame Pflege beginnt mit einem klaren Verständnis der Haut. Deshalb verbindet Badestrand ausgewählte Inhaltsstoffe mit dermatologischem Wissen und einer sorgfältigen Produktentwicklung – für jedes Hautbedürfnis die passende Lösung.</p></div></div></section>
+
+<section class="section soft"><div class="container richard-section">
+  <div class="richard-portrait"><img src="/images/brand/richard-jung-portrait.jpg" alt="Richard Jung, Geschäftsführer Badestrand Kosmetik" loading="lazy" /></div>
+  <div class="richard-copy">
+    <div class="eyebrow">Persönlich geführt</div>
+    <h2>Pflege braucht Vertrauen.</h2>
+    <p class="lead">Badestrand Kosmetik wird persönlich geführt. Im Mittelpunkt steht, dass Pflegeprodukte nachvollziehbar bleiben – von der Formulierung bis zur Anwendung, mit persönlicher Beratung für individuelle Hautbedürfnisse.</p>
+    <img class="richard-signature" src="/images/brand/richard-jung-signature.png" alt="" aria-hidden="true" />
+    <div class="richard-name">Richard Jung<span>Geschäftsführer, {company.legalName}</span></div>
+  </div>
+</div></section>
+
+<section class="section" id="ansatz"><div class="container split"><div class="split-media"><img src="/images/manufaktur.jpg" alt="Badestrand Kosmetik Herstellung (Konzeptdarstellung)"></div><div><div class="eyebrow">Unser Ansatz</div><h2>Pflege, die Natur und Wissen verbindet.</h2><p class="lead">Ausgewählte pflanzliche Inhaltsstoffe, hautverwandte Lipide und moderne Pflegekonzepte bilden die Grundlage unserer Produkte. Für uns zählt nicht ein allgemeines Versprechen, sondern die passende Pflege für das jeweilige Hautbedürfnis.</p><a class="btn outline" href="/inhaltsstoffe/">Wirkstoffe entdecken →</a></div></div></section>
+
+<section class="section soft"><div class="container"><div class="story-grid"><article class="story"><img src="/images/campaign-magazine.webp" alt=""><div class="content"><div class="eyebrow">Qualität</div><h2>Geprüfte Rezepturen, sorgfältig entwickelt.</h2></div></article><article class="story"><img src="/images/products-wide.webp" alt=""><div class="content"><div class="eyebrow">Made in Germany</div><h2>Entwicklung und Herstellung in Deutschland.</h2></div></article></div></div></section>
+
+<section class="section"><div class="container consultation-cta">
+  <h2>Fragen zu unseren Produkten?</h2>
+  <p>Wir beraten Sie persönlich – {company.serviceHours.days} {company.serviceHours.time}.</p>
+  <div class="btns"><a class="btn" href="/beratung/">Beratung kontaktieren →</a><a class="btn outline" href={`tel:${company.phone}`}>{company.phoneDisplay}</a></div>
+</div></section>
 </SiteLayout>

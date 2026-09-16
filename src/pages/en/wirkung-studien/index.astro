@@ -1,10 +1,11 @@
 ---
 import SiteLayout from '../../../layouts/SiteLayout.astro';
 import Icon from '../../../components/Icon.astro';
+import DermatologyBadge from '../../../components/DermatologyBadge.astro';
 import { productsEn as products } from '../../../data/products.en';
 import { companyEn as company } from '../../../data/company.en';
 
-const verifiedResults = products.filter((p) => p.efficacy);
+const verifiedResults = products.filter((p) => p.efficacy || p.study);
 ---
 <SiteLayout title="Results & Studies | Badestrand Kosmetik" current="wirkung-studien" description="How Badestrand Kosmetik documents test results and which specific product they are attributed to.">
 <section class="page-hero"><div class="container-narrow"><div class="eyebrow">Results & Transparency</div><h1>Results belong to the product.</h1><p class="lead">At Badestrand Kosmetik, test results are always attributed to the specific product they were measured for — never applied broadly across the whole range.</p></div></section>
@@ -18,12 +19,26 @@ const verifiedResults = products.filter((p) => p.efficacy);
   <div class="section-head"><div><div class="eyebrow">Confirmed Results</div><h2>Tested. Documented. Attributed.</h2></div></div>
   <div class="study-grid">
     {verifiedResults.map((p) => (
-      <div class="study-card">
-        <div class="study-metric">{p.efficacy!.value}</div>
-        <h3>{p.efficacy!.statement}</h3>
-        <p>{p.efficacy!.context}</p>
-        <a class="text-link" href={`/en/produkte/${p.slug}/`}>To {p.name} →</a>
-      </div>
+      p.study ? (
+        <div class="study-card study-card--multi">
+          <div class="study-metrics-title">{p.name} · {p.study.title}</div>
+          <div class="study-metrics-grid">
+            {p.study.metrics.map((m) => (
+              <div class="study-metrics-item"><strong>{m.value}</strong><span>{m.label}</span></div>
+            ))}
+          </div>
+          {p.dermatologicallyTested && <DermatologyBadge lang="en" />}
+          <a class="text-link" href={`/en/produkte/${p.slug}/`}>To {p.name} →</a>
+        </div>
+      ) : (
+        <div class="study-card">
+          <div class="study-metric">{p.efficacy!.value}</div>
+          <h3>{p.efficacy!.statement}</h3>
+          <p>{p.efficacy!.context}</p>
+          {p.dermatologicallyTested && <DermatologyBadge lang="en" />}
+          <a class="text-link" href={`/en/produkte/${p.slug}/`}>To {p.name} →</a>
+        </div>
+      )
     ))}
   </div>
   <p class="study-note">Further results will be published once they are conclusively confirmed for the respective product.</p>

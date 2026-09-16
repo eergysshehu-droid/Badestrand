@@ -83,7 +83,18 @@ export const productsEn: Product[] = [
     description: 'Helps aged, slack skin regain youthful protection and freshness. Rebuilds the skin barrier with a formula related to the skin’s own structure, using cupuaçu and shea butter. Ideal for mature skin and for couperose.',
     size: '50 ml',
     priceVerified: false,
-    image: '/images/sebum-plus-aufbaucreme.webp'
+    image: '/images/sebum-plus-aufbaucreme.webp',
+    dermatologicallyTested: true,
+    study: {
+      title: '28-day application test',
+      metrics: [
+        { value: '+31.5%', label: 'skin hydration after 14 days' },
+        { value: '+32.6%', label: 'skin hydration after 28 days' },
+        { value: '+10.2%', label: 'skin smoothness after 14 days' },
+        { value: '+14.4%', label: 'skin smoothness after 28 days' }
+      ],
+      context: 'With twice-daily application. Skin compatibility additionally tested over 48 and 72 hours on 50 subjects with different skin types, with no complaints reported.'
+    }
   },
   {
     slug: 'honig-propolis-universalcreme',
@@ -113,10 +124,21 @@ export const productsEn: Product[] = [
     priceVerified: false,
     image: '/images/pigmentflecken-creme.webp',
     featured: true,
+    application: 'Apply sparingly, twice daily. Avoid direct sun exposure on treated areas. Can be combined with Süßholz Gesichts- und Reinigungswasser and the Aloe Hyaluron Vitamin B3 Gesichtsmaske.',
+    dermatologicallyTested: true,
     efficacy: {
-      value: '23%',
-      statement: 'reduction of age and pigmentation spots',
-      context: 'in 6 weeks.'
+      value: '23.2%',
+      statement: 'brightening effect',
+      context: 'after 42 days with twice-daily application.'
+    },
+    study: {
+      title: '42-day application test',
+      metrics: [
+        { value: '23.2%', label: 'brightening effect' },
+        { value: '+43.9%', label: 'increase in skin hydration' },
+        { value: '+25.2%', label: 'increase in skin smoothness' }
+      ],
+      context: 'With twice-daily application. Skin compatibility additionally tested over 48 and 72 hours on 50 subjects with different skin types, with no complaints reported.'
     }
   },
   {
