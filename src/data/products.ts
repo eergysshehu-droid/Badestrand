@@ -40,6 +40,7 @@ export const products: Product[] = [
     eyebrow: 'Reinigung',
     category: 'Gesicht & Decolleté',
     description: 'Reinigt porentief und wirkt beruhigend. Ideal zur Hautreinigung für empfindliche Haut, bei zu Trockenheit neigender, reiferer Haut sowie zur Pflege bei Couperose und Altersflecken.',
+    image: '/images/suessholz-gesichtswasser.webp',
     priceVerified: false
   },
   {
@@ -48,6 +49,7 @@ export const products: Product[] = [
     eyebrow: 'Tagespflege',
     category: 'Gesicht & Decolleté',
     description: 'Für die trockene, reife Haut. Wirkt spürbar glättend, spendet Feuchtigkeit und enthält einen schützenden Bienenwachsanteil.',
+    image: '/images/rosenblueten-tagescreme.webp',
     priceVerified: false
   },
   {
@@ -56,6 +58,7 @@ export const products: Product[] = [
     eyebrow: 'Nachtpflege',
     category: 'Gesicht & Decolleté',
     description: 'Pflegt und verbessert das Hautbild über Nacht, speziell entwickelt für die trockene und reifere Haut.',
+    image: '/images/rosenmandel-nachtcreme.webp',
     priceVerified: false
   },
   {
@@ -64,6 +67,7 @@ export const products: Product[] = [
     eyebrow: 'Hautöl',
     category: 'Gesicht & Decolleté',
     description: 'Das Schönheitsöl aus den chilenischen Anden mit zusätzlichem ätherischen Rosenöl. Baut Hautfeuchtigkeit auf, glättet, fettet nicht und zieht sofort ein. Ideal bei einem faltigen Decolleté und zur Regeneration der Haut.',
+    image: '/images/wildrosen-hautoel.webp',
     priceVerified: false
   },
   {
@@ -144,6 +148,7 @@ export const products: Product[] = [
     eyebrow: 'Ausgleichende Pflege',
     category: 'Gesicht & Decolleté',
     description: 'Ausgleichende Pflege, die speziell für trockene, aber auch für fettigere Gesichtshaut sowie bei blasser Haut empfohlen wird.',
+    image: '/images/karotten-creme.webp',
     priceVerified: false
   },
   {
@@ -179,6 +184,7 @@ export const products: Product[] = [
     eyebrow: 'Intensivpflege',
     category: 'Gesicht & Decolleté',
     description: 'Ergänzende Intensivpflege, die das Hautbild unterstützt und unter anderem bei Alters- und Pigmentflecken angewendet wird.',
+    image: '/images/aloe-hyaluron-vitamin-b3-maske.webp',
     priceVerified: false
   },
   {
@@ -187,6 +193,7 @@ export const products: Product[] = [
     eyebrow: 'Beruhigend',
     category: 'Gesicht & Decolleté',
     description: 'Mindert Rötungen, wirkt gereizter Haut entgegen und beruhigt bei sichtbaren, roten Äderchen.',
+    image: '/images/couperose-wirkstoff-serum.webp',
     priceVerified: false
   },
   {
@@ -234,6 +241,7 @@ export const products: Product[] = [
     eyebrow: 'Kühlend',
     category: 'Hände & Füße',
     description: 'Kühlt und regeneriert bei müden und beanspruchten Beinen. Ideal bei rauer Haut an Schienbeinen und Füßen.',
+    image: '/images/menthol-fuss-beinpflege.webp',
     priceVerified: false
   },
   {
@@ -242,6 +250,7 @@ export const products: Product[] = [
     eyebrow: 'Handpflege',
     category: 'Hände & Füße',
     description: 'Spendet Feuchtigkeit, glättet und schützt trockene, schutzbedürftige Hände.',
+    image: '/images/ringelblumen-handcreme.webp',
     priceVerified: false
   },
   {
@@ -286,6 +295,7 @@ export const products: Product[] = [
     eyebrow: 'Reinigung',
     category: 'Intimpflege',
     description: 'Für die extrem milde, zarte und schonende Reinigung des empfindlichen Intimbereichs.',
+    image: '/images/intimpflege-reinigungsschaum.webp',
     priceVerified: false
   },
   {
@@ -294,6 +304,7 @@ export const products: Product[] = [
     eyebrow: 'Pflege',
     category: 'Intimpflege',
     description: 'Konzipiert für den äußeren Intimbereich. Schützt die Haut, beruhigt und desodoriert sanft.',
+    image: '/images/intimpflege-balsam.webp',
     priceVerified: false
   }
 ];

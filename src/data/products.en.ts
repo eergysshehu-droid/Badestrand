@@ -8,6 +8,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Cleansing',
     category: 'Face & Décolleté',
     description: 'Cleanses deep into the pores and has a soothing effect. Ideal for cleansing sensitive skin, skin prone to dryness and maturity, and for skin with couperose and age spots.',
+    image: '/images/suessholz-gesichtswasser.webp',
     priceVerified: false
   },
   {
@@ -16,6 +17,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Day Care',
     category: 'Face & Décolleté',
     description: 'For dry, mature skin. Has a noticeably smoothing effect, provides moisture and contains a protective beeswax component.',
+    image: '/images/rosenblueten-tagescreme.webp',
     priceVerified: false
   },
   {
@@ -24,6 +26,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Night Care',
     category: 'Face & Décolleté',
     description: 'Nourishes and improves the look of skin overnight, specially developed for dry and more mature skin.',
+    image: '/images/rosenmandel-nachtcreme.webp',
     priceVerified: false
   },
   {
@@ -32,6 +35,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Skin Oil',
     category: 'Face & Décolleté',
     description: 'The beauty oil from the Chilean Andes with added essential rose oil. Builds up skin moisture, smooths, is non-greasy and absorbs instantly. Ideal for a lined décolleté and for skin regeneration.',
+    image: '/images/wildrosen-hautoel.webp',
     priceVerified: false
   },
   {
@@ -112,6 +116,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Balancing Care',
     category: 'Face & Décolleté',
     description: 'Balancing care recommended especially for dry, but also for oilier facial skin, as well as for pale-looking skin.',
+    image: '/images/karotten-creme.webp',
     priceVerified: false
   },
   {
@@ -147,6 +152,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Intensive Care',
     category: 'Face & Décolleté',
     description: 'A complementary intensive treatment that supports the complexion and is used, among other things, for age and pigmentation spots.',
+    image: '/images/aloe-hyaluron-vitamin-b3-maske.webp',
     priceVerified: false
   },
   {
@@ -155,6 +161,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Soothing',
     category: 'Face & Décolleté',
     description: 'Reduces redness, counteracts irritated skin and soothes visible, red thread veins.',
+    image: '/images/couperose-wirkstoff-serum.webp',
     priceVerified: false
   },
   {
@@ -202,6 +209,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Cooling',
     category: 'Hands & Feet',
     description: 'Cools and revitalizes tired, stressed legs. Ideal for rough skin on shins and feet.',
+    image: '/images/menthol-fuss-beinpflege.webp',
     priceVerified: false
   },
   {
@@ -210,6 +218,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Hand Care',
     category: 'Hands & Feet',
     description: 'Provides moisture, smooths and protects dry hands in need of care.',
+    image: '/images/ringelblumen-handcreme.webp',
     priceVerified: false
   },
   {
@@ -254,6 +263,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Cleansing',
     category: 'Intimate Care',
     description: 'For extremely mild, gentle and careful cleansing of the sensitive intimate area.',
+    image: '/images/intimpflege-reinigungsschaum.webp',
     priceVerified: false
   },
   {
@@ -262,6 +272,7 @@ export const productsEn: Product[] = [
     eyebrow: 'Care',
     category: 'Intimate Care',
     description: 'Designed for the outer intimate area. Protects the skin, soothes and gently deodorizes.',
+    image: '/images/intimpflege-balsam.webp',
     priceVerified: false
   }
 ];
