@@ -86,5 +86,18 @@ const orgJsonLd = {
       if (e.ctrlKey && key === 'U') e.preventDefault();
     });
   </script>
+  <script>
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('[data-amazon-link]');
+      if (!link) return;
+      const payload = {
+        product_slug: link.dataset.productSlug,
+        product_name: link.dataset.productName,
+        page_location: link.dataset.pageLocation
+      };
+      if (typeof window.gtag === 'function') window.gtag('event', 'amazon_outbound_click', payload);
+      if (Array.isArray(window.dataLayer)) window.dataLayer.push({ event: 'amazon_outbound_click', ...payload });
+    });
+  </script>
 </body>
 </html>

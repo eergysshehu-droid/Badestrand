@@ -94,6 +94,11 @@ const productJsonLd = {
     <div class="note">Preis wird vor Livegang final bestätigt.</div>
     <div class="btns" style="margin-top:20px"><button class="btn">In den Warenkorb →</button><button class="btn outline">♡</button></div>
     <PaymentMethods lang="de" compact />
+    {product.availableOnAmazon && product.amazonUrl && (
+      <a class="amazon-link" href={product.amazonUrl} target="_blank" rel="noopener noreferrer" data-amazon-link data-product-slug={product.slug} data-product-name={product.name} data-page-location="pdp">
+        Auch bei Amazon erhältlich <Icon name="externalLink" size={13} />
+      </a>
+    )}
     {product.study && (
       <div class="study-metrics-block">
         <div class="study-metrics-title">{product.study.title}</div>

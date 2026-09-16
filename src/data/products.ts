@@ -27,6 +27,8 @@ export interface Product {
   priceVerified: boolean;
   featured?: boolean;
   application?: string;
+  availableOnAmazon?: boolean;
+  amazonUrl?: string;
   efficacy?: ProductEfficacy;
   study?: ProductStudy;
   dermatologicallyTested?: boolean;

@@ -4,6 +4,7 @@ import TrustBar from '../../../components/TrustBar.astro';
 import ProductCard from '../../../components/ProductCard.astro';
 import DermatologyBadge from '../../../components/DermatologyBadge.astro';
 import PaymentMethods from '../../../components/PaymentMethods.astro';
+import Icon from '../../../components/Icon.astro';
 import { productsEn as products } from '../../../data/products.en';
 import { companyEn as company } from '../../../data/company.en';
 
@@ -79,6 +80,11 @@ const productJsonLd = {
     )}
     <div class="btns" style="margin-top:20px"><button class="btn">Add to cart →</button><button class="btn outline">♡</button></div>
     <PaymentMethods lang="en" compact />
+    {product.availableOnAmazon && product.amazonUrl && (
+      <a class="amazon-link" href={product.amazonUrl} target="_blank" rel="noopener noreferrer" data-amazon-link data-product-slug={product.slug} data-product-name={product.name} data-page-location="pdp">
+        Also available on Amazon <Icon name="externalLink" size={13} />
+      </a>
+    )}
     {product.efficacy && (
       <div class="result"><b>{product.efficacy.value}</b><div>{product.efficacy.statement} {product.efficacy.context}</div></div>
     )}
