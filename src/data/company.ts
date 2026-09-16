@@ -21,6 +21,5 @@ export const company = {
   serviceHours: {
     days: 'Montag–Freitag',
     time: '08:00–13:00 Uhr'
-  },
-  amazonStoreUrl: 'https://share.google/13X6wknG8DfDTKjTl'
+  }
 };
