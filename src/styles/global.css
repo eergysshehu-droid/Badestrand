@@ -341,6 +341,13 @@ textarea{min-height:155px}
 .footer-contact a{display:flex;align-items:center;gap:8px;margin:0;font-size:12px;color:rgba(248,246,241,.72)}
 .footer-contact svg{color:var(--gold);flex:none}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.14);margin-top:8px;padding-top:20px;font-size:11px;color:rgba(248,246,241,.55);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.payment-strip{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:24px 0;border-top:1px solid rgba(255,255,255,.14)}
+.payment-strip-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(248,246,241,.55);white-space:nowrap}
+.payment-strip-marks{display:flex;gap:10px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.payment-mark{border:1px solid rgba(248,246,241,.28);color:rgba(248,246,241,.75);font-size:11px;letter-spacing:.03em;padding:7px 14px;font-family:var(--sans)}
+.payment-strip--compact{padding:16px 0;border-top:1px solid var(--line);justify-content:flex-start}
+.payment-strip--compact .payment-strip-label{color:var(--muted)}
+.payment-strip--compact .payment-mark{border-color:var(--line);color:var(--muted);padding:5px 11px;font-size:10px}
 .footer-bottom a{color:rgba(248,246,241,.55);display:inline}
 .footer-bottom a:hover{color:#f8f6f1}
 @media(min-width:1024px){

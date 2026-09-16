@@ -3,6 +3,7 @@ import SiteLayout from '../../../../layouts/SiteLayout.astro';
 import TrustBar from '../../../../components/TrustBar.astro';
 import ProductCard from '../../../../components/ProductCard.astro';
 import DermatologyBadge from '../../../../components/DermatologyBadge.astro';
+import PaymentMethods from '../../../../components/PaymentMethods.astro';
 import Icon from '../../../../components/Icon.astro';
 import { productsEn as products } from '../../../../data/products.en';
 import { companyEn as company } from '../../../../data/company.en';
@@ -92,6 +93,7 @@ const productJsonLd = {
     <p class="lead">{product.description}</p>
     <div class="note">Price to be confirmed before launch.</div>
     <div class="btns" style="margin-top:20px"><button class="btn">Add to cart →</button><button class="btn outline">♡</button></div>
+    <PaymentMethods lang="en" compact />
     {product.study && (
       <div class="study-metrics-block">
         <div class="study-metrics-title">{product.study.title}</div>

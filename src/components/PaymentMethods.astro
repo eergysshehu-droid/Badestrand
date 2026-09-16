@@ -1,0 +1,11 @@
+---
+const { lang = 'de', compact = false } = Astro.props;
+const label = lang === 'en' ? 'Secure Payment' : 'Sichere Bezahlung';
+const methods = ['PayPal', 'Visa', 'Mastercard'];
+---
+<div class={`payment-strip${compact ? ' payment-strip--compact' : ''}`} role="group" aria-label={label}>
+  <div class="payment-strip-label">{label}</div>
+  <ul class="payment-strip-marks">
+    {methods.map((m) => <li class="payment-mark">{m}</li>)}
+  </ul>
+</div>

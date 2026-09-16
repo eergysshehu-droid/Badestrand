@@ -3,6 +3,7 @@ import { company } from '../data/company';
 import { companyEn } from '../data/company.en';
 import Icon from './Icon.astro';
 import { useTranslations, localizePath } from '../i18n/utils';
+import PaymentMethods from './PaymentMethods.astro';
 
 const { lang = 'de' } = Astro.props;
 const t = useTranslations(lang);
@@ -36,6 +37,7 @@ const p = (path: string) => localizePath(path, lang);
       <span><a href={`mailto:${c.email}`}><Icon name="mail" size={16} />{c.email}</a></span>
       <span><Icon name="clock" size={16} />{c.serviceHours.days} {c.serviceHours.time}</span>
     </div>
+    <PaymentMethods lang={lang} />
     <div class="footer-bottom"><span>© {new Date().getFullYear()} {c.legalName}</span><span>{lang === 'en' ? 'Website design by Ergys Shehu' : 'Website-Design: Ergys Shehu'}</span></div>
   </div>
 </footer>
